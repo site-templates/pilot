@@ -1,0 +1,734 @@
+/*
+    Pilot — token aliases, the aurora mesh, and the motion system.
+
+    This file is inlined right after Tailwind by @vite in the layout, so
+    everything here applies to every page. The tokens below become real
+    Tailwind utilities: bg-canvas, text-ink, text-muted, border-line,
+    bg-panel, text-accent, font-mono, and so on.
+
+    There is not a single color literal in this file. Every hue — including
+    the three the aurora mesh is built from — is derived from the palette in
+    resources/css/theme.css, so swapping the palette in the Theme panel
+    re-tints the mesh along with everything else.
+*/
+
+@theme {
+    /* Small uppercase labels and the brief pane use the system mono — no extra font to download. */
+    --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+
+    /*
+        The palette, aliased onto the semantic theme tokens in
+        resources/css/theme.css — change the theme and the whole site follows.
+        Sans/display fonts live there too.
+    */
+    --color-canvas: var(--background);
+    --color-panel: var(--card);
+    --color-raised: var(--secondary);
+    --color-line: var(--border);
+
+    /* Text, in four tiers: headline ink, lede, supporting copy, and quiet meta. */
+    --color-ink: var(--foreground);
+    --color-muted: var(--muted-foreground);
+    --color-faint: color-mix(in oklab, var(--muted-foreground) 66%, var(--background));
+
+    /*
+        The lede tier — for the large paragraph under a headline, which is the
+        one piece of body copy that sits directly on the mesh. Pulling it most
+        of the way to the ink keeps it legible on every palette: the muted tone
+        in some presets (rose, sand) tops out around 4.3:1 on its own canvas,
+        which is under AA before the mesh takes its cut.
+    */
+    --color-lede: color-mix(in oklab, var(--foreground) 74%, var(--muted-foreground) 26%);
+
+    /* The accent — used for CTAs and one focal glint per section, never as a base. */
+    --color-accent: var(--primary);
+    --color-accent-ink: var(--primary-foreground);
+    --color-accent-soft: color-mix(in oklab, var(--primary) 14%, var(--background));
+    --color-accent-line: color-mix(in oklab, var(--primary) 34%, var(--border));
+
+    /*
+        The three mesh hues. Mixing the accent toward the destructive token
+        swings it warm (violet → pink); mixing it toward the ink lifts it
+        cool. Both follow whichever palette is active, which is what keeps
+        the hero coherent after a theme swap instead of stranded on indigo.
+        The @supports block below upgrades these to a true hue rotation
+        where the browser can do relative color syntax.
+    */
+    --color-mesh-warm: color-mix(in oklab, var(--primary) 62%, var(--destructive) 38%);
+    --color-mesh-core: var(--primary);
+    --color-mesh-cool: color-mix(in oklab, var(--primary) 74%, var(--foreground) 26%);
+
+    /* One easing for everything interactive: fast in, long soft settle. */
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/*
+    Relative color syntax gives the mesh a genuine hue spread — the warm lobe
+    rotates toward magenta, the cool lobe toward cyan-blue — instead of the
+    approximation the color-mix fallback above produces. Still zero literals:
+    both are computed from the palette's own accent.
+*/
+@supports (color: oklch(from red l c h)) {
+    :root {
+        --color-mesh-warm: oklch(from var(--primary) l calc(c * 1.05) calc(h + 52));
+        --color-mesh-cool: oklch(from var(--primary) calc(l * 1.05) c calc(h - 42));
+    }
+}
+
+/* Cross-page navigation fades — the whole site feels like one surface. */
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 220ms;
+    animation-timing-function: ease;
+}
+
+html {
+    background-color: var(--color-canvas);
+    scrollbar-color: var(--color-raised) transparent;
+}
+
+/* One stray wide element must never give the whole page a sideways scroll. */
+body {
+    overflow-x: clip;
+}
+
+::selection {
+    background-color: color-mix(in oklab, var(--color-accent) 30%, transparent);
+    color: var(--color-ink);
+}
+
+/* A crisp accent ring instead of the browser's default halo. */
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+    The aurora mesh
+
+    Pilot's background graphic: three soft color lobes, a pair of diagonal
+    light beams, and a faint engineering grid, all masked so they dissolve
+    into the canvas. Drop <x-mesh/>-style markup (see sections/hero) into any
+    section that needs it. The lobes drift on a slow CSS keyframe so the page
+    is alive before a single byte of JavaScript arrives; GSAP only adds the
+    scroll parallax on top.
+--------------------------------------------------------------------------- */
+
+.aurora {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    /* Sits behind content without needing a z-index on every sibling. */
+    z-index: 0;
+}
+
+.aurora-lobe {
+    position: absolute;
+    display: block;
+    border-radius: 9999px;
+    filter: blur(72px);
+    will-change: transform;
+}
+
+/*
+    The warm lobe — violet swinging to pink. Deliberately the smallest and
+    faintest of the three: it is the hint of pink at the edge of an otherwise
+    indigo-and-blue field, not a third of the hero.
+*/
+.aurora-lobe--warm {
+    top: -14%;
+    left: -8%;
+    width: 46%;
+    height: 62%;
+    background: radial-gradient(closest-side, color-mix(in oklab, var(--color-mesh-warm) 38%, transparent), transparent 100%);
+    animation: aurora-drift-a 26s var(--ease-spring) infinite alternate;
+}
+
+/* The core lobe — the palette accent itself, centred and dominant. */
+.aurora-lobe--core {
+    top: -30%;
+    left: 16%;
+    width: 74%;
+    height: 96%;
+    background: radial-gradient(closest-side, color-mix(in oklab, var(--color-mesh-core) 72%, transparent), transparent 100%);
+    animation: aurora-drift-b 32s var(--ease-spring) infinite alternate;
+}
+
+/* The cool lobe — blue lifting toward cyan, upper right. */
+.aurora-lobe--cool {
+    top: -22%;
+    right: -14%;
+    width: 62%;
+    height: 86%;
+    background: radial-gradient(closest-side, color-mix(in oklab, var(--color-mesh-cool) 64%, transparent), transparent 100%);
+    animation: aurora-drift-c 29s var(--ease-spring) infinite alternate;
+}
+
+/*
+    The beams — Fusion's diagonal light streaks, thinned right down so they
+    read as a glint across the mesh rather than a lens flare.
+*/
+.aurora-beam {
+    position: absolute;
+    inset: -40% -20%;
+    display: block;
+    background:
+        linear-gradient(104deg, transparent 38%, color-mix(in oklab, var(--color-ink) 12%, transparent) 45%, transparent 49%),
+        linear-gradient(104deg, transparent 52%, color-mix(in oklab, var(--color-mesh-cool) 26%, transparent) 58%, transparent 62%);
+    filter: blur(6px);
+    opacity: 0.7;
+}
+
+/* The engineering grid — barely there, it just gives the mesh something to sit on. */
+.aurora-grid {
+    position: absolute;
+    inset: 0;
+    display: block;
+    background-image:
+        linear-gradient(to right, color-mix(in oklab, var(--color-ink) 6%, transparent) 1px, transparent 1px),
+        linear-gradient(to bottom, color-mix(in oklab, var(--color-ink) 6%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(72% 60% at 50% 30%, black 0%, transparent 78%);
+    -webkit-mask-image: radial-gradient(72% 60% at 50% 30%, black 0%, transparent 78%);
+}
+
+/* Everything above dissolves into the canvas before the content starts. */
+.aurora-veil {
+    position: absolute;
+    inset: 0;
+    display: block;
+    background: linear-gradient(to bottom, transparent 0%, transparent 42%, var(--color-canvas) 96%);
+}
+
+@keyframes aurora-drift-a {
+    to { transform: translate3d(7%, 5%, 0) scale(1.12); }
+}
+
+@keyframes aurora-drift-b {
+    to { transform: translate3d(-6%, 7%, 0) scale(1.08); }
+}
+
+@keyframes aurora-drift-c {
+    to { transform: translate3d(-8%, 4%, 0) scale(1.14); }
+}
+
+/* A quieter mesh for mid-page sections and the CTA — one lobe, no beams. */
+.aurora--calm .aurora-lobe {
+    filter: blur(96px);
+    opacity: 0.62;
+}
+
+/*
+    On a light palette the mesh sits behind DARK text, so the lobes are dialled
+    back hard: at the strength that reads well on the near-black canvas they
+    cost the body copy its contrast entirely. Earned on the rose + Fraunces
+    swap, where muted text over the pink lobe fell to roughly 2.6:1.
+*/
+html:not(.dark) .aurora-lobe {
+    opacity: 0.26;
+}
+
+html:not(.dark) .aurora--calm .aurora-lobe {
+    opacity: 0.28;
+}
+
+html:not(.dark) .aurora-beam {
+    opacity: 0.35;
+}
+
+/* ---------------------------------------------------------------------------
+    The reveal system
+
+    main.js adds .js to <html> before first paint, then either GSAP's
+    ScrollTrigger or a plain IntersectionObserver flips .is-visible as each
+    [data-reveal] element scrolls in. With JavaScript off — or if the GSAP
+    CDN never answers — nothing is ever hidden. Stagger a group with the
+    reveal-N utilities.
+--------------------------------------------------------------------------- */
+
+.js [data-reveal] {
+    opacity: 0;
+    translate: 0 20px;
+    filter: blur(6px);
+    transition:
+        opacity 0.85s var(--ease-spring),
+        translate 0.85s var(--ease-spring),
+        filter 0.85s var(--ease-spring);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal].is-visible {
+    opacity: 1;
+    translate: 0 0;
+    filter: blur(0);
+}
+
+.reveal-1 { --reveal-delay: 70ms; }
+.reveal-2 { --reveal-delay: 140ms; }
+.reveal-3 { --reveal-delay: 210ms; }
+.reveal-4 { --reveal-delay: 280ms; }
+.reveal-5 { --reveal-delay: 350ms; }
+.reveal-6 { --reveal-delay: 420ms; }
+
+/* ---------------------------------------------------------------------------
+    The header — transparent and roomy at the top, glass once you scroll.
+--------------------------------------------------------------------------- */
+
+#header {
+    transition:
+        background-color 0.4s ease,
+        border-color 0.4s ease,
+        backdrop-filter 0.4s ease;
+    border-bottom: 1px solid transparent;
+}
+
+#header[data-scrolled] {
+    background-color: color-mix(in oklab, var(--color-canvas) 74%, transparent);
+    border-bottom-color: var(--color-line);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+/* The mobile menu panel — slides down under the header as a glass sheet. */
+[data-mobile-panel] {
+    opacity: 0;
+    translate: 0 -8px;
+    visibility: hidden;
+    transition:
+        opacity 0.28s var(--ease-out-quart),
+        translate 0.28s var(--ease-out-quart),
+        visibility 0s linear 0.28s;
+}
+
+.menu-open [data-mobile-panel] {
+    opacity: 1;
+    translate: 0 0;
+    visibility: visible;
+    transition:
+        opacity 0.32s var(--ease-out-quart),
+        translate 0.32s var(--ease-out-quart),
+        visibility 0s;
+}
+
+.menu-open {
+    overflow: hidden;
+}
+
+/* ---------------------------------------------------------------------------
+    The Brief Transformer — Pilot's signature.
+
+    A two-pane window: the client's messy brief on the left, the proposal
+    Pilot returns on the right. The rows on the right resolve in sequence as
+    the window scrolls in, so the product explains itself in one glance.
+--------------------------------------------------------------------------- */
+
+.transformer {
+    position: relative;
+    isolation: isolate;
+}
+
+/* The seam between the panes, with a pulse travelling brief → proposal. */
+.transformer-seam {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-line);
+}
+
+.transformer-seam::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, var(--color-accent), transparent);
+    translate: 0 -100%;
+    animation: seam-pulse 3.4s var(--ease-out-quart) infinite;
+}
+
+@keyframes seam-pulse {
+    0% { translate: 0 -100%; }
+    55%, 100% { translate: 0 100%; }
+}
+
+/*
+    Proposal rows start dimmed and settle as they resolve. main.js adds
+    .is-resolved in sequence; without JavaScript they are simply all resolved.
+*/
+.js .proposal-row {
+    opacity: 0.25;
+    translate: 0 6px;
+    transition:
+        opacity 0.5s var(--ease-out-quart),
+        translate 0.5s var(--ease-out-quart);
+}
+
+.js .proposal-row.is-resolved {
+    opacity: 1;
+    translate: 0 0;
+}
+
+/* The generating shimmer that sweeps the proposal pane once as it resolves. */
+.proposal-sweep {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+        100deg,
+        transparent 40%,
+        color-mix(in oklab, var(--color-accent) 16%, transparent) 50%,
+        transparent 60%
+    );
+}
+
+.js .transformer.is-generating .proposal-sweep {
+    animation: proposal-sweep 1.5s var(--ease-out-quart) 1;
+}
+
+@keyframes proposal-sweep {
+    0% { opacity: 0; translate: -60% 0; }
+    30% { opacity: 1; }
+    100% { opacity: 0; translate: 60% 0; }
+}
+
+/* The caret blinking in the brief pane, as if it were just typed. */
+.brief-caret {
+    display: inline-block;
+    width: 1px;
+    height: 1em;
+    vertical-align: text-bottom;
+    background: var(--color-accent);
+    animation: caret-blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes caret-blink {
+    50% { opacity: 0; }
+}
+
+/* ---------------------------------------------------------------------------
+    The logo marquee — a full-bleed band that scrolls forever, paused on hover.
+--------------------------------------------------------------------------- */
+
+.marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 46s linear infinite;
+}
+
+.marquee-track:hover .marquee {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    to { transform: translateX(-50%); }
+}
+
+/* Fade both ends of the band into the canvas. */
+.marquee-track {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+/* ---------------------------------------------------------------------------
+    Surfaces
+--------------------------------------------------------------------------- */
+
+/*
+    Cards that light up under the cursor. main.js tracks the pointer and sets
+    --mx / --my per card; the ::after layer paints a soft accent bloom there.
+*/
+.spotlight-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+        340px circle at var(--mx, 50%) var(--my, 50%),
+        color-mix(in oklab, var(--color-accent) 13%, transparent),
+        transparent 62%
+    );
+}
+
+.spotlight-card:hover::after {
+    opacity: 1;
+}
+
+/*
+    The deliverables bento: a twelve-track grid laid out 2 / 3 / 2 — two wide
+    cards, then three across, then two wide again. Seven cards land in three
+    full rows with no hole at the end. One column on phones, two on tablets,
+    so the shape genuinely changes with the viewport rather than shrinking.
+*/
+.bento > * {
+    grid-column: span 12;
+}
+
+@media (min-width: 640px) {
+    .bento > * {
+        grid-column: span 6;
+    }
+}
+
+@media (min-width: 1024px) {
+    .bento > :nth-child(-n + 2) {
+        grid-column: span 6;
+    }
+
+    .bento > :nth-child(n + 3):nth-child(-n + 5) {
+        grid-column: span 4;
+    }
+
+    .bento > :nth-child(n + 6) {
+        grid-column: span 6;
+    }
+}
+
+/* The hairline rail that threads the how-it-works ladder together. */
+.step-rail {
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--color-accent-line) 12%,
+        var(--color-accent-line) 88%,
+        transparent
+    );
+}
+
+/* Smooth <details> opening for the FAQ (Chrome; harmless elsewhere). */
+details.faq-item {
+    interpolate-size: allow-keywords;
+}
+
+details.faq-item::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size 0.35s var(--ease-out-quart), content-visibility 0.35s;
+    transition-behavior: allow-discrete;
+}
+
+details.faq-item[open]::details-content {
+    block-size: auto;
+}
+
+details.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Gradient headline treatment — ink fading to smoke for the hero line. */
+.text-gradient {
+    background: linear-gradient(
+        176deg,
+        var(--color-ink) 28%,
+        color-mix(in oklab, var(--color-ink) 62%, transparent) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+    Long-form typography for guides. Applied via class="prose".
+--------------------------------------------------------------------------- */
+
+.prose {
+    color: color-mix(in oklab, var(--color-ink) 76%, transparent);
+    font-size: 1.0625rem;
+    line-height: 1.8;
+}
+
+.prose > * + * {
+    margin-top: 1.5em;
+}
+
+.prose h2,
+.prose h3 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+}
+
+.prose h2 {
+    margin-top: 2.6em;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.prose h3 {
+    margin-top: 2.2em;
+    font-size: 1.1875rem;
+    font-weight: 600;
+}
+
+.prose p.lead {
+    color: var(--color-ink);
+    font-size: 1.25rem;
+    line-height: 1.65;
+    letter-spacing: -0.005em;
+}
+
+.prose a {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklab, var(--color-accent) 60%, transparent);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+
+.prose a:hover {
+    color: var(--color-accent);
+    text-decoration-color: var(--color-accent);
+}
+
+.prose strong {
+    color: var(--color-ink);
+    font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+    padding-left: 1.4em;
+}
+
+.prose ul {
+    list-style: disc;
+}
+
+.prose ol {
+    list-style: decimal;
+}
+
+.prose li {
+    margin-top: 0.55em;
+    padding-left: 0.25em;
+}
+
+.prose li::marker {
+    color: var(--color-accent);
+}
+
+.prose blockquote {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-left: 2px solid var(--color-accent);
+    padding-left: 1.5em;
+    color: var(--color-ink);
+    font-size: 1.1875rem;
+    line-height: 1.65;
+}
+
+.prose blockquote cite {
+    display: block;
+    margin-top: 0.9em;
+    font-size: 0.875rem;
+    font-style: normal;
+    color: var(--color-muted);
+}
+
+.prose code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    color: var(--color-ink);
+    background: var(--color-raised);
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    padding: 0.15em 0.4em;
+}
+
+.prose pre {
+    background: var(--color-panel);
+    border: 1px solid var(--color-line);
+    border-radius: 12px;
+    padding: 1.25em 1.5em;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+.prose pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+    font-size: inherit;
+}
+
+.prose hr {
+    margin-top: 3em;
+    margin-bottom: 3em;
+    border: 0;
+    border-top: 1px solid var(--color-line);
+}
+
+.prose img {
+    border-radius: 12px;
+    border: 1px solid var(--color-line);
+}
+
+.prose table {
+    width: 100%;
+    font-size: 0.9375rem;
+    border-collapse: collapse;
+}
+
+.prose th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.6em 1em 0.6em 0;
+}
+
+.prose td {
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.6em 1em 0.6em 0;
+    color: var(--color-muted);
+}
+
+/* ---------------------------------------------------------------------------
+    Reduced motion — everything visible, nothing moving. This block is last
+    so it wins outright: no drift, no marquee, no reveals held at opacity 0.
+--------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .js [data-reveal],
+    .js .proposal-row {
+        opacity: 1;
+        translate: 0 0;
+        filter: none;
+        transition: none;
+    }
+
+    .aurora-lobe,
+    .marquee,
+    .brief-caret,
+    .transformer-seam::after,
+    .js .transformer.is-generating .proposal-sweep {
+        animation: none;
+    }
+
+    .transformer-seam::after {
+        display: none;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}

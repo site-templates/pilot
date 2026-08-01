@@ -1,0 +1,20 @@
+[
+    {
+        "number": "01",
+        "title": "Paste the brief",
+        "body": "Forward the email, drop in the Slack thread, or type three lines from the discovery call. Pilot reads messy — half sentences, a budget that moves, and \"we'll figure that bit out later\" all parse fine.",
+        "meta": "About ten seconds"
+    },
+    {
+        "number": "02",
+        "title": "Check the numbers",
+        "body": "Pilot comes back with scope, three packages, and a schedule. You correct what it got wrong — usually one line item and a rate — and everything downstream re-prices itself.",
+        "meta": "Two minutes, most of it reading"
+    },
+    {
+        "number": "03",
+        "title": "Send it while they're warm",
+        "body": "Export a branded PDF, share a link that tells you the moment it's opened, or push it straight into your contract tool. The follow-ups queue themselves for day three and day eight.",
+        "meta": "One click, then it's gone"
+    }
+]

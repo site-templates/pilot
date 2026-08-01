@@ -1,0 +1,62 @@
+[
+    {
+        "label": "Proposals per month",
+        "one": "10",
+        "two": "Unlimited",
+        "three": "Unlimited"
+    },
+    {
+        "label": "Seats",
+        "one": "1",
+        "two": "3",
+        "three": "10"
+    },
+    {
+        "label": "All seven documents",
+        "one": "yes",
+        "two": "yes",
+        "three": "yes"
+    },
+    {
+        "label": "Your branding on every send",
+        "one": "—",
+        "two": "yes",
+        "three": "yes"
+    },
+    {
+        "label": "Shared rate card and templates",
+        "one": "—",
+        "two": "yes",
+        "three": "yes"
+    },
+    {
+        "label": "Open and view tracking",
+        "one": "—",
+        "two": "yes",
+        "three": "yes"
+    },
+    {
+        "label": "Approval step before sending",
+        "one": "—",
+        "two": "—",
+        "three": "yes"
+    },
+    {
+        "label": "Per-client rate cards",
+        "one": "—",
+        "two": "—",
+        "three": "yes"
+    },
+    {
+        "label": "API and Zapier access",
+        "one": "—",
+        "two": "—",
+        "three": "yes"
+    },
+    {
+        "label": "Support",
+        "one": "Email",
+        "two": "Priority",
+        "three": "Dedicated"
+    }
+]

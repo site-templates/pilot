@@ -1,0 +1,24 @@
+title: Logo marquee
+description: A full-bleed band of client names that scrolls on a loop and pauses on hover
+fields:
+    label:
+        type: text
+        label: Label
+        default: "Proposals sent this month by studios like"
+    items:
+        type: repeater
+        label: Names
+        source: collections.logos
+        add_button_label: "Add name"
+        item_label: name
+        sub_fields:
+            name:
+                type: text
+                label: Name
+                default: "New studio"
+            icon:
+                type: textarea
+                label: Mark SVG
+                description: "Inline SVG. Use fill='currentColor' so it follows the theme."
+                rows: 3
+                default: ""

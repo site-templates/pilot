@@ -1,0 +1,53 @@
+title: Feature rows
+description: The Features page spec sheet — one hairlined row per document
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "The documents"
+    heading:
+        type: text
+        label: Heading
+        default: "What lands in the client’s inbox"
+    items:
+        type: repeater
+        label: Rows
+        source: collections.features
+        add_button_label: "Add row"
+        item_label: title
+        sub_fields:
+            number:
+                type: text
+                label: Number
+                default: "08"
+            title:
+                type: text
+                label: Title
+                default: "New document"
+            body:
+                type: textarea
+                label: Description
+                rows: 4
+                default: "What this document does and why it matters."
+            pointOne:
+                type: text
+                label: Point one
+                default: "First detail"
+            pointTwo:
+                type: text
+                label: Point two
+                default: "Second detail"
+            pointThree:
+                type: text
+                label: Point three
+                default: "Third detail"
+            pointFour:
+                type: text
+                label: Point four
+                default: "Fourth detail"
+            sample:
+                type: textarea
+                label: Sample excerpt
+                description: "Optional. Shows in a monospace panel under the points."
+                rows: 3
+                default: ""

@@ -1,0 +1,80 @@
+title: Pricing plans
+description: Three plan cards — turn on Highlight to give one the accent border and its badge
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Plans"
+    heading:
+        type: text
+        label: Heading
+        default: "Priced like a tool, not a percentage"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "No cut of your invoices, no per-proposal fee, no seat you forgot you were paying for. Pick a plan, send as many as you like."
+    items:
+        type: repeater
+        label: Plans
+        source: collections.plans
+        add_button_label: "Add plan"
+        item_label: name
+        sub_fields:
+            name:
+                type: text
+                label: Name
+                default: "New plan"
+            tagline:
+                type: text
+                label: Tagline
+                default: "Who it is for"
+            price:
+                type: text
+                label: Price
+                default: "$0"
+            period:
+                type: text
+                label: Period
+                default: "/ month"
+            ctaText:
+                type: text
+                label: Button text
+                default: "Start free"
+            ctaLink:
+                type: url
+                label: Button link
+                default: "#"
+            featured:
+                type: toggle
+                label: Highlight
+                default: "0"
+            badge:
+                type: text
+                label: Badge
+                description: "Only shown on the highlighted plan."
+                default: "Most popular"
+            featureOne:
+                type: text
+                label: Feature one
+                default: ""
+            featureTwo:
+                type: text
+                label: Feature two
+                default: ""
+            featureThree:
+                type: text
+                label: Feature three
+                default: ""
+            featureFour:
+                type: text
+                label: Feature four
+                default: ""
+            featureFive:
+                type: text
+                label: Feature five
+                default: ""
+            featureSix:
+                type: text
+                label: Feature six
+                default: ""

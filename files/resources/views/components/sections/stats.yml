@@ -1,0 +1,22 @@
+title: Stats band
+description: A full-bleed row of proof points on hairline dividers
+fields:
+    label:
+        type: text
+        label: Footnote
+        default: "Measured across 40,000 proposals sent through Pilot in 2025"
+    items:
+        type: repeater
+        label: Numbers
+        source: collections.stats
+        add_button_label: "Add number"
+        item_label: value
+        sub_fields:
+            value:
+                type: text
+                label: Number
+                default: "0×"
+            label:
+                type: text
+                label: Description
+                default: "What it measures"

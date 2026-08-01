@@ -1,0 +1,43 @@
+title: Plan comparison
+description: The line-by-line table — a cell set to “yes” renders a check mark, anything else prints as written
+fields:
+    heading:
+        type: text
+        label: Heading
+        default: "Every plan, line by line"
+    columnOne:
+        type: text
+        label: Column one
+        default: "Solo"
+    columnTwo:
+        type: text
+        label: Column two
+        default: "Studio"
+    columnThree:
+        type: text
+        label: Column three
+        default: "Agency"
+    items:
+        type: repeater
+        label: Rows
+        source: collections.comparison
+        add_button_label: "Add row"
+        item_label: label
+        sub_fields:
+            label:
+                type: text
+                label: Feature
+                default: "New feature"
+            one:
+                type: text
+                label: Column one value
+                description: "Type yes for a check mark."
+                default: "—"
+            two:
+                type: text
+                label: Column two value
+                default: "yes"
+            three:
+                type: text
+                label: Column three value
+                default: "yes"

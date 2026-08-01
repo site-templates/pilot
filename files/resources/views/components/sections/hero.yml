@@ -1,0 +1,155 @@
+# The visual editor's contract for sections/hero.blade.php: each field maps
+# to a prop in the component's props. Defaults fill any attribute the page
+# doesn't pass. Field names are camelCase, matching the props they fill.
+title: Hero
+description: The opening statement and the Brief Transformer — the client's email beside the proposal Pilot returns
+fields:
+    showBadge:
+        type: toggle
+        label: Show announcement badge
+        description: Turn off to hide the pill above the headline.
+        default: "1"
+    badgeText:
+        type: text
+        label: Announcement text
+        default: "Contract-ready terms just shipped"
+    badgeLink:
+        type: url
+        label: Announcement link
+        default: "/guides/writing-scope-that-holds"
+    heading:
+        type: text
+        label: Heading
+        default: "From a two-line brief to a proposal worth signing."
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "Paste what the client actually sent you. Pilot returns the scope, the milestones, three priced packages, and terms you can put your name on."
+    ctaText:
+        type: text
+        label: Primary button text
+        default: "Start free"
+    ctaLink:
+        type: url
+        label: Primary button link
+        default: "/pricing"
+    secondaryText:
+        type: text
+        label: Secondary button text
+        default: "See a sample proposal"
+    secondaryLink:
+        type: url
+        label: Secondary button link
+        default: "/features"
+    trustNote:
+        type: text
+        label: Trust note
+        description: The small line under the buttons.
+        default: "Free for your first three proposals · No card required"
+    briefLabel:
+        type: text
+        label: Brief pane label
+        default: "The brief you were sent"
+    briefFrom:
+        type: text
+        label: Brief — from
+        default: "dana@northbeam.co"
+    briefSubject:
+        type: text
+        label: Brief — subject
+        default: "website?"
+    briefBody:
+        type: textarea
+        label: Brief — first paragraph
+        rows: 4
+        default: "hey — we're relaunching Northbeam in the spring and need a new site. maybe 5 or 6 pages? we've got brand stuff already. also need the blog moved over."
+    briefBodyTwo:
+        type: textarea
+        label: Brief — second paragraph
+        rows: 3
+        default: "budget's flexible-ish. what would something like this run? could you send something over this week?"
+    outputLabel:
+        type: text
+        label: Output pane label
+        default: "What Pilot sent back"
+    outputTiming:
+        type: text
+        label: Output timing chip
+        default: "drafted in 94s"
+    proposalTitle:
+        type: text
+        label: Proposal title
+        default: "Northbeam — Website Relaunch"
+    proposalFor:
+        type: text
+        label: Proposal subtitle
+        default: "Prepared for Dana Whitfield · Valid 30 days"
+    scopeLabel:
+        type: text
+        label: Scope heading
+        default: "Scope of work"
+    scope:
+        type: repeater
+        label: Scope lines
+        description: "The checked lines in the proposal pane."
+        source: collections.heroScope
+        add_button_label: "Add scope line"
+        item_label: text
+        sub_fields:
+            text:
+                type: text
+                label: Line
+                default: "New scope line"
+    timelineLabel:
+        type: text
+        label: Timeline heading
+        default: "Timeline"
+    milestones:
+        type: repeater
+        label: Milestones
+        description: "The four-step rail in the proposal pane."
+        source: collections.heroMilestones
+        add_button_label: "Add milestone"
+        item_label: label
+        sub_fields:
+            label:
+                type: text
+                label: Milestone
+                default: "New phase"
+            week:
+                type: text
+                label: Timing
+                default: "Wk 1"
+    pricingLabel:
+        type: text
+        label: Packages heading
+        default: "Packages"
+    tiers:
+        type: repeater
+        label: Packages
+        description: "The three price cards. Turn on Highlight to give one the accent treatment."
+        source: collections.heroTiers
+        add_button_label: "Add package"
+        item_label: name
+        sub_fields:
+            name:
+                type: text
+                label: Name
+                default: "New package"
+            price:
+                type: text
+                label: Price
+                default: "$0"
+            note:
+                type: text
+                label: Note
+                default: "What it covers"
+            featured:
+                type: toggle
+                label: Highlight
+                default: "0"
+    termsText:
+        type: text
+        label: Terms line
+        default: "50% to start · Two revision rounds · Net 14 · Kill fee at 30%"

@@ -1,0 +1,30 @@
+[
+    {
+        "label": "Discovery and content model",
+        "value": "Week 1",
+        "startPercent": "0",
+        "widthPercent": "14",
+        "featured": false
+    },
+    {
+        "label": "Design, two review rounds",
+        "value": "Weeks 2–4",
+        "startPercent": "14",
+        "widthPercent": "36",
+        "featured": false
+    },
+    {
+        "label": "Build and migration",
+        "value": "Weeks 5–7",
+        "startPercent": "50",
+        "widthPercent": "36",
+        "featured": true
+    },
+    {
+        "label": "Launch and handover",
+        "value": "Week 8",
+        "startPercent": "86",
+        "widthPercent": "14",
+        "featured": false
+    }
+]

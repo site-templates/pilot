@@ -1,0 +1,28 @@
+title: Page header
+description: The left-aligned opening block for inner pages, over a calm mesh
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Features"
+    heading:
+        type: text
+        label: Heading
+        default: "Everything the brief did not say"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "A proposal is only fast if you trust it. Here is exactly what Pilot writes, what it takes from you, and what it refuses to guess."
+    showMeta:
+        type: toggle
+        label: Show the stat beside the heading
+        default: "0"
+    metaOne:
+        type: text
+        label: Stat value
+        default: ""
+    metaTwo:
+        type: text
+        label: Stat label
+        default: ""

@@ -1,0 +1,30 @@
+[
+    {
+        "quote": "I used to lose every Friday to proposals. Now I lose ten minutes — and the number at the bottom is about forty percent higher than what I used to talk myself into.",
+        "name": "Mara Vane",
+        "role": "Independent designer, Lisbon",
+        "image": "https://assets.ui.sh/avatars/2.webp?size=160",
+        "metric": "+38% avg. project"
+    },
+    {
+        "quote": "The scope page alone has paid for itself. Two clients tried the \"while you're in there\" thing and I just sent back the line they had already agreed to.",
+        "name": "Theo Adeyemi",
+        "role": "Adeyemi Studio, Manchester",
+        "image": "https://assets.ui.sh/avatars/8.webp?size=160",
+        "metric": ""
+    },
+    {
+        "quote": "We brought on three contractors last year and not one of them had to learn how we quote. Pilot already knew.",
+        "name": "Priya Raman",
+        "role": "Founder, Vector Field",
+        "image": "https://assets.ui.sh/avatars/5.webp?size=160",
+        "metric": ""
+    },
+    {
+        "quote": "I'm a developer. I hated writing these. That is the entire review.",
+        "name": "Jonas Meyer",
+        "role": "Freelance engineer, Berlin",
+        "image": "https://assets.ui.sh/avatars/11.webp?size=160",
+        "metric": ""
+    }
+]

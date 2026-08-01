@@ -1,0 +1,32 @@
+title: Closing CTA
+description: The final ask, over a calmer version of the hero mesh
+fields:
+    heading:
+        type: text
+        label: Heading
+        default: "The next brief lands today. Be ready for it."
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "Start with three free proposals. Keep the ones that win — Pilot learns your rates, your scope language, and the terms you actually use."
+    ctaText:
+        type: text
+        label: Primary button text
+        default: "Start free"
+    ctaLink:
+        type: url
+        label: Primary button link
+        default: "/pricing"
+    secondaryText:
+        type: text
+        label: Secondary button text
+        default: "Talk to us"
+    secondaryLink:
+        type: url
+        label: Secondary button link
+        default: "mailto:hello@pilot.co"
+    note:
+        type: text
+        label: Footnote
+        default: "No card required · Cancel any time · Your templates stay yours"

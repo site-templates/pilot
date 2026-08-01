@@ -1,0 +1,59 @@
+title: Guides listing
+description: The lead guide as a wide feature card, the rest in a hairlined list
+fields:
+    items:
+        type: repeater
+        label: Guides
+        description: "The first entry is the lead. Each row links to its own page at /guides/{slug}."
+        source: collections.guides
+        add_button_label: "Add guide"
+        item_label: title
+        sub_fields:
+            title:
+                type: text
+                label: Title
+                default: "New guide"
+            description:
+                type: textarea
+                label: Summary
+                rows: 3
+                default: "What this guide covers."
+            category:
+                type: text
+                label: Category
+                default: "Pricing"
+            readTime:
+                type: text
+                label: Read time
+                default: "6 min read"
+            date:
+                type: text
+                label: Date
+                default: "Jan 2026"
+            author:
+                type: text
+                label: Author
+                default: "Pilot"
+            authorRole:
+                type: text
+                label: Author role
+                default: "Team"
+            authorImage:
+                type: image
+                label: Author photo
+                default: "https://assets.ui.sh/avatars/2.webp?size=160"
+            pullQuote:
+                type: textarea
+                label: Pull quote
+                description: "Only shown on the lead guide, in place of cover art."
+                rows: 3
+                default: ""
+            slug:
+                type: text
+                label: Slug
+                default: "new-guide"
+            link:
+                type: url
+                label: Link
+                description: "Keep this consistent with the slug — /guides/{slug}."
+                default: "/guides/new-guide"

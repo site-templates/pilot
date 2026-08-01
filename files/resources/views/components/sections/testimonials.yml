@@ -1,0 +1,41 @@
+title: Testimonials
+description: Quotes in a masonry flow — the first is set large, the rest fall in around it
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Evidence"
+    heading:
+        type: text
+        label: Heading
+        default: "The people who bill by the project"
+    items:
+        type: repeater
+        label: Quotes
+        description: "The first quote is the featured one. Reorder to promote a different quote."
+        source: collections.testimonials
+        add_button_label: "Add quote"
+        item_label: name
+        sub_fields:
+            quote:
+                type: textarea
+                label: Quote
+                rows: 4
+                default: "What they said."
+            name:
+                type: text
+                label: Name
+                default: "New name"
+            role:
+                type: text
+                label: Role
+                default: "Studio, City"
+            image:
+                type: image
+                label: Photo
+                default: "https://assets.ui.sh/avatars/1.webp?size=160"
+            metric:
+                type: text
+                label: Featured metric
+                description: "Only shown on the featured quote."
+                default: ""

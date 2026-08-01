@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Essential",
+        "price": "$6,400",
+        "note": "5 pages, no migration",
+        "featured": false
+    },
+    {
+        "name": "Complete",
+        "price": "$9,800",
+        "note": "Recommended",
+        "featured": true
+    },
+    {
+        "name": "Partner",
+        "price": "$14,500",
+        "note": "+ 3 months support",
+        "featured": false
+    }
+]

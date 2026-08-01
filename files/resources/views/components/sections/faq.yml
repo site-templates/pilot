@@ -1,0 +1,40 @@
+title: FAQ
+description: A sticky heading beside a native accordion — questions open without JavaScript
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Questions"
+    heading:
+        type: text
+        label: Heading
+        default: "The ones people actually ask"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 2
+        default: "Still unsure? Write to us and a person answers."
+    linkText:
+        type: text
+        label: Link text
+        default: "hello@pilot.co"
+    linkHref:
+        type: url
+        label: Link
+        default: "mailto:hello@pilot.co"
+    items:
+        type: repeater
+        label: Questions
+        source: collections.faq
+        add_button_label: "Add question"
+        item_label: question
+        sub_fields:
+            question:
+                type: text
+                label: Question
+                default: "New question"
+            answer:
+                type: textarea
+                label: Answer
+                rows: 4
+                default: "The answer."

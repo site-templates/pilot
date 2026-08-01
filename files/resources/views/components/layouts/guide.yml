@@ -1,0 +1,31 @@
+# The chrome around a single guide. Most of these fields come from the guide's
+# own entry in resources/data/collections/guides.json — edit them there, in the
+# Content editor. The back link and the in-article CTA are set here.
+title: Guide layout
+description: Title block, sticky byline rail, and the in-article call to action
+fields:
+    backText:
+        type: text
+        label: Back link text
+        default: "Guides"
+    backLink:
+        type: url
+        label: Back link
+        default: "/guides"
+    ctaHeading:
+        type: text
+        label: CTA heading
+        default: "Stop writing these by hand"
+    ctaBody:
+        type: textarea
+        label: CTA copy
+        rows: 3
+        default: "Pilot turns a brief this size into the whole document — scope, packages, schedule, terms."
+    ctaText:
+        type: text
+        label: CTA button text
+        default: "Start free"
+    ctaLink:
+        type: url
+        label: CTA button link
+        default: "/pricing"

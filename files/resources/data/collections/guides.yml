@@ -1,0 +1,16 @@
+# Column types for guides.json — the source of truth the builder reads:
+# richtext columns open in the rich editor (the Content drawer and any
+# section repeater listing this collection).
+fields:
+    title: { type: text }
+    description: { type: textarea }
+    category: { type: text }
+    readTime: { type: text }
+    date: { type: text }
+    author: { type: text }
+    authorRole: { type: text }
+    authorImage: { type: image }
+    pullQuote: { type: textarea }
+    slug: { type: text }
+    link: { type: url }
+    content: { type: richtext }

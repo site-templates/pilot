@@ -1,0 +1,117 @@
+title: Split with visual
+description: Copy on one side, a chart drawn in markup on the other — a price ladder or a project schedule
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Pricing"
+    heading:
+        type: text
+        label: Heading
+        default: "Price the work, not the hours"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "Pilot reads the scope and proposes three packages with a defensible number on each."
+    pointOne:
+        type: text
+        label: Point one
+        default: "Three tiers, anchored so the middle one wins"
+    pointTwo:
+        type: text
+        label: Point two
+        default: "Benchmarks from similar projects in your region"
+    pointThree:
+        type: text
+        label: Point three
+        default: "Every line item priced, nothing bundled into “design”"
+    linkText:
+        type: text
+        label: Link text
+        default: "How Pilot prices work"
+    linkHref:
+        type: url
+        label: Link
+        default: "/guides/how-to-price-client-work"
+    align:
+        type: select
+        label: Visual side
+        options:
+            right: "Visual on the right"
+            left: "Visual on the left"
+        default: "right"
+    visual:
+        type: select
+        label: Visual style
+        description: "Timeline adds a week ruler above the bars."
+        options:
+            packages: "Price ladder"
+            timeline: "Project schedule"
+        default: "packages"
+    visualTitle:
+        type: text
+        label: Visual title
+        default: "Suggested packages"
+    visualChip:
+        type: text
+        label: Visual chip
+        default: "Northbeam"
+    visualNote:
+        type: text
+        label: Visual footnote
+        default: "Benchmarked against 1,240 similar projects."
+    rulerOne:
+        type: text
+        label: Ruler mark 1
+        description: "Only shown when the visual style is Project schedule."
+        default: "W1"
+    rulerTwo:
+        type: text
+        label: Ruler mark 2
+        default: "W3"
+    rulerThree:
+        type: text
+        label: Ruler mark 3
+        default: "W5"
+    rulerFour:
+        type: text
+        label: Ruler mark 4
+        default: "W7"
+    rulerFive:
+        type: text
+        label: Ruler mark 5
+        default: "W8"
+    items:
+        type: repeater
+        label: Rows
+        description: "Each row draws a bar. Start and width are percentages of the track."
+        add_button_label: "Add row"
+        item_label: label
+        sub_fields:
+            label:
+                type: text
+                label: Label
+                default: "New row"
+            value:
+                type: text
+                label: Value
+                default: "$0"
+            startPercent:
+                type: number
+                label: Bar start (%)
+                min: 0
+                max: 100
+                step: 1
+                default: "0"
+            widthPercent:
+                type: number
+                label: Bar width (%)
+                min: 0
+                max: 100
+                step: 1
+                default: "50"
+            featured:
+                type: toggle
+                label: Highlight
+                default: "0"

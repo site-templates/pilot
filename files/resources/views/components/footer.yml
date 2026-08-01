@@ -1,0 +1,58 @@
+# The visual editor's contract for components/footer.blade.php — these fields
+# surface under the Layout tab.
+title: Footer
+description: Brand block, social row, and the link columns from site.json
+fields:
+    brand:
+        type: text
+        label: Brand name
+        default: "Pilot"
+    tagline:
+        type: textarea
+        label: Tagline
+        rows: 2
+        default: "Proposals, scope, and pricing for people who bill by the project."
+    columns:
+        type: repeater
+        label: Link columns
+        description: "Each top-level item is a column heading; nest links under it."
+        nestable: true
+        add_button_label: "Add column"
+        item_label: text
+        sub_fields:
+            text:
+                type: text
+                label: Text
+                default: "New column"
+            url:
+                type: url
+                label: Link
+                default: "#"
+    social:
+        type: repeater
+        label: Social links
+        add_button_label: "Add social link"
+        item_label: text
+        sub_fields:
+            text:
+                type: text
+                label: Name
+                default: "X"
+            url:
+                type: url
+                label: Link
+                default: "#"
+            icon:
+                type: textarea
+                label: Icon SVG
+                description: "Inline SVG. Use fill='currentColor' so it follows the theme."
+                rows: 3
+                default: ""
+    copyright:
+        type: text
+        label: Copyright
+        default: "© 2026 Pilot Labs, Inc."
+    note:
+        type: text
+        label: Footer note
+        default: "Built for freelancers and small studios."

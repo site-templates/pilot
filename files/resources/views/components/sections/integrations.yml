@@ -1,0 +1,37 @@
+title: Integrations
+description: A dense hairline tile grid of the tools proposals hand off to
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "Fits where you already work"
+    heading:
+        type: text
+        label: Heading
+        default: "Sends from Pilot, lands in your stack"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "Proposals leave as a link, a PDF, or a document in the tool you already invoice from. Nothing asks your client to make an account."
+    items:
+        type: repeater
+        label: Tools
+        source: collections.integrations
+        add_button_label: "Add tool"
+        item_label: name
+        sub_fields:
+            name:
+                type: text
+                label: Name
+                default: "New tool"
+            category:
+                type: text
+                label: Category
+                default: "Category"
+            icon:
+                type: textarea
+                label: Icon SVG
+                description: "Inline SVG. Use fill='currentColor' so it follows the theme."
+                rows: 3
+                default: ""

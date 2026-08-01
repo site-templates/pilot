@@ -1,0 +1,44 @@
+title: What you get
+description: The bento of everything Pilot writes from one brief — the first two cards run wide
+fields:
+    eyebrow:
+        type: text
+        label: Eyebrow
+        default: "What you get"
+    heading:
+        type: text
+        label: Heading
+        default: "Seven documents, one brief"
+    body:
+        type: textarea
+        label: Supporting copy
+        rows: 3
+        default: "Every send is a complete package — the proposal a client signs, plus everything that usually gets written at 11pm the night before."
+    items:
+        type: repeater
+        label: Cards
+        description: "The first two cards render wide; the rest sit three across."
+        source: collections.deliverables
+        add_button_label: "Add card"
+        item_label: title
+        sub_fields:
+            title:
+                type: text
+                label: Title
+                default: "New deliverable"
+            body:
+                type: textarea
+                label: Description
+                rows: 3
+                default: "What this document covers."
+            detail:
+                type: text
+                label: Footnote
+                description: "Optional. Shows as a small line under a hairline."
+                default: ""
+            icon:
+                type: textarea
+                label: Icon SVG
+                description: "Inline SVG. Use fill='currentColor' so it follows the theme."
+                rows: 3
+                default: ""

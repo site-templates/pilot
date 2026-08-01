@@ -1,0 +1,41 @@
+# The visual editor's contract for components/nav.blade.php — these fields
+# surface under the Layout tab. Field names are camelCase, matching the props
+# they fill.
+title: Navigation
+description: The site-wide top bar — brand mark, links, and the call to action
+fields:
+    brand:
+        type: text
+        label: Brand name
+        default: "Pilot"
+    links:
+        type: repeater
+        label: Navigation links
+        description: "The three destinations in the bar. Stored in site.json."
+        add_button_label: "Add link"
+        item_label: text
+        sub_fields:
+            text:
+                type: text
+                label: Text
+                default: "New link"
+            url:
+                type: url
+                label: Link
+                default: "/"
+    signInText:
+        type: text
+        label: Sign-in link text
+        default: "Sign in"
+    signInLink:
+        type: url
+        label: Sign-in link
+        default: "#"
+    ctaText:
+        type: text
+        label: Button text
+        default: "Start free"
+    ctaLink:
+        type: url
+        label: Button link
+        default: "/pricing"
