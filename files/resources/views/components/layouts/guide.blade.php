@@ -13,6 +13,7 @@
     'ctaBody' => 'Pilot turns a brief this size into the whole document — scope, packages, schedule, terms.',
     'ctaText' => 'Start free',
     'ctaLink' => '/pricing',
+    'fieldImage' => '/images/hero-field.jpg',
 ])
 <!--
     The chrome around a single guide: the title block runs full width, then the
@@ -25,8 +26,7 @@
     <article class="relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32">
 
         <div class="spectrum spectrum--calm" aria-hidden="true">
-            <span class="spectrum-bloom"></span>
-            <span class="spectrum-field"><span class="spectrum-bars"></span></span>
+            <img src="{{ $fieldImage }}" alt="" class="spectrum-image" width="1920" height="1086" loading="lazy">
             <span class="spectrum-veil"></span>
         </div>
 

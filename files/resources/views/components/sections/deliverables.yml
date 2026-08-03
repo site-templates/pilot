@@ -36,9 +36,28 @@ fields:
                 label: Footnote
                 description: "Optional. Shows as a small line under a hairline."
                 default: ""
+            bed:
+                type: select
+                label: Visual bed
+                description: "Draws a document fragment on a tinted panel. Only the wide cards should carry one."
+                options:
+                    "": "No bed — show the icon"
+                    proposal: "Proposal sheet"
+                    scope: "Scope list"
+                default: ""
+            tint:
+                type: select
+                label: Tint
+                description: "Colours the bed, or the icon square when there is no bed."
+                options:
+                    indigo: "Indigo"
+                    violet: "Violet"
+                    blush: "Blush"
+                    cyan: "Cyan"
+                default: "indigo"
             icon:
                 type: textarea
                 label: Icon SVG
-                description: "Inline SVG. Use fill='currentColor' so it follows the theme."
+                description: "Inline SVG. Shown when the card has no visual bed."
                 rows: 3
                 default: ""

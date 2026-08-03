@@ -1,6 +1,6 @@
 @props(['title' => 'Home', 'description' => ''])
 <!doctype html>
-<html lang="en" class="scroll-smooth {{ $site->theme->appearance_class ?? 'dark' }}">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,13 +10,13 @@
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
-    <!-- Inter carries the whole site — one neutral grotesk, tightened hard at display sizes. -->
+    <!-- Geist carries the whole site; Geist Mono sets the nav, labels, and the brief pane. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="{{ $site->theme->fonts_url ?? 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap' }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Loads Tailwind and inlines the theme tokens plus resources/css/site.css (mesh + motion) -->
-    @vite(['resources/css/theme.css', 'resources/css/site.css'])
+    <!-- Loads Tailwind and inlines resources/css/site.css — the palette, the light field, and the motion system -->
+    @vite(['resources/css/site.css'])
 
     <!-- Flag JS support before first paint so scroll reveals never flash (see main.js) -->
     <script>document.documentElement.classList.add('js')</script>

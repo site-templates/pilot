@@ -1,17 +1,13 @@
 {
     "name": "Pilot",
     "dialect": "blade",
-    "description": "A dark, luminous SaaS site for an AI service — an aurora mesh hero, a brief-to-proposal transformer built entirely in markup, a deliverables bento, milestone timelines, and a guides library.",
+    "description": "A dark, luminous SaaS site for an AI proposal service — a full-bleed light field, a brief-to-proposal transformer drawn in markup, feature cards on gradient beds, and a guides library.",
     "icon": "🛩️",
     "repo": "https://github.com/site-templates/pilot",
     "order": 20,
     "category": "landing",
     "theme": "dark",
     "accent": "#4a64f2",
-    "themeable": true,
-    "palette": "cobalt",
-    "fonts": "inter",
-    "appearance": "dark",
     "pages": [
         "Home",
         "Features",

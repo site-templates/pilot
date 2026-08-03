@@ -1,79 +1,62 @@
 /*
-    Pilot — token aliases, the spectrum, and the motion system.
+    Pilot — the design system, the light field, and the motion system.
 
     This file is inlined right after Tailwind by @vite in the layout, so
-    everything here applies to every page. The tokens below become real
-    Tailwind utilities: bg-canvas, text-ink, text-muted, border-line,
-    bg-panel, text-accent, font-mono, and so on.
+    everything here applies to every page. Pilot is deliberately NOT a
+    themeable template: there is one palette and one type pairing, tuned
+    together, and they live here rather than in a generated theme.css. The
+    tokens below become real Tailwind utilities — bg-canvas, text-ink,
+    text-muted, border-line, bg-panel, text-accent, font-mono, and so on.
 
-    There is not a single color literal in this file. Every hue — including
-    the three the spectrum is built from — is derived from the palette in
-    resources/css/theme.css, so swapping the palette in the Theme panel
-    re-tints the graphic along with everything else.
+    To restyle the whole site, change the values in @theme. Nothing else
+    hard-codes a colour.
 */
 
 @theme {
-    /* Small uppercase labels and the brief pane use the system mono — no extra font to download. */
-    --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
-
-    /*
-        The palette, aliased onto the semantic theme tokens in
-        resources/css/theme.css — change the theme and the whole site follows.
-        Sans/display fonts live there too.
+    /* ---- Type ------------------------------------------------------------
+        Geist for everything, Geist Mono for labels, nav, and the brief pane.
+        The mono at small sizes in caps is the site's signature texture.
     */
-    --color-canvas: var(--background);
-    --color-panel: var(--card);
-    --color-raised: var(--secondary);
-    --color-line: var(--border);
+    --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Geist', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-    /* Text, in four tiers: headline ink, lede, supporting copy, and quiet meta. */
-    --color-ink: var(--foreground);
-    --color-muted: var(--muted-foreground);
-    --color-faint: color-mix(in oklab, var(--muted-foreground) 66%, var(--background));
-
-    /*
-        The lede tier — for the large paragraph under a headline, which is the
-        one piece of body copy that sits directly on the mesh. Pulling it most
-        of the way to the ink keeps it legible on every palette: the muted tone
-        in some presets (rose, sand) tops out around 4.3:1 on its own canvas,
-        which is under AA before the mesh takes its cut.
+    /* ---- Surfaces --------------------------------------------------------
+        Four steps from the page up to a raised card, all with a blue cast so
+        the light field never looks pasted onto neutral grey.
     */
-    --color-lede: color-mix(in oklab, var(--foreground) 74%, var(--muted-foreground) 26%);
+    --color-canvas: #06070c;
+    --color-panel: #0c0e17;
+    --color-raised: #14161f;
+    --color-line: rgba(255, 255, 255, 0.08);
+    --color-line-strong: rgba(255, 255, 255, 0.14);
 
-    /* The accent — used for CTAs and one focal glint per section, never as a base. */
-    --color-accent: var(--primary);
-    --color-accent-ink: var(--primary-foreground);
-    --color-accent-soft: color-mix(in oklab, var(--primary) 14%, var(--background));
-    --color-accent-line: color-mix(in oklab, var(--primary) 34%, var(--border));
+    /* ---- Text, in four tiers --------------------------------------------- */
+    --color-ink: #f3f5fc;
+    --color-lede: #c4c9da;
+    --color-muted: #8e94a8;
+    --color-faint: #5e6479;
 
-    /*
-        The three mesh hues. Mixing the accent toward the destructive token
-        swings it warm (violet → pink); mixing it toward the ink lifts it
-        cool. Both follow whichever palette is active, which is what keeps
-        the hero coherent after a theme swap instead of stranded on indigo.
-        The @supports block below upgrades these to a true hue rotation
-        where the browser can do relative color syntax.
+    /* ---- The accent ------------------------------------------------------
+        Indigo. Used for CTAs, the mark, and one focal glint per section.
     */
-    --color-mesh-warm: color-mix(in oklab, var(--primary) 62%, var(--destructive) 38%);
-    --color-mesh-core: var(--primary);
-    --color-mesh-cool: color-mix(in oklab, var(--primary) 74%, var(--foreground) 26%);
+    --color-accent: #5b6cff;
+    --color-accent-ink: #ffffff;
+    --color-accent-soft: rgba(91, 108, 255, 0.13);
+    --color-accent-line: rgba(91, 108, 255, 0.32);
+
+    /* ---- The spectrum hues -----------------------------------------------
+        Three companions to the accent. They exist so the light field and the
+        card beds can carry a real hue spread — indigo through violet to pink,
+        lifted by a cool cyan — rather than one colour at three opacities.
+    */
+    --color-violet: #9a6bff;
+    --color-blush: #ff6ab0;
+    --color-cyan: #4bc4ff;
 
     /* One easing for everything interactive: fast in, long soft settle. */
     --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
     --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/*
-    Relative color syntax gives the mesh a genuine hue spread — the warm lobe
-    rotates toward magenta, the cool lobe toward cyan-blue — instead of the
-    approximation the color-mix fallback above produces. Still zero literals:
-    both are computed from the palette's own accent.
-*/
-@supports (color: oklch(from red l c h)) {
-    :root {
-        --color-mesh-warm: oklch(from var(--primary) l calc(c * 1.05) calc(h + 52));
-        --color-mesh-cool: oklch(from var(--primary) calc(l * 1.05) c calc(h - 42));
-    }
 }
 
 /* Cross-page navigation fades — the whole site feels like one surface. */
@@ -90,6 +73,7 @@
 html {
     background-color: var(--color-canvas);
     scrollbar-color: var(--color-raised) transparent;
+    color-scheme: dark;
 }
 
 /* One stray wide element must never give the whole page a sideways scroll. */
@@ -98,7 +82,7 @@ body {
 }
 
 ::selection {
-    background-color: color-mix(in oklab, var(--color-accent) 30%, transparent);
+    background-color: color-mix(in oklab, var(--color-accent) 34%, transparent);
     color: var(--color-ink);
 }
 
@@ -110,27 +94,32 @@ body {
 }
 
 /* ---------------------------------------------------------------------------
-    The spectrum
+    The light field
 
     Pilot's background graphic, and the reason the site does not look like a
-    blurred gradient: a field of fine vertical light columns rising to an
-    irregular horizon, tinted across their width from blue through indigo to
-    violet. It is built from two nested masks — the outer element carries the
-    horizon, the inner one the columns — so no compositing tricks are needed
-    and the whole thing is four elements.
+    blurred gradient: a broad field of fine vertical light columns rising to
+    an irregular horizon, sweeping cyan through indigo and violet to magenta.
 
-    Every colour comes from the palette (see the mesh tokens above), so it
-    re-tints on a theme swap instead of being stranded on indigo.
+    It is a photograph (public/images/hero-field.jpg) rather than CSS. A
+    gradient can imitate the colour but not the irregularity — the uneven
+    column heights and the grain are what stop it reading as generated.
+
+    It is deliberately large. At half this height it reads as a decoration;
+    at this scale it reads as the room the product sits in.
 --------------------------------------------------------------------------- */
 
 .spectrum {
     position: absolute;
     /*
-        Deliberately NOT inset:0 — the field is a fixed band anchored to the
-        top of the section, so the columns rise through the headline and stop
-        before the product window rather than washing the whole page.
+        A band anchored to the top of the section rather than inset:0, so the
+        field rises through the headline and resolves before the content below.
     */
     inset: 0 0 auto 0;
+    /*
+        Stops above the stage. If the band runs long enough to reach it, the
+        stage's own top fade paints canvas straight over a still-bright field
+        and you get a hard horizontal seam across the hero.
+    */
     height: 46rem;
     overflow: hidden;
     pointer-events: none;
@@ -138,106 +127,115 @@ body {
 }
 
 /*
-    The horizon. Overlapping radial gradients weighted to the right of the
-    frame, so the columns stand tallest where the headline is not and the text
-    keeps a calm, near-black bed on the left.
+    The field itself is a photograph, not a gradient — a frozen equalizer of
+    fine light columns sweeping cyan → indigo → violet → magenta. It is dark
+    across its top two thirds, which is exactly where the headline sits.
 */
-.spectrum-field {
+.spectrum-image {
     position: absolute;
     inset: 0;
-    mask-image:
-        radial-gradient(26% 62% at 22% 104%, black 0%, transparent 76%),
-        radial-gradient(20% 96% at 41% 106%, black 0%, transparent 72%),
-        radial-gradient(24% 74% at 57% 103%, black 0%, transparent 78%),
-        radial-gradient(19% 108% at 71% 105%, black 0%, transparent 70%),
-        radial-gradient(23% 82% at 84% 104%, black 0%, transparent 76%),
-        radial-gradient(21% 64% at 96% 103%, black 0%, transparent 78%);
-    -webkit-mask-image:
-        radial-gradient(26% 62% at 22% 104%, black 0%, transparent 76%),
-        radial-gradient(20% 96% at 41% 106%, black 0%, transparent 72%),
-        radial-gradient(24% 74% at 57% 103%, black 0%, transparent 78%),
-        radial-gradient(19% 108% at 71% 105%, black 0%, transparent 70%),
-        radial-gradient(23% 82% at 84% 104%, black 0%, transparent 76%),
-        radial-gradient(21% 64% at 96% 103%, black 0%, transparent 78%);
-}
-
-/*
-    The columns. 2px on, 9px off — fine enough to read as light rather than
-    as stripes. The background beneath is the hue sweep, so each column picks
-    up whatever colour it happens to stand in.
-*/
-.spectrum-bars {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        99deg,
-        color-mix(in oklab, var(--color-mesh-cool) 92%, transparent) 0%,
-        var(--color-mesh-core) 38%,
-        color-mix(in oklab, var(--color-mesh-warm) 88%, transparent) 72%,
-        color-mix(in oklab, var(--color-mesh-cool) 68%, transparent) 100%
-    );
-    mask-image: repeating-linear-gradient(90deg, black 0 2px, transparent 2px 11px);
-    -webkit-mask-image: repeating-linear-gradient(90deg, black 0 2px, transparent 2px 11px);
-    animation: spectrum-breathe 14s ease-in-out infinite alternate;
-}
-
-/*
-    One soft bloom behind the columns — the only blurred layer in the design.
-    It is what stops the field reading as a barcode.
-*/
-.spectrum-bloom {
-    position: absolute;
-    inset: -10% -8% auto -8%;
-    height: 105%;
-    background:
-        radial-gradient(40% 54% at 64% 52%, color-mix(in oklab, var(--color-mesh-core) 40%, transparent), transparent 72%),
-        radial-gradient(30% 40% at 90% 30%, color-mix(in oklab, var(--color-mesh-warm) 24%, transparent), transparent 74%);
-    filter: blur(64px);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    opacity: 0.9;
 }
 
 /* Dissolve the band into the canvas before the content below it starts. */
 .spectrum-veil {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent 0%, transparent 62%, var(--color-canvas) 100%);
-}
-
-/* The columns swell very slightly, as if the field were alive but idling. */
-@keyframes spectrum-breathe {
-    to { opacity: 0.82; }
+    background: linear-gradient(to bottom, transparent 0%, transparent 52%, var(--color-canvas) 100%);
 }
 
 /* The quieter band for inner page headers and the closing CTA. */
 .spectrum--calm {
-    height: 34rem;
+    height: 38rem;
 }
 
-.spectrum--calm .spectrum-bars {
-    opacity: 0.42;
+.spectrum--calm .spectrum-image {
+    opacity: 0.4;
 }
 
-.spectrum--calm .spectrum-bloom {
-    filter: blur(80px);
-    opacity: 0.55;
+/* ---------------------------------------------------------------------------
+    The stage
+
+    The full-bleed surface the product window stands on — a second photograph,
+    deep indigo silk, cropped to a band. The window overlaps it top and bottom,
+    so the composition reads as an object placed in a room rather than a
+    screenshot pasted onto a page.
+--------------------------------------------------------------------------- */
+
+.stage {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stage-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+    opacity: 0.85;
 }
 
 /*
-    On a light palette the field sits behind DARK text, so it is dialled back
-    hard: at the strength that reads on a near-black canvas it costs the body
-    copy its contrast entirely. Earned on the rose + Fraunces swap, where the
-    lede fell to roughly 2.6:1.
+    Feather every edge into the canvas so the photograph never shows a seam —
+    the band should look like light, not like a placed rectangle. The stops sit
+    close to the edges on purpose: pull them further in and the window covers
+    everything that is left, which defeats the point of having a stage.
 */
-html:not(.dark) .spectrum-bars {
-    opacity: 0.3;
+.stage-veil {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to bottom, var(--color-canvas) 0%, transparent 16%, transparent 84%, var(--color-canvas) 100%),
+        linear-gradient(to right, var(--color-canvas) 0%, transparent 10%, transparent 90%, var(--color-canvas) 100%);
 }
 
-html:not(.dark) .spectrum-bloom {
-    opacity: 0.38;
+/* ---------------------------------------------------------------------------
+    Tinted beds
+
+    The coloured panels behind card visuals and icons. Each .tint-* sets two
+    custom properties, and .bed-wash paints them as a pair of corner glows
+    with a diagonal lift — so one rule serves every card and swapping a card's
+    tint is a one-word change in the collection.
+--------------------------------------------------------------------------- */
+
+.bed-wash {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(88% 78% at 18% 0%, var(--bed-a), transparent 70%),
+        radial-gradient(78% 88% at 100% 100%, var(--bed-b), transparent 72%),
+        linear-gradient(158deg, color-mix(in oklab, var(--bed-a) 34%, transparent), transparent 62%);
 }
 
-html:not(.dark) .spectrum--calm .spectrum-bars {
-    opacity: 0.18;
+.tint-indigo {
+    --bed-a: color-mix(in oklab, var(--color-accent) 46%, transparent);
+    --bed-b: color-mix(in oklab, var(--color-violet) 32%, transparent);
 }
+
+.tint-violet {
+    --bed-a: color-mix(in oklab, var(--color-violet) 44%, transparent);
+    --bed-b: color-mix(in oklab, var(--color-blush) 28%, transparent);
+}
+
+.tint-blush {
+    --bed-a: color-mix(in oklab, var(--color-blush) 36%, transparent);
+    --bed-b: color-mix(in oklab, var(--color-accent) 28%, transparent);
+}
+
+.tint-cyan {
+    --bed-a: color-mix(in oklab, var(--color-cyan) 36%, transparent);
+    --bed-b: color-mix(in oklab, var(--color-accent) 32%, transparent);
+}
+
 /* ---------------------------------------------------------------------------
     The reveal system
 
@@ -694,7 +692,7 @@ details.faq-item summary::-webkit-details-marker {
         transition: none;
     }
 
-    .aurora-lobe,
+    .spectrum-bars,
     .marquee,
     .brief-caret,
     .transformer-seam::after,

@@ -5,6 +5,7 @@
     'showMeta' => '0',
     'metaOne' => '',
     'metaTwo' => '',
+    'fieldImage' => '/images/hero-field.jpg',
 ])
 <!--
     The opening block for inner pages. Left-aligned over a calm mesh, so it
@@ -14,8 +15,7 @@
 <section class="relative overflow-hidden border-b border-line pt-36 pb-16 sm:pt-44 sm:pb-20">
 
     <div class="spectrum spectrum--calm" aria-hidden="true">
-        <span class="spectrum-bloom"></span>
-        <span class="spectrum-field"><span class="spectrum-bars"></span></span>
+        <img src="{{ $fieldImage }}" alt="" class="spectrum-image" width="1920" height="1086" loading="lazy">
         <span class="spectrum-veil"></span>
     </div>
 

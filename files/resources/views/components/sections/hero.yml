@@ -163,3 +163,13 @@ fields:
         type: text
         label: Terms line
         default: "50% to start · Two revision rounds · Net 14 · Kill fee at 30%"
+    fieldImage:
+        type: image
+        label: Light field
+        description: "The full-bleed backdrop behind the headline."
+        default: "/images/hero-field.jpg"
+    stageImage:
+        type: image
+        label: Stage surface
+        description: "The band the product window stands on."
+        default: "/images/surface.jpg"

@@ -1,12 +1,5 @@
 {
     "name": "Pilot",
-    "theme": {
-        "palette": "cobalt",
-        "fonts": "inter",
-        "fonts_url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
-        "appearance": "dark",
-        "appearance_class": "dark"
-    },
     "nav_links": [
         {
             "text": "Features",

@@ -26,3 +26,8 @@ fields:
         type: text
         label: Stat label
         default: ""
+    fieldImage:
+        type: image
+        label: Backdrop
+        description: "The quiet light field behind this block."
+        default: "/images/hero-field.jpg"

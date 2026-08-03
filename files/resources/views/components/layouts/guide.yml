@@ -29,3 +29,8 @@ fields:
         type: url
         label: CTA button link
         default: "/pricing"
+    fieldImage:
+        type: image
+        label: Backdrop
+        description: "The quiet light field behind this block."
+        default: "/images/hero-field.jpg"

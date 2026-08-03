@@ -24,6 +24,8 @@
     'timelineLabel' => 'Timeline',
     'pricingLabel' => 'Packages',
     'termsText' => '50% to start · Two revision rounds · Net 14 · Kill fee at 30%',
+    'fieldImage' => '/images/hero-field.jpg',
+    'stageImage' => '/images/surface.jpg',
     'scope',
     'milestones',
     'tiers',
@@ -34,18 +36,17 @@
     Left pane is the client's actual email; right pane is the proposal Pilot
     returns. As the window scrolls in, the rows on the right resolve one after
     another and a single shimmer sweeps the pane — the product explaining
-    itself in one glance. It is drawn entirely in markup, so it stays sharp at
-    any size and re-tints with the palette.
+    itself in one glance. The window is drawn entirely in markup, so it stays
+    razor sharp at any size; only the two backdrops are photographs.
 
     The scope lines, milestones, and packages are repeating content, so they
     live in resources/data/collections/ and arrive through bound attributes.
 -->
-<section id="hero" class="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24">
+<section id="hero" class="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
 
-    <!-- The spectrum. main.js parallaxes the whole layer on scroll. -->
+    <!-- The light field. main.js parallaxes the whole layer on scroll. -->
     <div class="spectrum" data-mesh-parallax aria-hidden="true">
-        <span class="spectrum-bloom"></span>
-        <span class="spectrum-field"><span class="spectrum-bars"></span></span>
+        <img src="{{ $fieldImage }}" alt="" class="spectrum-image" width="1920" height="1086" fetchpriority="high">
         <span class="spectrum-veil"></span>
     </div>
 
@@ -92,10 +93,19 @@
     </div>
 
     <!--
-        The Brief Transformer. It runs wider than the text column above it so
-        the hero has two distinct measures instead of one centred stack.
+        The Brief Transformer, standing on the stage — a full-bleed band of
+        the surface photograph that the window overlaps on every side. It also
+        runs wider than the text column above it, so the hero has two distinct
+        measures rather than one column.
     -->
-    <div class="reveal-5 relative z-10 mx-auto mt-16 w-full max-w-7xl px-6 sm:mt-20" data-reveal>
+    <div class="relative mt-20 py-20 sm:mt-24 sm:py-28">
+
+        <div class="stage" aria-hidden="true">
+            <img src="{{ $stageImage }}" alt="" class="stage-image" width="1600" height="905" loading="lazy">
+            <span class="stage-veil"></span>
+        </div>
+
+    <div class="reveal-5 relative z-10 mx-auto w-full max-w-7xl px-6" data-reveal>
         <div class="transformer overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl" data-transformer>
             <div class="grid lg:grid-cols-[minmax(0,0.82fr)_1px_minmax(0,1.18fr)]">
 
@@ -205,5 +215,6 @@
 
             </div>
         </div>
+    </div>
     </div>
 </section>

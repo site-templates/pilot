@@ -6,6 +6,7 @@
     'secondaryText' => 'Talk to us',
     'secondaryLink' => 'mailto:hello@pilot.co',
     'note' => 'No card required · Cancel any time · Your templates stay yours',
+    'fieldImage' => '/images/hero-field.jpg',
 ])
 <!--
     The closing ask, over a quieter version of the hero's spectrum. Laid out
@@ -16,8 +17,7 @@
 <section class="relative overflow-hidden border-t border-line py-24 sm:py-32">
 
     <div class="spectrum spectrum--calm" aria-hidden="true">
-        <span class="spectrum-bloom"></span>
-        <span class="spectrum-field"><span class="spectrum-bars"></span></span>
+        <img src="{{ $fieldImage }}" alt="" class="spectrum-image" width="1920" height="1086" loading="lazy">
         <span class="spectrum-veil"></span>
     </div>
 

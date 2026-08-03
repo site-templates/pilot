@@ -30,3 +30,8 @@ fields:
         type: text
         label: Footnote
         default: "No card required · Cancel any time · Your templates stay yours"
+    fieldImage:
+        type: image
+        label: Backdrop
+        description: "The quiet light field behind this block."
+        default: "/images/hero-field.jpg"

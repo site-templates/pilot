@@ -7,8 +7,7 @@
     <section class="relative flex min-h-[80vh] items-center overflow-hidden py-24">
 
         <div class="spectrum spectrum--calm" aria-hidden="true">
-            <span class="spectrum-bloom"></span>
-            <span class="spectrum-field"><span class="spectrum-bars"></span></span>
+            <img src="/images/hero-field.jpg" alt="" class="spectrum-image" width="1920" height="1086" loading="lazy">
             <span class="spectrum-veil"></span>
         </div>
 

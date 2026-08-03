@@ -23,14 +23,14 @@
             <svg viewBox="0 0 24 24" class="size-5 shrink-0 fill-accent" aria-hidden="true">
                 <path d="M12 1.9 21.4 21.4 12 16.9 2.6 21.4Z"/>
             </svg>
-            <span class="font-display text-[15px] font-semibold tracking-tight">{{ $brand }}</span>
+            <span class="font-display text-[15px] font-semibold tracking-[-0.01em]">{{ $brand }}</span>
         </a>
 
         <nav class="ml-auto max-lg:hidden" aria-label="Main">
-            <ul role="list" class="flex items-center gap-1 text-sm text-muted">
+            <ul role="list" class="flex items-center gap-0.5 text-muted">
                 @foreach ($links as $link)
                 <li>
-                    <a href="{{ $link->url }}" class="rounded-lg px-3 py-2 transition-colors duration-200 hover:text-ink aria-[current]:text-ink">{{ $link->text }}</a>
+                    <a href="{{ $link->url }}" class="rounded-lg px-3 py-2 font-mono text-[12px] tracking-widest uppercase transition-colors duration-200 hover:text-ink aria-[current]:text-ink">{{ $link->text }}</a>
                 </li>
                 @endforeach
             </ul>
@@ -40,8 +40,8 @@
         <span class="h-4 w-px bg-line max-lg:hidden" aria-hidden="true"></span>
 
         <div class="flex items-center gap-2 max-lg:hidden">
-            <a href="{{ $signInLink }}" class="rounded-full px-3 py-2 text-sm text-muted transition-colors duration-200 hover:text-ink">{{ $signInText }}</a>
-            <a href="{{ $ctaLink }}" class="rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity duration-200 hover:opacity-90">{{ $ctaText }}</a>
+            <a href="{{ $signInLink }}" class="rounded-full px-3 py-2 font-mono text-[12px] tracking-widest text-muted uppercase transition-colors duration-200 hover:text-ink">{{ $signInText }}</a>
+            <a href="{{ $ctaLink }}" class="rounded-full bg-ink px-4 py-2 font-mono text-[12px] font-medium tracking-widest text-canvas uppercase transition-opacity duration-200 hover:opacity-90">{{ $ctaText }}</a>
         </div>
 
         <!-- Mobile: hamburger. The 40px box keeps the tap target comfortable. -->
