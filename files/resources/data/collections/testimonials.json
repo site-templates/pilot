@@ -1,29 +1,29 @@
 [
     {
-        "quote": "I used to lose every Friday to proposals. Now I lose ten minutes — and the number at the bottom is about forty percent higher than what I used to talk myself into.",
+        "quote": "We had six months of agent demos and nothing in production. The thing that changed was checkpointing — once a run could survive a bad tool call, we could actually put one in front of customers.",
         "name": "Mara Vane",
-        "role": "Independent designer, Lisbon",
+        "role": "Staff engineer, Northbeam",
         "image": "https://assets.ui.sh/avatars/2.webp?size=160",
-        "metric": "+38% avg. project"
+        "metric": "8 agents in prod"
     },
     {
-        "quote": "The scope page alone has paid for itself. Two clients tried the \"while you're in there\" thing and I just sent back the line they had already agreed to.",
+        "quote": "The trace is the product. When an agent does something strange at 2am, I can replay the exact run instead of guessing from logs.",
         "name": "Theo Adeyemi",
-        "role": "Adeyemi Studio, Manchester",
+        "role": "Platform lead, Cadence",
         "image": "https://assets.ui.sh/avatars/8.webp?size=160",
         "metric": ""
     },
     {
-        "quote": "We brought on three contractors last year and not one of them had to learn how we quote. Pilot already knew.",
+        "quote": "Typed tools caught more bugs in a week than our eval suite caught in a quarter. The model simply cannot pass an argument that does not compile.",
         "name": "Priya Raman",
         "role": "Founder, Vector Field",
         "image": "https://assets.ui.sh/avatars/5.webp?size=160",
         "metric": ""
     },
     {
-        "quote": "I'm a developer. I hated writing these. That is the entire review.",
+        "quote": "We moved off a homegrown loop in an afternoon. That is the whole review.",
         "name": "Jonas Meyer",
-        "role": "Freelance engineer, Berlin",
+        "role": "Backend engineer, Substrate",
         "image": "https://assets.ui.sh/avatars/11.webp?size=160",
         "metric": ""
     }

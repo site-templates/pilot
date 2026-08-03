@@ -1,0 +1,30 @@
+[
+    {
+        "label": "Planning",
+        "value": "$0.21",
+        "startPercent": "0",
+        "widthPercent": "18",
+        "featured": false
+    },
+    {
+        "label": "Tool calls",
+        "value": "$1.02",
+        "startPercent": "0",
+        "widthPercent": "72",
+        "featured": true
+    },
+    {
+        "label": "Review pass",
+        "value": "$0.44",
+        "startPercent": "0",
+        "widthPercent": "34",
+        "featured": false
+    },
+    {
+        "label": "Retries",
+        "value": "$0.27",
+        "startPercent": "0",
+        "widthPercent": "21",
+        "featured": false
+    }
+]

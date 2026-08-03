@@ -8,12 +8,12 @@ fields:
     heading:
         type: text
         label: Heading
-        default: "Everything the brief did not say"
+        default: "Everything the demo skipped"
     body:
         type: textarea
         label: Supporting copy
         rows: 3
-        default: "A proposal is only fast if you trust it. Here is exactly what Pilot writes, what it takes from you, and what it refuses to guess."
+        default: "The loop is the easy part. Here is exactly what Pilot gives you, what it expects from your code, and what it deliberately leaves alone."
     showMeta:
         type: toggle
         label: Show the stat beside the heading

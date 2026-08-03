@@ -15,16 +15,16 @@ fields:
     ctaHeading:
         type: text
         label: CTA heading
-        default: "Stop writing these by hand"
+        default: "Stop writing the loop by hand"
     ctaBody:
         type: textarea
         label: CTA copy
         rows: 3
-        default: "Pilot turns a brief this size into the whole document — scope, packages, schedule, terms."
+        default: "Pilot gives you the durable loop, typed tools, and the trace — so you write the agent, not the plumbing."
     ctaText:
         type: text
         label: CTA button text
-        default: "Start free"
+        default: "Get started"
     ctaLink:
         type: url
         label: CTA button link

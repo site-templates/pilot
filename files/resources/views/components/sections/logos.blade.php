@@ -1,5 +1,5 @@
 @props([
-    'label' => 'Proposals sent this month by studios like',
+    'label' => 'Teams running agents on Pilot today',
     'items',
 ])
 <!--

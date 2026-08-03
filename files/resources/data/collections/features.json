@@ -1,72 +1,72 @@
 [
     {
         "number": "01",
-        "title": "A professional project proposal",
-        "body": "One document, structured the way a client actually reads: what they told you they need, what you propose doing about it, what it costs, and what happens next. No twelve-page preamble about your studio's founding story.",
-        "pointOne": "Cover page carrying their brand, not yours",
-        "pointTwo": "Summary a non-technical buyer can follow",
-        "pointThree": "Approach section drawn from the scope",
-        "pointFour": "Signature block ready for e-sign",
-        "sample": "Northbeam needs the new site live before the spring campaign. This proposal covers a six-page build, the blog migration, and a two-week buffer ahead of launch."
+        "title": "The durable loop",
+        "body": "Plan, call, observe, repeat — with a checkpoint written after every step. Long runs survive deploys, restarts, and the tool that goes down for twenty minutes.",
+        "pointOne": "Checkpoint after every step",
+        "pointTwo": "Retries with backoff and jitter",
+        "pointThree": "Resume days later from the same state",
+        "pointFour": "Cancel and rewind to any step",
+        "sample": "run.resume('8f21c')  # picks up at step 3, not step 0"
     },
     {
         "number": "02",
-        "title": "Scope of work and deliverables",
-        "body": "The section that quietly decides whether the project is profitable. Pilot turns the brief into deliverables with edges — what is included, what is explicitly not, and what trips a change order.",
-        "pointOne": "Deliverables written as countable nouns",
-        "pointTwo": "An explicit exclusions list",
-        "pointThree": "Change-order trigger on every soft line",
-        "pointFour": "Assumptions written down before they bite",
-        "sample": "Included: six unique page templates. Not included: ongoing content entry, third-party licences, or copywriting beyond the migrated posts."
+        "title": "Typed tools",
+        "body": "Write an ordinary function. Pilot reads its signature, derives the JSON schema, and validates every call before your code runs — so a hallucinated argument is a caught error, not a production incident.",
+        "pointOne": "Schema derived from the signature",
+        "pointTwo": "Arguments validated before execution",
+        "pointThree": "Enums and value objects supported",
+        "pointFour": "Tools versioned alongside your code",
+        "sample": "#[Tool] function refund(string $chargeId, int $amountCents, Reason $reason): Refund"
     },
     {
         "number": "03",
-        "title": "Suggested pricing packages",
-        "body": "Three options, because one number invites a negotiation and two invite a coin flip. Pilot anchors the set so the middle package reads as the sensible choice, and shows you the arithmetic behind each one.",
-        "pointOne": "Anchored three-tier structure",
-        "pointTwo": "Benchmarks from comparable projects nearby",
-        "pointThree": "Per-line pricing you can defend out loud",
-        "pointFour": "Optional payment schedules",
-        "sample": "Complete — $9,800. Six pages, blog migration, two revision rounds, and four weeks of post-launch support."
+        "title": "State that outlives the process",
+        "body": "Working memory, scratchpads, and intermediate results live in your database, not in a variable. Nothing is lost to a restart, and two workers never disagree about where a run got to.",
+        "pointOne": "Postgres, SQLite, or your own driver",
+        "pointTwo": "Optimistic locking across workers",
+        "pointThree": "Scratchpads scoped per run",
+        "pointFour": "Automatic pruning on completion",
+        "sample": ""
     },
     {
         "number": "04",
-        "title": "Project milestones and timeline",
-        "body": "Dates the client agrees to before the work starts, with their own obligations written in. Most overruns are feedback delays wearing a costume, and a schedule that names the reviewer stops the argument early.",
-        "pointOne": "Phase dates with review windows",
-        "pointTwo": "Client responsibilities marked per phase",
-        "pointThree": "Dependencies flagged before they surprise you",
-        "pointFour": "Slip rules tied back to your terms",
-        "sample": "Design review closes Friday 14 March. Feedback arriving after this date moves launch by one week."
+        "title": "Human review, anywhere",
+        "body": "Some decisions should not be automatic. Drop an approval gate into the loop and the run parks itself, routes to the right person, and continues the moment they sign off.",
+        "pointOne": "Gates anywhere in the loop",
+        "pointTwo": "Routing to Slack, email, or your own UI",
+        "pointThree": "Runs can wait for days",
+        "pointFour": "Every approval recorded in the trace",
+        "sample": "await approval('refunds')->from($team)->because('over $500')"
     },
     {
         "number": "05",
-        "title": "Contract-ready terms",
-        "body": "The paragraphs you keep meaning to write properly. Deposit, revisions, cancellation, IP transfer, late payment — in plain language, checked against the norms of the place you are billing from.",
-        "pointOne": "Deposit and payment schedule",
-        "pointTwo": "Revision limits that actually hold",
-        "pointThree": "Kill fee and cancellation clause",
-        "pointFour": "IP transfer on final payment",
-        "sample": "Ownership of all delivered work transfers on receipt of the final payment. Until then the licence is limited to review."
+        "title": "Traces you can replay",
+        "body": "Every prompt, argument, result, token, and cent is recorded per step. Replay a run against a different model or a changed prompt and diff the two side by side before you ship the change.",
+        "pointOne": "Full step-level recording",
+        "pointTwo": "Replay against a new model or prompt",
+        "pointThree": "Diff two runs step by step",
+        "pointFour": "OpenTelemetry export",
+        "sample": ""
     },
     {
         "number": "06",
-        "title": "Follow-up emails",
-        "body": "The part everyone skips, and the part that closes. Three drafts, already scheduled, that read like a person following up rather than a sequence firing on a timer.",
-        "pointOne": "Day three, day eight, day fifteen",
-        "pointTwo": "Tone matched to the original thread",
-        "pointThree": "Pauses the moment they reply",
-        "pointFour": "Open tracking on the proposal link",
-        "sample": "Hi Dana — no rush at all. Did the middle package look about right, or would it help if I put together something leaner?"
+        "title": "Evals in your pipeline",
+        "body": "Promote any recorded run to a test case. Your suite runs on every pull request and tells you which step regressed, not just that the score moved.",
+        "pointOne": "Recorded runs become fixtures",
+        "pointTwo": "Assertions per step, not per run",
+        "pointThree": "Runs in GitHub Actions",
+        "pointFour": "Regression attributed to a step",
+        "sample": ""
     },
     {
         "number": "07",
-        "title": "Client questionnaires",
-        "body": "Sent before you quote, not after you have already underpriced. Eight questions calibrated to the project type, surfacing the budget, the decision-maker, and the deadline nobody thought to mention.",
-        "pointOne": "A question set per project type",
-        "pointTwo": "Budget range without the awkwardness",
-        "pointThree": "Decision-maker and approval chain",
-        "pointFour": "Answers flow straight into the scope",
-        "sample": "Who signs this off — and is there anyone else whose opinion will matter in week five?"
+        "title": "Metered spend",
+        "body": "Cost is attributed to the step that caused it, so you find the expensive loop instead of guessing. Set a ceiling and a run halts rather than quietly billing you for an afternoon.",
+        "pointOne": "Per-run and per-step attribution",
+        "pointTwo": "Hard budget ceilings that halt",
+        "pointThree": "Cached results reused on retry",
+        "pointFour": "Per-step model routing",
+        "sample": ""
     }
 ]

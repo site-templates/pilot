@@ -4,11 +4,11 @@ fields:
     eyebrow:
         type: text
         label: Eyebrow
-        default: "The documents"
+        default: "The runtime"
     heading:
         type: text
         label: Heading
-        default: "What lands in the client’s inbox"
+        default: "What Pilot actually gives you"
     items:
         type: repeater
         label: Rows

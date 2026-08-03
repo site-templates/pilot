@@ -23,7 +23,7 @@
 
     <!--
         GSAP drives the scroll work: the reveals, the mesh parallax, and the
-        proposal rows resolving inside the hero window. Everything degrades —
+        trace rows resolving inside the hero console. Everything degrades —
         if these never load, main.js reveals the page immediately instead.
     -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>

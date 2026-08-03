@@ -11,7 +11,7 @@ fields:
         type: textarea
         label: Tagline
         rows: 2
-        default: "Proposals, scope, and pricing for people who bill by the project."
+        default: "The runtime for agents that do real work."
     columns:
         type: repeater
         label: Link columns
@@ -55,4 +55,4 @@ fields:
     note:
         type: text
         label: Footer note
-        default: "Built for freelancers and small studios."
+        default: "Apache 2.0 · Built in the open."

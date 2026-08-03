@@ -1,13 +1,13 @@
 {
     "name": "Pilot",
     "dialect": "blade",
-    "description": "A dark, luminous SaaS site for an AI proposal service — a full-bleed light field, a brief-to-proposal transformer drawn in markup, feature cards on gradient beds, and a guides library.",
+    "description": "An off-white, monochrome site for an AI agent framework — dark dropdown menus, a three-pane agent console standing on a painted landscape, and a guides library.",
     "icon": "🛩️",
     "repo": "https://github.com/site-templates/pilot",
     "order": 20,
     "category": "landing",
-    "theme": "dark",
-    "accent": "#4a64f2",
+    "theme": "light",
+    "accent": "#0f0f0e",
     "pages": [
         "Home",
         "Features",

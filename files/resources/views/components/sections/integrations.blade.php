@@ -1,7 +1,7 @@
 @props([
-    'eyebrow' => 'Fits where you already work',
-    'heading' => 'Sends from Pilot, lands in your stack',
-    'body' => 'Proposals leave as a link, a PDF, or a document in the tool you already invoice from. Nothing asks your client to make an account.',
+    'eyebrow' => 'Runs where you already run',
+    'heading' => 'A library, not a platform',
+    'body' => 'Pilot is a dependency inside your app, not a service you operate. It speaks to the models, stores, and queues you already have.',
     'items',
 ])
 <!--

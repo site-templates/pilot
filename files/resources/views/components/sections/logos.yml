@@ -4,7 +4,7 @@ fields:
     label:
         type: text
         label: Label
-        default: "Proposals sent this month by studios like"
+        default: "Teams running agents on Pilot today"
     items:
         type: repeater
         label: Names

@@ -8,7 +8,7 @@ fields:
     heading:
         type: text
         label: Heading
-        default: "The people who bill by the project"
+        default: "Engineers who put agents in front of customers"
     items:
         type: repeater
         label: Quotes

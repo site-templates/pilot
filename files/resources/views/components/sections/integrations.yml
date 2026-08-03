@@ -1,19 +1,19 @@
 title: Integrations
-description: A dense hairline tile grid of the tools proposals hand off to
+description: A dense hairline tile grid of the models, stores, and queues Pilot plugs into
 fields:
     eyebrow:
         type: text
         label: Eyebrow
-        default: "Fits where you already work"
+        default: "Runs where you already run"
     heading:
         type: text
         label: Heading
-        default: "Sends from Pilot, lands in your stack"
+        default: "A library, not a platform"
     body:
         type: textarea
         label: Supporting copy
         rows: 3
-        default: "Proposals leave as a link, a PDF, or a document in the tool you already invoice from. Nothing asks your client to make an account."
+        default: "Pilot is a dependency inside your app, not a service you operate. It speaks to the models, stores, and queues you already have."
     items:
         type: repeater
         label: Tools

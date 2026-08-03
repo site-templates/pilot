@@ -1,42 +1,42 @@
 [
     {
-        "name": "Stripe",
-        "category": "Deposits",
-        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='M10.5 8.2c0-.6.5-.9 1.3-.9 1.1 0 2.5.4 3.6 1V4.9a9.4 9.4 0 0 0-3.6-.7c-3 0-4.9 1.5-4.9 4.1 0 4 5.4 3.3 5.4 5 0 .7-.6 1-1.5 1-1.2 0-2.7-.5-3.9-1.2v3.5c1.3.6 2.6.8 3.9.8 3 0 5.1-1.5 5.1-4.1 0-4.3-5.4-3.5-5.4-5.1Z'/></svg>"
+        "name": "OpenAI",
+        "category": "Models",
+        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm0 3.5 4 2.3v4.4l-4 2.3-4-2.3V7.8l4-2.3Z'/></svg>"
     },
     {
-        "name": "QuickBooks",
-        "category": "Invoicing",
-        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm.75 3.5v1.06a3 3 0 0 1 0 5.88V13.5a.75.75 0 0 1-1.5 0v-1.06a3 3 0 0 1 0-5.88V5.5a.75.75 0 0 1 1.5 0Z' clip-rule='evenodd'/></svg>"
+        "name": "Anthropic",
+        "category": "Models",
+        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='M7.4 3h2.3l4.9 14h-2.5l-1-3H6l-1 3H2.5L7.4 3Zm1.1 3.4L6.7 12h3.6L8.5 6.4Z'/></svg>"
     },
     {
-        "name": "HubSpot",
-        "category": "CRM",
-        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='M13.5 7.3V5.6a1.8 1.8 0 1 0-1.6 0v1.7a5 5 0 0 0-2 .8L5.6 5.3a1.9 1.9 0 1 0-.9 1.3l4.2 2.8a3.6 3.6 0 1 0 4.6-2.1Zm-1.7 6.9a1.9 1.9 0 1 1 0-3.8 1.9 1.9 0 0 1 0 3.8Z'/></svg>"
+        "name": "Postgres",
+        "category": "State",
+        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='M10 2c3.9 0 7 1.1 7 2.5S13.9 7 10 7 3 5.9 3 4.5 6.1 2 10 2ZM3 7.4C4.3 8.4 7 9 10 9s5.7-.6 7-1.6v8.1C17 16.9 13.9 18 10 18s-7-1.1-7-2.5V7.4Z'/></svg>"
     },
     {
-        "name": "Notion",
-        "category": "Docs",
-        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M3 3.8 12.6 3l4.4 3v9.5l-3.3 1.5L4 15.6V3.8Zm2.4 1.7v8.7l6.9.9V6.9L5.4 5.5Z' clip-rule='evenodd'/></svg>"
+        "name": "Redis",
+        "category": "Queues",
+        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='M2 6.5 10 3l8 3.5-8 3.5-8-3.5Zm0 3.6 8 3.5 8-3.5v2.4l-8 3.5-8-3.5v-2.4Z'/></svg>"
+    },
+    {
+        "name": "Temporal",
+        "category": "Workflows",
+        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm.75 3.5a.75.75 0 0 0-1.5 0V10c0 .2.08.39.22.53l3 3a.75.75 0 1 0 1.06-1.06l-2.78-2.78V5.5Z' clip-rule='evenodd'/></svg>"
+    },
+    {
+        "name": "OpenTelemetry",
+        "category": "Tracing",
+        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='M4 4.75A.75.75 0 0 1 4.75 4h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 4.75Zm2 5A.75.75 0 0 1 6.75 9h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 6 9.75Zm-2 5a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75a.75.75 0 0 1-.75-.75Z'/></svg>"
+    },
+    {
+        "name": "GitHub Actions",
+        "category": "CI",
+        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M10 1.5a8.5 8.5 0 0 0-2.69 16.57c.43.08.58-.19.58-.41v-1.6c-2.37.51-2.87-1.01-2.87-1.01-.39-.99-.95-1.25-.95-1.25-.77-.53.06-.52.06-.52.86.06 1.31.88 1.31.88.76 1.31 2 .93 2.49.71.08-.55.3-.93.54-1.15-1.89-.21-3.88-.95-3.88-4.21 0-.93.33-1.69.88-2.29-.09-.21-.38-1.08.08-2.25 0 0 .71-.23 2.34.87a8.1 8.1 0 0 1 4.26 0c1.62-1.1 2.33-.87 2.33-.87.46 1.17.17 2.04.09 2.25.55.6.87 1.36.87 2.29 0 3.27-1.99 4-3.89 4.21.31.26.58.78.58 1.57v2.33c0 .23.15.5.59.41A8.5 8.5 0 0 0 10 1.5Z' clip-rule='evenodd'/></svg>"
     },
     {
         "name": "Slack",
-        "category": "Alerts",
+        "category": "Approvals",
         "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='M5 12.4a1.7 1.7 0 1 1-1.7-1.7H5v1.7Zm.9 0a1.7 1.7 0 0 1 3.4 0v4.3a1.7 1.7 0 0 1-3.4 0v-4.3ZM7.6 5a1.7 1.7 0 1 1 1.7-1.7V5H7.6Zm0 .9a1.7 1.7 0 0 1 0 3.4H3.3a1.7 1.7 0 0 1 0-3.4h4.3ZM15 7.6a1.7 1.7 0 1 1 1.7 1.7H15V7.6Zm-.9 0a1.7 1.7 0 0 1-3.4 0V3.3a1.7 1.7 0 0 1 3.4 0v4.3ZM12.4 15a1.7 1.7 0 1 1-1.7 1.7V15h1.7Zm0-.9a1.7 1.7 0 0 1 0-3.4h4.3a1.7 1.7 0 0 1 0 3.4h-4.3Z'/></svg>"
-    },
-    {
-        "name": "Google Docs",
-        "category": "Export",
-        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M4 3a1 1 0 0 1 1-1h6.6a1 1 0 0 1 .7.3l3.4 3.4a1 1 0 0 1 .3.7V17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3Zm3 7.5a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 7 10.5Zm.75 2.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z' clip-rule='evenodd'/></svg>"
-    },
-    {
-        "name": "DocuSign",
-        "category": "Signature",
-        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='m5.4 13.9 1.3-3.1a4 4 0 0 1 .9-1.4l6.9-6.9a2.1 2.1 0 0 1 3 3l-6.9 6.9c-.4.4-.9.7-1.4.9l-3.1 1.3a.5.5 0 0 1-.7-.7ZM3 16.8a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 16.8Z'/></svg>"
-    },
-    {
-        "name": "Zapier",
-        "category": "Automation",
-        "icon": "<svg viewBox='0 0 20 20' class='size-4 fill-current' aria-hidden='true'><path d='M12.1 10a5 5 0 0 1-.3 1.8 5 5 0 0 1-1.8.3 5 5 0 0 1-1.8-.3 5 5 0 0 1-.3-1.8c0-.6.1-1.2.3-1.8a5 5 0 0 1 1.8-.3c.6 0 1.2.1 1.8.3.2.6.3 1.2.3 1.8Zm6.9-1.2h-4.3l3-3-1.5-1.5-3 3V3H11v4.3L8 4.3 6.5 5.8l3 3H5.2V11h4.3l-3 3L8 15.5l3-3v4.3h2.2v-4.3l3 3 1.5-1.5-3-3H19V8.8Z'/></svg>"
     }
 ]

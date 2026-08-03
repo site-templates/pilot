@@ -1,7 +1,7 @@
 @props([
     'eyebrow' => 'Plans',
-    'heading' => 'Priced like a tool, not a percentage',
-    'body' => 'No cut of your invoices, no per-proposal fee, no seat you forgot you were paying for. Pick a plan, send as many as you like.',
+    'heading' => 'Free to run. Pay for what you keep.',
+    'body' => 'The runtime is open source and always will be. Cloud is where your traces, evals, and approvals live if you would rather not run them yourself.',
     'items',
 ])
 <!--

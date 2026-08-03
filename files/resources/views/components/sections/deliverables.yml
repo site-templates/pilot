@@ -1,19 +1,19 @@
-title: What you get
-description: The bento of everything Pilot writes from one brief — the first two cards run wide
+title: What’s in the box
+description: The bento — the first two cards run wide and carry a drawn fragment of the interface
 fields:
     eyebrow:
         type: text
         label: Eyebrow
-        default: "What you get"
+        default: "What’s in the box"
     heading:
         type: text
         label: Heading
-        default: "Seven documents, one brief"
+        default: "Everything the demo skipped"
     body:
         type: textarea
         label: Supporting copy
-        rows: 3
-        default: "Every send is a complete package — the proposal a client signs, plus everything that usually gets written at 11pm the night before."
+        rows: 4
+        default: "The loop is the easy part. What makes an agent shippable is what happens when a tool times out, a human has to approve something, or you need to explain a decision three weeks later."
     items:
         type: repeater
         label: Cards
@@ -39,22 +39,12 @@ fields:
             bed:
                 type: select
                 label: Visual bed
-                description: "Draws a document fragment on a tinted panel. Only the wide cards should carry one."
+                description: "Draws a fragment of the interface on a paper panel. Only the wide cards should carry one."
                 options:
                     "": "No bed — show the icon"
-                    proposal: "Proposal sheet"
-                    scope: "Scope list"
+                    trace: "Run trace"
+                    tools: "Typed tool"
                 default: ""
-            tint:
-                type: select
-                label: Tint
-                description: "Colours the bed, or the icon square when there is no bed."
-                options:
-                    indigo: "Indigo"
-                    violet: "Violet"
-                    blush: "Blush"
-                    cyan: "Cyan"
-                default: "indigo"
             icon:
                 type: textarea
                 label: Icon SVG

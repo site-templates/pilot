@@ -4,16 +4,16 @@ fields:
     heading:
         type: text
         label: Heading
-        default: "The next brief lands today. Be ready for it."
+        default: "Your first agent, running by lunch."
     body:
         type: textarea
         label: Supporting copy
         rows: 3
-        default: "Start with three free proposals. Keep the ones that win — Pilot learns your rates, your scope language, and the terms you actually use."
+        default: "The runtime is open source and the docs are short. Install it, wire up one tool, and watch the first trace come back."
     ctaText:
         type: text
         label: Primary button text
-        default: "Start free"
+        default: "Get started"
     ctaLink:
         type: url
         label: Primary button link
@@ -25,11 +25,11 @@ fields:
     secondaryLink:
         type: url
         label: Secondary button link
-        default: "mailto:hello@pilot.co"
+        default: "mailto:hello@pilot.dev"
     note:
         type: text
         label: Footnote
-        default: "No card required · Cancel any time · Your templates stay yours"
+        default: "Apache 2.0 · No account needed to start · Bring your own models"
     fieldImage:
         type: image
         label: Backdrop

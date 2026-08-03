@@ -17,11 +17,11 @@ fields:
     linkText:
         type: text
         label: Link text
-        default: "hello@pilot.co"
+        default: "hello@pilot.dev"
     linkHref:
         type: url
         label: Link
-        default: "mailto:hello@pilot.co"
+        default: "mailto:hello@pilot.dev"
     items:
         type: repeater
         label: Questions

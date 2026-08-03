@@ -8,15 +8,15 @@ fields:
     columnOne:
         type: text
         label: Column one
-        default: "Solo"
+        default: "Open source"
     columnTwo:
         type: text
         label: Column two
-        default: "Studio"
+        default: "Cloud"
     columnThree:
         type: text
         label: Column three
-        default: "Agency"
+        default: "Enterprise"
     items:
         type: repeater
         label: Rows

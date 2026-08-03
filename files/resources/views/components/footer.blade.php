@@ -1,10 +1,10 @@
 @props([
     'brand' => 'Pilot',
-    'tagline' => 'Proposals, scope, and pricing for people who bill by the project.',
+    'tagline' => 'The runtime for agents that do real work.',
     'columns' => [],
     'social' => [],
     'copyright' => '© 2026 Pilot Labs, Inc.',
-    'note' => 'Built for freelancers and small studios.',
+    'note' => 'Apache 2.0 · Built in the open.',
 ])
 <!--
     The footer. Its columns come from the footer_links key in

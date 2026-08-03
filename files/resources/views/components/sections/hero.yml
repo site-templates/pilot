@@ -2,44 +2,21 @@
 # to a prop in the component's props. Defaults fill any attribute the page
 # doesn't pass. Field names are camelCase, matching the props they fill.
 title: Hero
-description: The opening statement and the Brief Transformer — the client's email beside the proposal Pilot returns
+description: The opening statement and the Console — the runs queue, a live trace, and the terminal, standing on the painting
 fields:
-    eyebrow:
-        type: text
-        label: Category line
-        description: The small line above the headline, beside the mark.
-        default: "Proposal software for independent studios"
-    showBadge:
-        type: toggle
-        label: Show announcement
-        description: Turn off to hide the announcement beside the sub-copy.
-        default: "1"
-    badgeLabel:
-        type: text
-        label: Announcement label
-        description: The bold word before the announcement.
-        default: "New"
-    badgeText:
-        type: text
-        label: Announcement text
-        default: "Contract-ready terms"
-    badgeLink:
-        type: url
-        label: Announcement link
-        default: "/guides/writing-scope-that-holds"
     heading:
         type: text
         label: Heading
-        default: "From a two-line brief to a proposal worth signing."
+        default: "Pilot is the runtime for agents you can actually ship."
     body:
         type: textarea
         label: Supporting copy
         rows: 3
-        default: "Paste what the client actually sent you. Pilot returns the scope, the milestones, three priced packages, and terms you can put your name on."
+        default: "Define an agent in a few lines, hand it tools, and Pilot runs the loop — retries, state, human review, and a trace of every decision it made."
     ctaText:
         type: text
         label: Primary button text
-        default: "Start free"
+        default: "Get started"
     ctaLink:
         type: url
         label: Primary button link
@@ -47,129 +24,110 @@ fields:
     secondaryText:
         type: text
         label: Secondary button text
-        default: "See a sample proposal"
+        default: "Read the guides"
     secondaryLink:
         type: url
         label: Secondary button link
-        default: "/features"
-    trustNote:
+        default: "/guides"
+    stageImage:
+        type: image
+        label: Stage painting
+        description: "The full-bleed band the console stands on."
+        default: "/images/valley.jpg"
+    consoleTitle:
         type: text
-        label: Trust note
-        description: The small line under the buttons.
-        default: "Free for your first three proposals · No card required"
-    briefLabel:
+        label: Window title
+        default: "Pilot Console"
+    runsLabel:
         type: text
-        label: Brief pane label
-        default: "The brief you were sent"
-    briefFrom:
+        label: Queue label
+        default: "Running"
+    runsCount:
         type: text
-        label: Brief — from
-        default: "dana@northbeam.co"
-    briefSubject:
-        type: text
-        label: Brief — subject
-        default: "website?"
-    briefBody:
-        type: textarea
-        label: Brief — first paragraph
-        rows: 4
-        default: "hey — we're relaunching Northbeam in the spring and need a new site. maybe 5 or 6 pages? we've got brand stuff already. also need the blog moved over."
-    briefBodyTwo:
-        type: textarea
-        label: Brief — second paragraph
-        rows: 3
-        default: "budget's flexible-ish. what would something like this run? could you send something over this week?"
-    outputLabel:
-        type: text
-        label: Output pane label
-        default: "What Pilot sent back"
-    outputTiming:
-        type: text
-        label: Output timing chip
-        default: "drafted in 94s"
-    proposalTitle:
-        type: text
-        label: Proposal title
-        default: "Northbeam — Website Relaunch"
-    proposalFor:
-        type: text
-        label: Proposal subtitle
-        default: "Prepared for Dana Whitfield · Valid 30 days"
-    scopeLabel:
-        type: text
-        label: Scope heading
-        default: "Scope of work"
-    scope:
+        label: Queue count
+        default: "4"
+    runs:
         type: repeater
-        label: Scope lines
-        description: "The checked lines in the proposal pane."
-        source: collections.heroScope
-        add_button_label: "Add scope line"
-        item_label: text
-        sub_fields:
-            text:
-                type: text
-                label: Line
-                default: "New scope line"
-    timelineLabel:
-        type: text
-        label: Timeline heading
-        default: "Timeline"
-    milestones:
-        type: repeater
-        label: Milestones
-        description: "The four-step rail in the proposal pane."
-        source: collections.heroMilestones
-        add_button_label: "Add milestone"
+        label: Runs
+        description: "The queue on the left and the trace on the right. Turn on Active to highlight one."
+        source: collections.runs
+        add_button_label: "Add run"
         item_label: label
         sub_fields:
             label:
                 type: text
-                label: Milestone
-                default: "New phase"
-            week:
+                label: Run name
+                default: "New run"
+            meta:
                 type: text
-                label: Timing
-                default: "Wk 1"
-    pricingLabel:
-        type: text
-        label: Packages heading
-        default: "Packages"
-    tiers:
-        type: repeater
-        label: Packages
-        description: "The three price cards. Turn on Highlight to give one the accent treatment."
-        source: collections.heroTiers
-        add_button_label: "Add package"
-        item_label: name
-        sub_fields:
-            name:
-                type: text
-                label: Name
-                default: "New package"
-            price:
-                type: text
-                label: Price
-                default: "$0"
-            note:
-                type: text
-                label: Note
-                default: "What it covers"
-            featured:
+                label: Status line
+                default: "queued"
+            active:
                 type: toggle
-                label: Highlight
+                label: Active
                 default: "0"
-    termsText:
+    activeRun:
         type: text
-        label: Terms line
-        default: "50% to start · Two revision rounds · Net 14 · Kill fee at 30%"
-    fieldImage:
-        type: image
-        label: Light field
-        description: "The full-bleed backdrop behind the headline."
-        default: "/images/hero-field.jpg"
-    stageImage:
-        type: image
-        label: Stage surface
-        description: "The band the product window stands on."
-        default: "/images/surface.jpg"
+        label: Active run title
+        default: "Backfill customer embeddings"
+    promptText:
+        type: textarea
+        label: The prompt
+        rows: 3
+        default: "Backfill embeddings for every customer record created before March, then verify the index is complete."
+    traceOne:
+        type: text
+        label: Trace line one
+        default: "Read schema/customers.sql"
+    traceTwo:
+        type: text
+        label: Trace line two
+        default: "Planned 3 steps · 1 subagent"
+    traceThree:
+        type: text
+        label: Trace line three
+        default: "Thought for 6s"
+    assistantText:
+        type: textarea
+        label: The agent's reply
+        rows: 3
+        default: "Batching 41,880 records at 500 per call. I will checkpoint after every batch so a failure resumes instead of restarting."
+    files:
+        type: repeater
+        label: Files touched
+        source: collections.files
+        add_button_label: "Add file"
+        item_label: path
+        sub_fields:
+            path:
+                type: text
+                label: Path
+                default: "app/NewFile.php"
+            added:
+                type: text
+                label: Lines added
+                default: "0"
+            removed:
+                type: text
+                label: Lines removed
+                default: "0"
+    outputLabel:
+        type: text
+        label: Right pane label
+        default: "Trace"
+    terminalTitle:
+        type: text
+        label: Terminal title
+        default: "pilot run"
+    terminalOne:
+        type: text
+        label: Terminal line one
+        default: "batch 84/84  ·  41,880 embedded"
+    terminalTwo:
+        type: text
+        label: Terminal line two
+        default: "verify: index complete, 0 gaps"
+    terminalThree:
+        type: text
+        label: Terminal line three
+        default: "done in 4m 12s  ·  $1.94"

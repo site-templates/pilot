@@ -1,8 +1,8 @@
 @props([
     'heading' => 'Every plan, line by line',
-    'columnOne' => 'Solo',
-    'columnTwo' => 'Studio',
-    'columnThree' => 'Agency',
+    'columnOne' => 'Open source',
+    'columnTwo' => 'Cloud',
+    'columnThree' => 'Enterprise',
     'items',
 ])
 <!--

@@ -1,9 +1,9 @@
 @props([
     'eyebrow' => 'How it works',
-    'heading' => 'Three minutes of work, start to sent.',
-    'body' => 'You already did the hard part — you got the enquiry. Pilot handles the two hours of formatting, second-guessing, and rounding numbers that usually sit between the brief and the send button.',
-    'linkText' => 'Read the pricing guide',
-    'linkHref' => '/guides/how-to-price-client-work',
+    'heading' => 'Fifteen lines, then it runs itself.',
+    'body' => 'You already know what the agent should do. Pilot handles the parts that make it survive production — the retries, the checkpoints, the approvals, and the record of what happened.',
+    'linkText' => 'Read the loop guide',
+    'linkHref' => '/guides/designing-an-agent-loop',
     'items',
 ])
 <!--

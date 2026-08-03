@@ -1,0 +1,30 @@
+[
+    {
+        "label": "Plan and fan out",
+        "value": "0–24s",
+        "startPercent": "0",
+        "widthPercent": "10",
+        "featured": false
+    },
+    {
+        "label": "Tools, 84 batches",
+        "value": "24–186s",
+        "startPercent": "10",
+        "widthPercent": "64",
+        "featured": true
+    },
+    {
+        "label": "Awaiting approval",
+        "value": "186–214s",
+        "startPercent": "74",
+        "widthPercent": "11",
+        "featured": false
+    },
+    {
+        "label": "Verify and commit",
+        "value": "214–252s",
+        "startPercent": "85",
+        "widthPercent": "15",
+        "featured": false
+    }
+]

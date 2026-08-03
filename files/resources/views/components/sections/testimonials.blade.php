@@ -1,6 +1,6 @@
 @props([
     'eyebrow' => 'Evidence',
-    'heading' => 'The people who bill by the project',
+    'heading' => 'Engineers who put agents in front of customers',
     'items',
 ])
 <!--

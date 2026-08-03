@@ -1,6 +1,6 @@
 @props([
-    'eyebrow' => 'The documents',
-    'heading' => 'What lands in the client’s inbox',
+    'eyebrow' => 'The runtime',
+    'heading' => 'What Pilot actually gives you',
     'items',
 ])
 <!--

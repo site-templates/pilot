@@ -1,0 +1,22 @@
+[
+    {
+        "label": "Backfill customer embeddings",
+        "meta": "running · 3m 40s",
+        "active": true
+    },
+    {
+        "label": "Reconcile Stripe payouts",
+        "meta": "needs review · +212 −40",
+        "active": false
+    },
+    {
+        "label": "Draft the release notes",
+        "meta": "done · 1m 02s",
+        "active": false
+    },
+    {
+        "label": "Triage overnight errors",
+        "meta": "queued",
+        "active": false
+    }
+]

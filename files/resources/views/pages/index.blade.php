@@ -6,12 +6,12 @@
     on the canvas.
 
     The shapes alternate on purpose — full-bleed band, editorial two-column,
-    bento, split, band, split, bento, centered — so the page has a rhythm
-    rather than eight variations of the same row.
+    bento, split, band, split, masonry, asymmetric close — so the page has a
+    rhythm rather than eight variations of the same row.
 -->
-<x-layouts.main title="Proposals that win the work" description="Pilot turns a short client brief into a polished proposal, scope of work, pricing packages, and a timeline — so freelancers and agencies can price with confidence and win more client work.">
+<x-layouts.main title="The runtime for agents you can ship" description="Pilot is an agent framework for real work — a durable loop, typed tools, checkpointed state, human review, and a trace of every decision your agents make.">
 
-    <x-sections.hero :scope="$heroScope" :milestones="$heroMilestones" :tiers="$heroTiers" />
+    <x-sections.hero :runs="$runs" :files="$files" />
 
     <x-sections.logos :items="$logos" />
 
@@ -20,38 +20,43 @@
     <x-sections.deliverables :items="$deliverables" />
 
     <x-sections.split
-        :items="$packages"
-        eyebrow="Pricing"
-        heading="Price the work, not the hours"
-        body="Hourly rates punish you for getting faster. Pilot reads the scope and proposes three packages, each with a number you can defend in a room."
-        pointOne="Three tiers, anchored so the middle one wins"
-        pointTwo="Benchmarks from projects like this one, in your region"
-        pointThree="Every line item priced — nothing vanishes into “design”"
-        linkText="How Pilot arrives at a number"
-        linkHref="/guides/how-to-price-client-work"
+        :items="$spend"
+        eyebrow="Cost"
+        heading="Know what a run costs before it runs"
+        body="Agents are cheap until they are not. Pilot meters every call, attributes it to the step that made it, and stops a run that walks past its budget."
+        pointOne="Per-run and per-step spend, live"
+        pointTwo="Hard budget ceilings that halt instead of overrun"
+        pointThree="Cached tool results reused across retries"
+        linkText="How Pilot meters a run"
+        linkHref="/guides/evaluating-agents"
         align="right"
         visual="packages"
-        visualTitle="Suggested packages"
-        visualChip="Northbeam"
-        visualNote="Benchmarked against 1,240 similar projects." />
+        visualTitle="Spend by step"
+        visualChip="Last 24h"
+        visualNote="Averaged over 3,410 runs on this workspace." />
 
     <x-sections.stats :items="$stats" />
 
     <x-sections.split
-        :items="$phases"
-        eyebrow="Timeline"
-        heading="A schedule the client agrees to up front"
-        body="Most projects do not run late because the work was slow. They run late because nobody wrote down when feedback was due. Pilot does."
-        pointOne="Review windows with the client's homework marked in"
-        pointTwo="Dependencies flagged before they become a phone call"
-        pointThree="Slips re-price automatically against your terms"
-        linkText="Read the scoping guide"
-        linkHref="/guides/writing-scope-that-holds"
+        :items="$runPhases"
+        eyebrow="The loop"
+        heading="A run you can pause, inspect, and resume"
+        body="Every step is checkpointed. When a tool times out or a human needs to approve something, the run parks itself instead of dying and losing an hour of work."
+        pointOne="Checkpoints after every step, resumable for days"
+        pointTwo="Human approval gates anywhere in the loop"
+        pointThree="Replay any run against a new prompt or model"
+        linkText="Read the loop guide"
+        linkHref="/guides/designing-an-agent-loop"
         align="left"
         visual="timeline"
-        visualTitle="Project schedule"
-        visualChip="8 weeks"
-        visualNote="Generated from the scope, adjustable line by line." />
+        visualTitle="Run 8f21c"
+        visualChip="4m 12s"
+        visualNote="Every phase replayable in isolation."
+        rulerOne="0s"
+        rulerTwo="60s"
+        rulerThree="120s"
+        rulerFour="180s"
+        rulerFive="252s" />
 
     <x-sections.testimonials :items="$testimonials" />
 

@@ -2,7 +2,7 @@
 # surface under the Layout tab. Field names are camelCase, matching the props
 # they fill.
 title: Navigation
-description: The site-wide top bar — brand mark, links, and the call to action
+description: The top bar — brand mark, links with dark dropdown menus, and the calls to action
 fields:
     brand:
         type: text
@@ -11,7 +11,8 @@ fields:
     links:
         type: repeater
         label: Navigation links
-        description: "The three destinations in the bar. Stored in site.json."
+        description: "Nest links under an item to turn it into a dropdown. Stored in site.json."
+        nestable: true
         add_button_label: "Add link"
         item_label: text
         sub_fields:
@@ -23,19 +24,27 @@ fields:
                 type: url
                 label: Link
                 default: "/"
+    secondaryText:
+        type: text
+        label: Quiet link text
+        default: "Talk to us"
+    secondaryLink:
+        type: url
+        label: Quiet link
+        default: "mailto:hello@pilot.dev"
     signInText:
         type: text
-        label: Sign-in link text
+        label: Outlined button text
         default: "Sign in"
     signInLink:
         type: url
-        label: Sign-in link
+        label: Outlined button link
         default: "#"
     ctaText:
         type: text
-        label: Button text
-        default: "Start free"
+        label: Solid button text
+        default: "Get Pilot"
     ctaLink:
         type: url
-        label: Button link
+        label: Solid button link
         default: "/pricing"

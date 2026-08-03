@@ -4,36 +4,36 @@ fields:
     eyebrow:
         type: text
         label: Eyebrow
-        default: "Pricing"
+        default: "Cost"
     heading:
         type: text
         label: Heading
-        default: "Price the work, not the hours"
+        default: "Know what a run costs before it runs"
     body:
         type: textarea
         label: Supporting copy
         rows: 3
-        default: "Pilot reads the scope and proposes three packages with a defensible number on each."
+        default: "Agents are cheap until they are not. Pilot meters every call and attributes it to the step that made it."
     pointOne:
         type: text
         label: Point one
-        default: "Three tiers, anchored so the middle one wins"
+        default: "Per-run and per-step spend, live"
     pointTwo:
         type: text
         label: Point two
-        default: "Benchmarks from similar projects in your region"
+        default: "Hard budget ceilings that halt instead of overrun"
     pointThree:
         type: text
         label: Point three
-        default: "Every line item priced, nothing bundled into “design”"
+        default: "Cached tool results reused across retries"
     linkText:
         type: text
         label: Link text
-        default: "How Pilot prices work"
+        default: "How Pilot meters a run"
     linkHref:
         type: url
         label: Link
-        default: "/guides/how-to-price-client-work"
+        default: "/guides/designing-an-agent-loop"
     align:
         type: select
         label: Visual side
@@ -52,15 +52,15 @@ fields:
     visualTitle:
         type: text
         label: Visual title
-        default: "Suggested packages"
+        default: "Spend by step"
     visualChip:
         type: text
         label: Visual chip
-        default: "Northbeam"
+        default: "Last 24h"
     visualNote:
         type: text
         label: Visual footnote
-        default: "Benchmarked against 1,240 similar projects."
+        default: "Averaged over 3,410 runs on this workspace."
     rulerOne:
         type: text
         label: Ruler mark 1

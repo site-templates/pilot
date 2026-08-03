@@ -8,20 +8,20 @@ fields:
     heading:
         type: text
         label: Heading
-        default: "Three minutes of work, start to sent."
+        default: "Fifteen lines, then it runs itself."
     body:
         type: textarea
         label: Supporting copy
         rows: 4
-        default: "You already did the hard part — you got the enquiry. Pilot handles the two hours of formatting, second-guessing, and rounding numbers that usually sit between the brief and the send button."
+        default: "You already know what the agent should do. Pilot handles the parts that make it survive production — the retries, the checkpoints, the approvals, and the record of what happened."
     linkText:
         type: text
         label: Link text
-        default: "Read the pricing guide"
+        default: "Read the loop guide"
     linkHref:
         type: url
         label: Link
-        default: "/guides/how-to-price-client-work"
+        default: "/guides/designing-an-agent-loop"
     items:
         type: repeater
         label: Steps

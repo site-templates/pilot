@@ -1,0 +1,17 @@
+[
+    {
+        "path": "jobs/BackfillEmbeddings.php",
+        "added": "84",
+        "removed": "0"
+    },
+    {
+        "path": "services/EmbeddingClient.php",
+        "added": "36",
+        "removed": "12"
+    },
+    {
+        "path": "tests/BackfillTest.php",
+        "added": "58",
+        "removed": "0"
+    }
+]

@@ -1,58 +1,51 @@
 [
     {
-        "title": "The proposal",
-        "body": "It opens with their problem, not your logo. Context, approach, scope, price, terms — laid out so a client can skim it in ninety seconds and still land on the number understanding why it is the number.",
-        "detail": "PDF · shareable link · Google Docs",
-        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M4 3a1 1 0 0 1 1-1h6.586a1 1 0 0 1 .707.293l3.414 3.414a1 1 0 0 1 .293.707V17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3Zm3 7.5a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 7 10.5Zm.75 2.75a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z' clip-rule='evenodd'/></svg>",
-        "bed": "proposal",
-        "tint": "indigo"
+        "title": "A loop that survives contact with reality",
+        "body": "Plan, call, observe, repeat — with retries, backoff, and a checkpoint after every step. A run that hits a dead tool at minute nine resumes from minute nine, not from zero.",
+        "detail": "Durable for hours or days",
+        "bed": "trace",
+        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M15.3 11.4a5.5 5.5 0 0 1-9.2 2.5l-.3-.3h2.4a.75.75 0 0 0 0-1.5H4a.75.75 0 0 0-.8.8v4.2a.75.75 0 0 0 1.5 0v-2.4l.3.3a7 7 0 0 0 11.7-3.1.75.75 0 1 0-1.4-.5Zm1.2-3.7a.75.75 0 0 0 .2-.5V2.9a.75.75 0 0 0-1.5 0v2.4l-.3-.3A7 7 0 0 0 3.2 8.2a.75.75 0 1 0 1.5.4 5.5 5.5 0 0 1 9.2-2.5l.3.3h-2.4a.75.75 0 0 0 0 1.5h4.2a.75.75 0 0 0 .5-.2Z' clip-rule='evenodd'/></svg>"
     },
     {
-        "title": "Scope of work",
-        "body": "Every deliverable written as a commitment you can point at in week six. Just as importantly, what is not included — the line that stops a five-page site quietly becoming twelve.",
-        "detail": "Inclusions and exclusions, both",
-        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M3 4.5A1.5 1.5 0 0 1 4.5 3h11A1.5 1.5 0 0 1 17 4.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 15.5v-11Zm10.53 3.03a.75.75 0 0 0-1.06-1.06L9 9.94 7.53 8.47a.75.75 0 0 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l4-4Z' clip-rule='evenodd'/></svg>",
-        "bed": "scope",
-        "tint": "violet"
+        "title": "Tools the model cannot misuse",
+        "body": "Write an ordinary function; Pilot derives the schema from its signature and validates every call against it. Arguments that would not compile never reach your code.",
+        "detail": "Typed, validated, versioned",
+        "bed": "tools",
+        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M14.5 2a4.5 4.5 0 0 0-4.3 5.8L3 15a1.8 1.8 0 0 0 2.5 2.5l7.2-7.2A4.5 4.5 0 1 0 14.5 2Zm0 1.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Z' clip-rule='evenodd'/></svg>"
     },
     {
-        "title": "Pricing packages",
-        "body": "Three tiers, anchored so the middle one looks like the sensible choice. Priced from your rates and what work like this actually closed at.",
+        "title": "State that outlives the process",
+        "body": "Working memory, scratchpads, and results persist outside the run, so a restart, a deploy, or a week-long pause costs you nothing.",
         "detail": "",
-        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M2 5.5A2.5 2.5 0 0 1 4.5 3h4.09a2.5 2.5 0 0 1 1.767.732l6.5 6.5a2.5 2.5 0 0 1 0 3.536l-4.09 4.09a2.5 2.5 0 0 1-3.535 0l-6.5-6.5A2.5 2.5 0 0 1 2 9.59V5.5Zm4 2.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z' clip-rule='evenodd'/></svg>",
         "bed": "",
-        "tint": "cyan"
+        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path d='M10 2c3.9 0 7 1.1 7 2.5S13.9 7 10 7 3 5.9 3 4.5 6.1 2 10 2ZM3 7.4C4.3 8.4 7 9 10 9s5.7-.6 7-1.6v3.1C17 11.9 13.9 13 10 13s-7-1.1-7-2.5V7.4Zm0 6C4.3 14.4 7 15 10 15s5.7-.6 7-1.6v2.1C17 16.9 13.9 18 10 18s-7-1.1-7-2.5v-2.1Z'/></svg>"
     },
     {
-        "title": "Milestones and timeline",
-        "body": "A schedule with review windows and the client's homework marked in — so the delay has a name and an owner before it happens.",
+        "title": "Human review, anywhere in the loop",
+        "body": "Park a run on an approval gate, route it to the right person, and resume exactly where it stopped once they sign off.",
         "detail": "",
-        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path d='M3 4.75A.75.75 0 0 1 3.75 4h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 3 4.75Zm2 5A.75.75 0 0 1 5.75 9h10.5a.75.75 0 0 1 0 1.5H5.75A.75.75 0 0 1 5 9.75Zm-2 5A.75.75 0 0 1 3.75 14h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 3 14.75Z'/></svg>",
         "bed": "",
-        "tint": "indigo"
+        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M10 1.5 3.5 4v5.5c0 4 2.8 7.6 6.5 9 3.7-1.4 6.5-5 6.5-9V4L10 1.5Zm3.5 6.5a.75.75 0 0 0-1.1-1L9 10.4 7.5 9a.75.75 0 0 0-1 1.1l2 2a.75.75 0 0 0 1 0l4-4Z' clip-rule='evenodd'/></svg>"
     },
     {
-        "title": "Contract-ready terms",
-        "body": "Deposit, revision limits, kill fee, IP transfer, late payment. Plain language, checked by lawyers in twelve jurisdictions.",
+        "title": "A trace of every decision",
+        "body": "Prompts, tool arguments, results, tokens, and cost — recorded per step and replayable against a different model or prompt.",
         "detail": "",
-        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M10 1.5 3.5 4v5.5c0 4 2.8 7.6 6.5 9 3.7-1.4 6.5-5 6.5-9V4L10 1.5Zm3.53 6.53a.75.75 0 0 0-1.06-1.06L9 10.44 7.53 8.97a.75.75 0 0 0-1.06 1.06l2 2a.75.75 0 0 0 1.06 0l4-4Z' clip-rule='evenodd'/></svg>",
         "bed": "",
-        "tint": "violet"
+        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path d='M3 4.75A.75.75 0 0 1 3.75 4h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 3 4.75Zm2 5A.75.75 0 0 1 5.75 9h10.5a.75.75 0 0 1 0 1.5H5.75A.75.75 0 0 1 5 9.75Zm-2 5A.75.75 0 0 1 3.75 14h6.5a.75.75 0 0 1 0 1.5h-6.5A.75.75 0 0 1 3 14.75Z'/></svg>"
     },
     {
-        "title": "Follow-up emails",
-        "body": "Three drafts, already timed. Written to sound like you on a good day rather than a CRM on any day.",
+        "title": "Evals that run in CI",
+        "body": "Turn any recorded run into a test case. Pilot re-runs your suite on every change and shows you exactly which step regressed.",
         "detail": "",
-        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M3 5.5A1.5 1.5 0 0 1 4.5 4h11A1.5 1.5 0 0 1 17 5.5v.4l-7 3.9-7-3.9v-.4Zm0 2.1V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5V7.6l-6.64 3.7a.75.75 0 0 1-.72 0L3 7.6Z' clip-rule='evenodd'/></svg>",
         "bed": "",
-        "tint": "blush"
+        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M3 4.5A1.5 1.5 0 0 1 4.5 3h11A1.5 1.5 0 0 1 17 4.5v11a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 3 15.5v-11Zm10.5 3a.75.75 0 0 0-1.1-1L9 9.9 7.6 8.5a.75.75 0 0 0-1.1 1l2 2a.75.75 0 0 0 1 0l4-4Z' clip-rule='evenodd'/></svg>"
     },
     {
-        "title": "Client questionnaires",
-        "body": "The eight questions that would have saved your last project, sent before you put a number on this one.",
+        "title": "Runs anywhere you already deploy",
+        "body": "A library first — inside your app, a queue worker, a cron, or a container. No sidecar, no broker, no new platform to operate.",
         "detail": "",
-        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path fill-rule='evenodd' d='M10 2c-4.42 0-8 2.96-8 6.6 0 2.05 1.13 3.88 2.9 5.08-.13.9-.5 1.9-1.2 2.8-.2.26-.05.65.28.6 1.7-.24 3.1-.93 4.03-1.5.63.13 1.3.2 1.99.2 4.42 0 8-2.96 8-6.6C18 4.96 14.42 2 10 2Zm.06 2.9c-1.3 0-2.2.62-2.6 1.6a.75.75 0 0 0 1.38.58c.18-.43.56-.68 1.22-.68.72 0 1.16.36 1.16.86 0 .4-.2.63-.83 1.02-.72.44-1.15.93-1.13 1.83a.75.75 0 0 0 1.5-.03c0-.3.1-.44.6-.75.78-.48 1.36-1.03 1.36-2.1 0-1.4-1.13-2.33-2.66-2.33ZM10 13.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z' clip-rule='evenodd'/></svg>",
         "bed": "",
-        "tint": "cyan"
+        "icon": "<svg viewBox='0 0 20 20' class='size-5 fill-current' aria-hidden='true'><path d='M11.98 1.9a.75.75 0 0 0-1.3-.65l-8.5 9.5A.75.75 0 0 0 2.75 12h6.57l-1.3 6.09a.75.75 0 0 0 1.29.66l8.5-9.5A.75.75 0 0 0 17.25 8h-6.57l1.3-6.09Z'/></svg>"
     }
 ]

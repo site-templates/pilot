@@ -1,11 +1,11 @@
 @props([
-    'heading' => 'The next brief lands today. Be ready for it.',
-    'body' => 'Start with three free proposals. Keep the ones that win — Pilot learns your rates, your scope language, and the terms you actually use.',
-    'ctaText' => 'Start free',
+    'heading' => 'Your first agent, running by lunch.',
+    'body' => 'The runtime is open source and the docs are short. Install it, wire up one tool, and watch the first trace come back.',
+    'ctaText' => 'Get started',
     'ctaLink' => '/pricing',
     'secondaryText' => 'Talk to us',
-    'secondaryLink' => 'mailto:hello@pilot.co',
-    'note' => 'No card required · Cancel any time · Your templates stay yours',
+    'secondaryLink' => 'mailto:hello@pilot.dev',
+    'note' => 'Apache 2.0 · No account needed to start · Bring your own models',
     'fieldImage' => '/images/hero-field.jpg',
 ])
 <!--

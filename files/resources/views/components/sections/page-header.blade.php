@@ -1,7 +1,7 @@
 @props([
     'eyebrow' => 'Features',
-    'heading' => 'Everything the brief did not say',
-    'body' => 'A proposal is only fast if you trust it. Here is exactly what Pilot writes, what it takes from you, and what it refuses to guess.',
+    'heading' => 'Everything the demo skipped',
+    'body' => 'The loop is the easy part. Here is exactly what Pilot gives you, what it expects from your code, and what it deliberately leaves alone.',
     'showMeta' => '0',
     'metaOne' => '',
     'metaTwo' => '',

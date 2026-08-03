@@ -8,7 +8,7 @@
          an IntersectionObserver drives the same reveals through the CSS
          transitions in site.css.
       3. GSAP present — it takes over the scroll work and adds the mesh
-         parallax and the proposal rows resolving inside the hero window.
+         parallax and the trace rows resolving inside the hero console.
 
     Reduced motion short-circuits all of it: everything is revealed at once
     and no timeline is ever built.
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     headerState();
+    dropdowns();
     mobileMenu();
     markCurrentMenuItem();
     spotlightCards();
@@ -58,6 +59,95 @@ function headerState() {
 
     evaluate();
     window.addEventListener('scroll', evaluate, { passive: true });
+}
+
+/*
+    The nav dropdowns. Hover opens with a short intent delay and closes with a
+    longer one, so diagonal pointer travel into the panel never slams it shut.
+    Click toggles for touch; Escape and outside clicks dismiss. Keyboard focus
+    inside the panel holds it open.
+*/
+function dropdowns() {
+    var roots = document.querySelectorAll('[data-dropdown]');
+
+    roots.forEach(function (root) {
+        var trigger = root.querySelector('[data-dropdown-trigger]');
+        var openTimer = null;
+        var closeTimer = null;
+
+        function open() {
+            clearTimeout(closeTimer);
+            roots.forEach(function (other) {
+                if (other !== root) {
+                    close(other);
+                }
+            });
+            root.classList.add('is-open');
+            if (trigger) {
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        function close(target) {
+            var el = target || root;
+            el.classList.remove('is-open');
+            var t = el.querySelector('[data-dropdown-trigger]');
+            if (t) {
+                t.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        root.addEventListener('pointerenter', function (event) {
+            if (event.pointerType !== 'mouse') {
+                return;
+            }
+            clearTimeout(closeTimer);
+            openTimer = setTimeout(open, 50);
+        });
+
+        root.addEventListener('pointerleave', function (event) {
+            if (event.pointerType !== 'mouse') {
+                return;
+            }
+            clearTimeout(openTimer);
+            closeTimer = setTimeout(function () {
+                close();
+            }, 180);
+        });
+
+        if (trigger) {
+            trigger.addEventListener('click', function (event) {
+                event.preventDefault();
+                root.classList.contains('is-open') ? close() : open();
+            });
+        }
+
+        root.addEventListener('focusout', function (event) {
+            if (!root.contains(event.relatedTarget)) {
+                close();
+            }
+        });
+    });
+
+    document.addEventListener('click', function (event) {
+        roots.forEach(function (root) {
+            if (!root.contains(event.target)) {
+                root.classList.remove('is-open');
+                var t = root.querySelector('[data-dropdown-trigger]');
+                if (t) {
+                    t.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            roots.forEach(function (root) {
+                root.classList.remove('is-open');
+            });
+        }
+    });
 }
 
 /*
@@ -155,7 +245,7 @@ function showAll(nodes) {
 
 /*
     The Brief Transformer — Pilot's signature. When the hero window scrolls
-    into view the proposal rows on the right resolve one after another, as if
+    into view the trace rows resolve one after another, as if
     the document were being written, and a single shimmer sweeps the pane.
 
     Without GSAP the same sequence runs on a plain timer; with reduced motion
@@ -168,7 +258,7 @@ function transformer() {
         return;
     }
 
-    var rows = root.querySelectorAll('.proposal-row');
+    var rows = root.querySelectorAll('.trace-row');
 
     if (reduceMotion) {
         rows.forEach(function (row) {

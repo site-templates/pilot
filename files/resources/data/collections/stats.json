@@ -1,18 +1,18 @@
 [
     {
-        "value": "3.1×",
-        "label": "More proposals sent per month, per freelancer"
+        "value": "41ms",
+        "label": "Median framework overhead per step"
     },
     {
-        "value": "41%",
-        "label": "Higher average project value after the first ten sends"
+        "value": "8.4×",
+        "label": "Cheaper after caching and model routing"
     },
     {
-        "value": "94s",
-        "label": "Median time from pasted brief to first full draft"
+        "value": "99.2%",
+        "label": "Runs that resume cleanly after a failure"
     },
     {
-        "value": "2.4d",
-        "label": "Faster to a signature than hand-written proposals"
+        "value": "12k",
+        "label": "Agents in production on Pilot today"
     }
 ]

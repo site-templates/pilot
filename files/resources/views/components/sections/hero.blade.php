@@ -1,220 +1,189 @@
 @props([
-    'eyebrow' => 'Proposal software for independent studios',
-    'showBadge' => '1',
-    'badgeLabel' => 'New',
-    'badgeText' => 'Contract-ready terms',
-    'badgeLink' => '/guides/writing-scope-that-holds',
-    'heading' => 'From a two-line brief to a proposal worth signing.',
-    'body' => 'Paste what the client actually sent you. Pilot returns the scope, the milestones, three priced packages, and terms you can put your name on.',
-    'ctaText' => 'Start free',
+    'heading' => 'Pilot is the runtime for agents you can actually ship.',
+    'body' => 'Define an agent in a few lines, hand it tools, and Pilot runs the loop — retries, state, human review, and a trace of every decision it made.',
+    'ctaText' => 'Get started',
     'ctaLink' => '/pricing',
-    'secondaryText' => 'See a sample proposal',
-    'secondaryLink' => '/features',
-    'trustNote' => 'Free for your first three proposals · No card required',
-    'briefLabel' => 'The brief you were sent',
-    'briefFrom' => 'dana@northbeam.co',
-    'briefSubject' => 'website?',
-    'briefBody' => "hey — we're relaunching Northbeam in the spring and need a new site. maybe 5 or 6 pages? we've got brand stuff already. also need the blog moved over.",
-    'briefBodyTwo' => "budget's flexible-ish. what would something like this run? could you send something over this week?",
-    'outputLabel' => 'What Pilot sent back',
-    'outputTiming' => 'drafted in 94s',
-    'proposalTitle' => 'Northbeam — Website Relaunch',
-    'proposalFor' => 'Prepared for Dana Whitfield · Valid 30 days',
-    'scopeLabel' => 'Scope of work',
-    'timelineLabel' => 'Timeline',
-    'pricingLabel' => 'Packages',
-    'termsText' => '50% to start · Two revision rounds · Net 14 · Kill fee at 30%',
-    'fieldImage' => '/images/hero-field.jpg',
-    'stageImage' => '/images/surface.jpg',
-    'scope',
-    'milestones',
-    'tiers',
+    'secondaryText' => 'Read the guides',
+    'secondaryLink' => '/guides',
+    'stageImage' => '/images/valley.jpg',
+    'consoleTitle' => 'Pilot Console',
+    'runsLabel' => 'Running',
+    'runsCount' => '4',
+    'activeRun' => 'Backfill customer embeddings',
+    'promptText' => 'Backfill embeddings for every customer record created before March, then verify the index is complete.',
+    'traceOne' => 'Read schema/customers.sql',
+    'traceTwo' => 'Planned 3 steps · 1 subagent',
+    'traceThree' => 'Thought for 6s',
+    'assistantText' => 'Batching 41,880 records at 500 per call. I will checkpoint after every batch so a failure resumes instead of restarting.',
+    'outputLabel' => 'Trace',
+    'terminalTitle' => 'pilot run',
+    'terminalOne' => 'batch 84/84  ·  41,880 embedded',
+    'terminalTwo' => 'verify: index complete, 0 gaps',
+    'terminalThree' => 'done in 4m 12s  ·  $1.94',
+    'runs',
+    'files',
 ])
 <!--
-    The opening statement, and Pilot's signature: the Brief Transformer.
+    The opening statement, and Pilot's signature: the Console.
 
-    Left pane is the client's actual email; right pane is the proposal Pilot
-    returns. As the window scrolls in, the rows on the right resolve one after
-    another and a single shimmer sweeps the pane — the product explaining
-    itself in one glance. The window is drawn entirely in markup, so it stays
-    razor sharp at any size; only the two backdrops are photographs.
+    Three panes — the runs queue, the live trace of the active run, and the
+    files it touched — with a terminal overlapping the corner. It is drawn
+    entirely in markup, so it stays razor sharp at any size; the painting
+    behind it is the only photograph on the page.
 
-    The scope lines, milestones, and packages are repeating content, so they
-    live in resources/data/collections/ and arrive through bound attributes.
+    The runs and files are repeating content, so they live in
+    resources/data/collections/ and arrive through bound attributes.
 -->
-<section id="hero" class="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+<section id="hero" class="relative pt-36 sm:pt-44">
 
-    <!-- The light field. main.js parallaxes the whole layer on scroll. -->
-    <div class="spectrum" data-mesh-parallax aria-hidden="true">
-        <img src="{{ $fieldImage }}" alt="" class="spectrum-image" width="1920" height="1086" fetchpriority="high">
-        <span class="spectrum-veil"></span>
-    </div>
-
-    <div class="relative z-10 mx-auto w-full max-w-6xl px-6">
-
-        <!-- The category line: the mark, then what this is, in six words -->
-        <p class="flex items-center gap-2.5 font-mono text-[11px] tracking-widest text-muted uppercase" data-reveal>
-            <svg viewBox="0 0 24 24" class="size-3.5 shrink-0 fill-accent" aria-hidden="true">
-                <path d="M12 1.9 21.4 21.4 12 16.9 2.6 21.4Z"/>
-            </svg>
-            {{ $eyebrow }}
-        </p>
-
-        <h1 class="reveal-1 mt-7 max-w-[26ch] font-display text-[3rem] leading-[0.98] font-semibold tracking-[-0.045em] text-balance text-ink sm:text-[4.25rem] lg:text-[5rem]" data-reveal>
+    <div class="mx-auto w-full max-w-7xl px-6">
+        <h1 class="max-w-[19ch] font-display text-[2.75rem] leading-[1.04] font-medium tracking-[-0.035em] text-balance text-ink sm:text-[3.5rem] lg:text-[4rem]" data-reveal>
             {{ $heading }}
         </h1>
 
-        <!-- Sub-copy on the left, the announcement sharing its baseline on the right -->
-        <div class="reveal-2 mt-10 flex flex-wrap items-end justify-between gap-x-12 gap-y-5 sm:mt-12" data-reveal>
-            <p class="max-w-[46ch] text-lg/8 text-pretty text-lede">{{ $body }}</p>
+        <p class="reveal-1 mt-8 max-w-[54ch] text-lg/8 text-pretty text-muted" data-reveal>{{ $body }}</p>
 
-            @if ($showBadge)
-            <a href="{{ $badgeLink }}" class="group flex shrink-0 items-center gap-2.5 text-[15px]">
-                <span class="font-medium text-ink">{{ $badgeLabel }}</span>
-                <span class="text-muted transition-colors duration-200 group-hover:text-ink">{{ $badgeText }}</span>
+        <div class="reveal-2 mt-10 flex flex-wrap items-center gap-3" data-reveal>
+            <a href="{{ $ctaLink }}" class="rounded-full bg-ink px-6 py-3.5 text-[15px] font-medium text-canvas transition-opacity duration-200 hover:opacity-85">{{ $ctaText }}</a>
+            <a href="{{ $secondaryLink }}" class="group flex items-center gap-2 rounded-full bg-raised px-6 py-3.5 text-[15px] font-medium text-ink transition-colors duration-200 hover:bg-line">
+                {{ $secondaryText }}
                 <svg viewBox="0 0 16 16" class="size-3.5 fill-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:fill-ink" aria-hidden="true">
                     <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd"/>
                 </svg>
             </a>
-            @endif
         </div>
-
-        <div class="reveal-3 mt-11 flex flex-wrap items-center gap-3" data-reveal>
-            <a href="{{ $ctaLink }}" class="rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity duration-200 hover:opacity-90">{{ $ctaText }}</a>
-            <a href="{{ $secondaryLink }}" class="group flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-medium text-ink transition-colors duration-200 hover:border-accent-line hover:bg-panel/60">
-                {{ $secondaryText }}
-                <svg viewBox="0 0 16 16" class="size-3.5 fill-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:fill-ink" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd"/>
-            </svg>
-            </a>
-        </div>
-
-        <p class="reveal-4 mt-7 font-mono text-[11px] tracking-widest text-balance text-faint uppercase" data-reveal>{{ $trustNote }}</p>
     </div>
 
     <!--
-        The Brief Transformer, standing on the stage — a full-bleed band of
-        the surface photograph that the window overlaps on every side. It also
-        runs wider than the text column above it, so the hero has two distinct
-        measures rather than one column.
+        The Console, standing on the painting — a full-bleed band the window
+        overlaps top and bottom, so it reads as an object placed in a room.
     -->
-    <div class="relative mt-20 py-20 sm:mt-24 sm:py-28">
+    <div class="relative mt-16 sm:mt-20">
 
         <div class="stage" aria-hidden="true">
-            <img src="{{ $stageImage }}" alt="" class="stage-image" width="1600" height="905" loading="lazy">
+            <img src="{{ $stageImage }}" alt="" class="stage-image" width="2000" height="837" fetchpriority="high">
             <span class="stage-veil"></span>
         </div>
 
-    <div class="reveal-5 relative z-10 mx-auto w-full max-w-7xl px-6" data-reveal>
-        <div class="transformer overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl" data-transformer>
-            <div class="grid lg:grid-cols-[minmax(0,0.82fr)_1px_minmax(0,1.18fr)]">
+        <div class="reveal-3 relative z-10 mx-auto w-full max-w-7xl px-6 py-16 sm:py-24" data-reveal>
+            <div class="transformer relative rounded-xl border border-line-strong bg-canvas shadow-2xl shadow-black/15" data-transformer>
 
-                <!-- Left: the client's email, exactly as it landed -->
-                <div class="bg-canvas/40 p-6 text-left sm:p-8">
-                    <p class="flex items-center gap-2 font-mono text-[11px] tracking-widest text-faint uppercase">
-                        <svg viewBox="0 0 20 20" class="size-3.5 fill-current" aria-hidden="true">
-                            <path d="M3 5.5A1.5 1.5 0 0 1 4.5 4h11A1.5 1.5 0 0 1 17 5.5v.32l-7 3.89-7-3.89V5.5Zm0 2.04V14.5A1.5 1.5 0 0 0 4.5 16h11a1.5 1.5 0 0 0 1.5-1.5V7.54l-6.64 3.69a.75.75 0 0 1-.72 0L3 7.54Z"/>
-                        </svg>
-                        {{ $briefLabel }}
-                    </p>
-
-                    <dl class="mt-5 flex flex-col gap-1.5 border-b border-line pb-4 text-[13px]">
-                        <div class="flex gap-2">
-                            <dt class="w-16 shrink-0 text-faint">From</dt>
-                            <dd class="truncate text-muted">{{ $briefFrom }}</dd>
-                        </div>
-                        <div class="flex gap-2">
-                            <dt class="w-16 shrink-0 text-faint">Subject</dt>
-                            <dd class="truncate text-muted">{{ $briefSubject }}</dd>
-                        </div>
-                    </dl>
-
-                    <p class="mt-5 font-mono text-[13px]/7 text-muted">{{ $briefBody }}</p>
-                    <p class="mt-4 font-mono text-[13px]/7 text-muted">{{ $briefBodyTwo }}<span class="brief-caret ml-0.5"></span></p>
+                <!-- Title bar -->
+                <div class="flex items-center gap-2 border-b border-line px-4 py-3">
+                    <span class="flex gap-1.5" aria-hidden="true">
+                        <span class="size-2.5 rounded-full bg-line-strong"></span>
+                        <span class="size-2.5 rounded-full bg-line-strong"></span>
+                        <span class="size-2.5 rounded-full bg-line-strong"></span>
+                    </span>
+                    <span class="mx-auto text-[13px] text-muted">{{ $consoleTitle }}</span>
                 </div>
 
-                <!-- The seam, with a pulse travelling brief → proposal -->
-                <div class="transformer-seam max-lg:hidden" aria-hidden="true"></div>
+                <div class="grid lg:grid-cols-[15rem_1fr_17rem]">
 
-                <!-- Right: what Pilot returns -->
-                <div class="relative overflow-hidden p-6 text-left max-lg:border-t max-lg:border-line sm:p-8">
-                    <span class="proposal-sweep" aria-hidden="true"></span>
-
-                    <div class="relative flex flex-wrap items-center justify-between gap-3">
-                        <p class="flex items-center gap-2 font-mono text-[11px] tracking-widest text-accent uppercase">
-                            <svg viewBox="0 0 20 20" class="size-3.5 fill-current" aria-hidden="true">
-                                <path d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.083 2.605-2.815.226c-.833.067-1.17 1.107-.536 1.651l2.145 1.838-.655 2.747c-.194.813.691 1.456 1.404 1.02L10 11.53l2.408 1.44c.713.437 1.598-.206 1.404-1.019l-.655-2.747 2.145-1.838c.635-.544.297-1.584-.536-1.65l-2.815-.227-1.083-2.605ZM15.5 13a.75.75 0 0 1 .75.75v1h1a.75.75 0 0 1 0 1.5h-1v1a.75.75 0 0 1-1.5 0v-1h-1a.75.75 0 0 1 0-1.5h1v-1a.75.75 0 0 1 .75-.75Z"/>
-                            </svg>
-                            {{ $outputLabel }}
+                    <!-- Left: the queue -->
+                    <div class="border-line p-3 max-lg:hidden lg:border-r">
+                        <p class="flex items-center gap-2 px-2 py-1.5 font-mono text-[10px] tracking-widest text-faint uppercase">
+                            {{ $runsLabel }}
+                            <span class="text-muted">{{ $runsCount }}</span>
                         </p>
-                        <span class="rounded-full border border-line px-2 py-0.5 font-mono text-[10px] text-faint">{{ $outputTiming }}</span>
+
+                        <ul role="list" class="mt-1 flex flex-col gap-0.5">
+                            @foreach ($runs as $run)
+                            @if ($run->active)
+                            <li class="rounded-lg bg-raised px-2.5 py-2">
+                                <span class="block truncate text-[13px] font-medium text-ink">{{ $run->label }}</span>
+                                <span class="mt-0.5 block font-mono text-[11px] text-muted">{{ $run->meta }}</span>
+                            </li>
+                            @else
+                            <li class="rounded-lg px-2.5 py-2">
+                                <span class="block truncate text-[13px] text-muted">{{ $run->label }}</span>
+                                <span class="mt-0.5 block font-mono text-[11px] text-faint">{{ $run->meta }}</span>
+                            </li>
+                            @endif
+                            @endforeach
+                        </ul>
                     </div>
 
-                    <!-- Row 1: the proposal header -->
-                    <div class="proposal-row relative mt-5">
-                        <p class="font-display text-lg font-semibold tracking-tight text-ink">{{ $proposalTitle }}</p>
-                        <p class="mt-1 text-[13px] text-faint">{{ $proposalFor }}</p>
+                    <!-- Middle: the live trace -->
+                    <div class="relative min-w-0 overflow-hidden border-line p-5 sm:p-6 lg:border-r lg:pb-28">
+                        <span class="trace-sweep" aria-hidden="true"></span>
+
+                        <p class="relative text-[13px] font-medium text-ink">{{ $activeRun }}</p>
+
+                        <div class="trace-row relative mt-4 rounded-xl bg-raised px-4 py-3">
+                            <p class="text-[13.5px]/6 text-lede">{{ $promptText }}</p>
+                        </div>
+
+                        <div class="trace-row relative mt-5 flex flex-col gap-2.5 font-mono text-[12px] text-muted">
+                            <p class="flex items-center gap-2">
+                                <svg viewBox="0 0 16 16" class="size-3 shrink-0 fill-faint" aria-hidden="true"><path d="M3 2.75A.75.75 0 0 1 3.75 2h5.5a.75.75 0 0 1 .53.22l3 3a.75.75 0 0 1 .22.53v7.5a.75.75 0 0 1-.75.75h-8.5a.75.75 0 0 1-.75-.75v-10.5Z"/></svg>
+                                {{ $traceOne }}
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <svg viewBox="0 0 16 16" class="size-3 shrink-0 fill-faint" aria-hidden="true"><path d="M2 4.75A.75.75 0 0 1 2.75 4h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 3.5A.75.75 0 0 1 2.75 7.5h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 2 8.25Zm0 3.5a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Z"/></svg>
+                                {{ $traceTwo }}
+                            </p>
+                            <p class="flex items-center gap-2 text-faint">
+                                <svg viewBox="0 0 16 16" class="size-3 shrink-0 fill-current" aria-hidden="true"><path fill-rule="evenodd" d="M8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12Zm.75-9.25a.75.75 0 0 0-1.5 0V8c0 .2.08.39.22.53l2 2a.75.75 0 1 0 1.06-1.06L8.75 7.69V4.75Z" clip-rule="evenodd"/></svg>
+                                {{ $traceThree }}
+                            </p>
+                        </div>
+
+                        <p class="trace-row relative mt-5 max-w-[54ch] text-[13.5px]/6 text-lede">{{ $assistantText }}</p>
+
+                        <div class="trace-row relative mt-5 flex flex-col gap-1.5">
+                            @foreach ($files as $file)
+                            <p class="flex items-center gap-3 rounded-lg border border-line bg-panel px-3 py-2 font-mono text-[12px]">
+                                <span class="truncate text-lede">{{ $file->path }}</span>
+                                <span class="ml-auto shrink-0 text-muted">+{{ $file->added }}</span>
+                                <span class="shrink-0 text-faint">−{{ $file->removed }}</span>
+                            </p>
+                            @endforeach
+                        </div>
                     </div>
 
-                    <!-- Row 2: scope of work -->
-                    <div class="proposal-row relative mt-6">
-                        <p class="font-mono text-[10px] tracking-widest text-faint uppercase">{{ $scopeLabel }}</p>
-                        <ul role="list" class="mt-3 flex flex-col gap-2 text-[13px] text-muted">
-                            @foreach ($scope as $line)
-                            <li class="flex items-start gap-2.5">
-                                <svg viewBox="0 0 20 20" class="mt-0.5 size-3.5 shrink-0 fill-accent" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0l-3.5-3.5a1 1 0 1 1 1.4-1.4l2.8 2.79 6.8-6.79a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/>
-                                </svg>
-                                {{ $line->text }}
+                    <!-- Right: the trace summary -->
+                    <div class="p-5 max-lg:hidden">
+                        <p class="font-mono text-[10px] tracking-widest text-faint uppercase">{{ $outputLabel }}</p>
+
+                        <ul role="list" class="mt-4 flex flex-col gap-4">
+                            @foreach ($runs as $run)
+                            <li class="relative flex gap-3">
+                                <span class="mt-1 flex size-4 shrink-0 items-center justify-center rounded-full border border-line-strong">
+                                    <span class="size-1.5 rounded-full bg-ink"></span>
+                                </span>
+                                <span>
+                                    <span class="block text-[12.5px] text-lede">{{ $run->label }}</span>
+                                    <span class="mt-0.5 block font-mono text-[11px] text-faint">{{ $run->meta }}</span>
+                                </span>
                             </li>
                             @endforeach
                         </ul>
                     </div>
 
-                    <!-- Row 3: the milestone rail -->
-                    <div class="proposal-row relative mt-6">
-                        <p class="font-mono text-[10px] tracking-widest text-faint uppercase">{{ $timelineLabel }}</p>
-                        <ol role="list" class="mt-4 grid grid-cols-4 gap-1">
-                            @foreach ($milestones as $milestone)
-                            <li class="relative">
-                                <span class="block h-1 rounded-full bg-accent/35"></span>
-                                <span class="mt-2.5 block truncate text-[11px] font-medium text-ink">{{ $milestone->label }}</span>
-                                <span class="block text-[10px] text-faint">{{ $milestone->week }}</span>
-                            </li>
-                            @endforeach
-                        </ol>
-                    </div>
+                </div>
 
-                    <!-- Row 4: the three packages -->
-                    <div class="proposal-row relative mt-6">
-                        <p class="font-mono text-[10px] tracking-widest text-faint uppercase">{{ $pricingLabel }}</p>
-                        <div class="mt-3 grid grid-cols-3 gap-2">
-                            @foreach ($tiers as $tier)
-                            @if ($tier->featured)
-                            <div class="rounded-lg border border-accent-line bg-accent-soft p-3">
-                                <p class="truncate text-[11px] font-medium text-accent">{{ $tier->name }}</p>
-                                <p class="mt-1 font-display text-base font-semibold tracking-tight text-ink">{{ $tier->price }}</p>
-                                <p class="mt-0.5 truncate text-[10px] text-faint max-sm:hidden">{{ $tier->note }}</p>
-                            </div>
-                            @else
-                            <div class="rounded-lg border border-line bg-raised/50 p-3">
-                                <p class="truncate text-[11px] font-medium text-muted">{{ $tier->name }}</p>
-                                <p class="mt-1 font-display text-base font-semibold tracking-tight text-ink">{{ $tier->price }}</p>
-                                <p class="mt-0.5 truncate text-[10px] text-faint max-sm:hidden">{{ $tier->note }}</p>
-                            </div>
-                            @endif
-                            @endforeach
-                        </div>
+                <!--
+                    The terminal, overlapping the corner. Soft black rather
+                    than pure black, the same shade the nav dropdowns use.
+                -->
+                <div class="absolute -right-3 -bottom-8 w-[24rem] overflow-hidden rounded-xl bg-shade shadow-2xl shadow-black/25 max-sm:hidden">
+                    <div class="flex items-center gap-2 border-b border-shade-line px-4 py-2.5">
+                        <span class="flex gap-1.5" aria-hidden="true">
+                            <span class="size-2 rounded-full bg-shade-line"></span>
+                            <span class="size-2 rounded-full bg-shade-line"></span>
+                            <span class="size-2 rounded-full bg-shade-line"></span>
+                        </span>
+                        <span class="mx-auto font-mono text-[11px] text-shade-muted">{{ $terminalTitle }}</span>
                     </div>
-
-                    <!-- Row 5: the terms line -->
-                    <div class="proposal-row relative mt-6 border-t border-line pt-4">
-                        <p class="text-[11px] text-faint">{{ $termsText }}</p>
+                    <div class="flex flex-col gap-2 px-4 py-3.5 font-mono text-[11.5px]/5">
+                        <p class="text-shade-muted">{{ $terminalOne }}</p>
+                        <p class="text-shade-muted">{{ $terminalTwo }}</p>
+                        <p class="text-shade-ink">{{ $terminalThree }}<span class="brief-caret ml-1"></span></p>
                     </div>
                 </div>
 
             </div>
         </div>
-    </div>
     </div>
 </section>

@@ -1,26 +1,26 @@
 [
     {
-        "question": "Does it just write generic filler?",
-        "answer": "No — and the scope section is where you will notice. Pilot writes deliverables as countable items with an exclusions list, because that is what protects the margin. Anything it genuinely cannot infer from the brief it marks as an open question rather than quietly inventing a number."
+        "question": "Is this another orchestration DSL?",
+        "answer": "No. Pilot is a library you call from ordinary code — a function, a queue worker, a controller. There is no graph to draw and no YAML to learn. If you can write a class and a few typed methods, you have written an agent."
     },
     {
-        "question": "Where do the prices come from?",
-        "answer": "Two places: the rates you set once when you sign up, and anonymised ranges from comparable projects in your region. You always see the arithmetic, and you can override any line — everything downstream re-prices itself when you do."
+        "question": "What happens when a tool call fails?",
+        "answer": "The step retries with backoff. If it keeps failing, the run parks at its last checkpoint with the error attached rather than unwinding. You fix the tool, resume the run, and it picks up from that step instead of starting over."
     },
     {
-        "question": "Can I use my own template and terms?",
-        "answer": "Yes. Upload a proposal you have already sent and Pilot will match its structure, headings, and tone on everything it writes afterwards. Paste in your own contract clauses and it will use those instead of the defaults."
+        "question": "Which models does it work with?",
+        "answer": "Any of them. Pilot speaks the OpenAI and Anthropic wire formats natively and anything OpenAI-compatible through configuration. Model choice is per-step, so a cheap model can plan and an expensive one can write."
     },
     {
-        "question": "Do my clients need an account?",
-        "answer": "Never. A proposal goes out as a link that opens in any browser, or as a PDF attachment if that is how your client prefers to work. You still see when the link was opened."
+        "question": "Do I have to send you my data?",
+        "answer": "Only if you want hosted traces. The open-source runtime writes traces to your own Postgres and never calls home. Cloud is a place to put them, not a dependency of the framework."
     },
     {
-        "question": "What happens to my data?",
-        "answer": "Your briefs, rates, and proposals are yours. We do not train shared models on your content, and you can export everything or delete your account outright from the settings page at any time."
+        "question": "How is this different from just calling the API in a loop?",
+        "answer": "For a demo it is not. The difference shows up the first time a run dies at minute nine of twelve, or a tool gets an argument that does not type-check, or someone asks why the agent refunded that customer in March."
     },
     {
-        "question": "Is it worth it if I only send two proposals a month?",
-        "answer": "Probably, if either one is worth more than a few thousand. Most of the value is in pricing confidently and scoping tightly rather than in the time saved — but the time saved is roughly two hours per proposal, which tends to settle the argument."
+        "question": "Can a human approve things mid-run?",
+        "answer": "Yes, and this is the part teams underestimate. Put a gate anywhere in the loop; the run parks, routes to whoever should decide, and resumes exactly where it stopped once they do. Runs can wait for days."
     }
 ]

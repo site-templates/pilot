@@ -1,58 +1,62 @@
 /*
-    Pilot — the design system, the light field, and the motion system.
+    Pilot — the design system and the motion system.
 
     This file is inlined right after Tailwind by @vite in the layout, so
     everything here applies to every page. Pilot is deliberately NOT a
     themeable template: there is one palette and one type pairing, tuned
     together, and they live here rather than in a generated theme.css. The
     tokens below become real Tailwind utilities — bg-canvas, text-ink,
-    text-muted, border-line, bg-panel, text-accent, font-mono, and so on.
+    text-muted, border-line, bg-panel, bg-shade, font-mono, and so on.
 
-    To restyle the whole site, change the values in @theme. Nothing else
-    hard-codes a colour.
+    The palette is monochrome on purpose. All the colour in the page comes
+    from one painterly photograph in the hero; everything the interface draws
+    is off-white, paper, ink, and one soft black. Restraint is the whole idea.
 */
 
 @theme {
     /* ---- Type ------------------------------------------------------------
-        Geist for everything, Geist Mono for labels, nav, and the brief pane.
-        The mono at small sizes in caps is the site's signature texture.
+        Geist for everything, Geist Mono for labels, nav, and code. The mono
+        set small in caps is the site's signature texture.
     */
     --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
     --font-display: 'Geist', ui-sans-serif, system-ui, sans-serif;
     --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
     /* ---- Surfaces --------------------------------------------------------
-        Four steps from the page up to a raised card, all with a blue cast so
-        the light field never looks pasted onto neutral grey.
+        A warm off-white page, true white for raised cards, and a slightly
+        toasted step between them. Never pure #fff for the page itself — the
+        warmth is most of why it reads as considered rather than default.
     */
-    --color-canvas: #06070c;
-    --color-panel: #0c0e17;
-    --color-raised: #14161f;
-    --color-line: rgba(255, 255, 255, 0.08);
-    --color-line-strong: rgba(255, 255, 255, 0.14);
+    --color-canvas: #f6f5f2;
+    --color-panel: #ffffff;
+    --color-raised: #eeece6;
+    --color-line: rgba(15, 15, 14, 0.11);
+    --color-line-strong: rgba(15, 15, 14, 0.2);
+
+    /* ---- The dark counterpart --------------------------------------------
+        A soft black, not #000 — used for the nav dropdowns, the terminal, and
+        the one dark section. It is what stops a light page feeling thin.
+    */
+    --color-shade: #232320;
+    --color-shade-raised: #2e2e2a;
+    --color-shade-ink: #f4f3f0;
+    --color-shade-muted: #a3a29b;
+    --color-shade-line: rgba(255, 255, 255, 0.12);
 
     /* ---- Text, in four tiers --------------------------------------------- */
-    --color-ink: #f3f5fc;
-    --color-lede: #c4c9da;
-    --color-muted: #8e94a8;
-    --color-faint: #5e6479;
+    --color-ink: #0f0f0e;
+    --color-lede: #3d3d3a;
+    --color-muted: #6c6b66;
+    --color-faint: #97968f;
 
     /* ---- The accent ------------------------------------------------------
-        Indigo. Used for CTAs, the mark, and one focal glint per section.
+        Ink. In a monochrome palette the primary action is simply the darkest
+        thing on the page, which is exactly why it pulls the eye.
     */
-    --color-accent: #5b6cff;
-    --color-accent-ink: #ffffff;
-    --color-accent-soft: rgba(91, 108, 255, 0.13);
-    --color-accent-line: rgba(91, 108, 255, 0.32);
-
-    /* ---- The spectrum hues -----------------------------------------------
-        Three companions to the accent. They exist so the light field and the
-        card beds can carry a real hue spread — indigo through violet to pink,
-        lifted by a cool cyan — rather than one colour at three opacities.
-    */
-    --color-violet: #9a6bff;
-    --color-blush: #ff6ab0;
-    --color-cyan: #4bc4ff;
+    --color-accent: #0f0f0e;
+    --color-accent-ink: #f6f5f2;
+    --color-accent-soft: rgba(15, 15, 14, 0.05);
+    --color-accent-line: rgba(15, 15, 14, 0.24);
 
     /* One easing for everything interactive: fast in, long soft settle. */
     --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
@@ -72,8 +76,7 @@
 
 html {
     background-color: var(--color-canvas);
-    scrollbar-color: var(--color-raised) transparent;
-    color-scheme: dark;
+    color-scheme: light;
 }
 
 /* One stray wide element must never give the whole page a sideways scroll. */
@@ -82,88 +85,24 @@ body {
 }
 
 ::selection {
-    background-color: color-mix(in oklab, var(--color-accent) 34%, transparent);
-    color: var(--color-ink);
+    background-color: var(--color-ink);
+    color: var(--color-canvas);
 }
 
-/* A crisp accent ring instead of the browser's default halo. */
+/* A crisp ink ring instead of the browser's default halo. */
 :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-ink);
     outline-offset: 2px;
     border-radius: 3px;
 }
 
 /* ---------------------------------------------------------------------------
-    The light field
-
-    Pilot's background graphic, and the reason the site does not look like a
-    blurred gradient: a broad field of fine vertical light columns rising to
-    an irregular horizon, sweeping cyan through indigo and violet to magenta.
-
-    It is a photograph (public/images/hero-field.jpg) rather than CSS. A
-    gradient can imitate the colour but not the irregularity — the uneven
-    column heights and the grain are what stop it reading as generated.
-
-    It is deliberately large. At half this height it reads as a decoration;
-    at this scale it reads as the room the product sits in.
---------------------------------------------------------------------------- */
-
-.spectrum {
-    position: absolute;
-    /*
-        A band anchored to the top of the section rather than inset:0, so the
-        field rises through the headline and resolves before the content below.
-    */
-    inset: 0 0 auto 0;
-    /*
-        Stops above the stage. If the band runs long enough to reach it, the
-        stage's own top fade paints canvas straight over a still-bright field
-        and you get a hard horizontal seam across the hero.
-    */
-    height: 46rem;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/*
-    The field itself is a photograph, not a gradient — a frozen equalizer of
-    fine light columns sweeping cyan → indigo → violet → magenta. It is dark
-    across its top two thirds, which is exactly where the headline sits.
-*/
-.spectrum-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center bottom;
-    opacity: 0.9;
-}
-
-/* Dissolve the band into the canvas before the content below it starts. */
-.spectrum-veil {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent 0%, transparent 52%, var(--color-canvas) 100%);
-}
-
-/* The quieter band for inner page headers and the closing CTA. */
-.spectrum--calm {
-    height: 38rem;
-}
-
-.spectrum--calm .spectrum-image {
-    opacity: 0.4;
-}
-
-/* ---------------------------------------------------------------------------
     The stage
 
-    The full-bleed surface the product window stands on — a second photograph,
-    deep indigo silk, cropped to a band. The window overlaps it top and bottom,
-    so the composition reads as an object placed in a room rather than a
-    screenshot pasted onto a page.
+    The full-bleed band the product window stands on — a painterly landscape,
+    cropped wide. The window overlaps it top and bottom, so the composition
+    reads as an object placed in a room rather than a screenshot pasted onto
+    a page. It is the only colour on the site, which is what makes it land.
 --------------------------------------------------------------------------- */
 
 .stage {
@@ -180,60 +119,58 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 58%;
-    opacity: 0.85;
+    object-position: center 46%;
 }
 
 /*
-    Feather every edge into the canvas so the photograph never shows a seam —
-    the band should look like light, not like a placed rectangle. The stops sit
-    close to the edges on purpose: pull them further in and the window covers
-    everything that is left, which defeats the point of having a stage.
+    Feather the top and bottom into the canvas so the band never shows a hard
+    seam. The sides stay square — a full-bleed edge is the point.
 */
 .stage-veil {
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(to bottom, var(--color-canvas) 0%, transparent 16%, transparent 84%, var(--color-canvas) 100%),
-        linear-gradient(to right, var(--color-canvas) 0%, transparent 10%, transparent 90%, var(--color-canvas) 100%);
+    background: linear-gradient(to bottom, var(--color-canvas) 0%, transparent 14%, transparent 88%, var(--color-canvas) 100%);
 }
 
 /* ---------------------------------------------------------------------------
-    Tinted beds
+    The nav dropdown
 
-    The coloured panels behind card visuals and icons. Each .tint-* sets two
-    custom properties, and .bed-wash paints them as a pair of corner glows
-    with a diagonal lift — so one rule serves every card and swapping a card's
-    tint is a one-word change in the collection.
+    A soft-black rounded panel. It lives in the DOM at full size; opening is a
+    transform and opacity move with its origin at the trigger, and a short
+    exit so pointer travel between items never slams it shut.
 --------------------------------------------------------------------------- */
 
-.bed-wash {
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(88% 78% at 18% 0%, var(--bed-a), transparent 70%),
-        radial-gradient(78% 88% at 100% 100%, var(--bed-b), transparent 72%),
-        linear-gradient(158deg, color-mix(in oklab, var(--bed-a) 34%, transparent), transparent 62%);
+[data-dropdown-panel] {
+    opacity: 0;
+    translate: 0 6px;
+    scale: 0.97;
+    visibility: hidden;
+    transform-origin: top center;
+    transition:
+        opacity 0.2s var(--ease-out-quart),
+        translate 0.2s var(--ease-out-quart),
+        scale 0.2s var(--ease-out-quart),
+        visibility 0s linear 0.2s;
 }
 
-.tint-indigo {
-    --bed-a: color-mix(in oklab, var(--color-accent) 46%, transparent);
-    --bed-b: color-mix(in oklab, var(--color-violet) 32%, transparent);
+[data-dropdown].is-open [data-dropdown-panel] {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+    visibility: visible;
+    transition:
+        opacity 0.22s var(--ease-out-quart),
+        translate 0.22s var(--ease-out-quart),
+        scale 0.22s var(--ease-out-quart),
+        visibility 0s;
 }
 
-.tint-violet {
-    --bed-a: color-mix(in oklab, var(--color-violet) 44%, transparent);
-    --bed-b: color-mix(in oklab, var(--color-blush) 28%, transparent);
+[data-dropdown] .dropdown-caret {
+    transition: rotate 0.22s var(--ease-out-quart);
 }
 
-.tint-blush {
-    --bed-a: color-mix(in oklab, var(--color-blush) 36%, transparent);
-    --bed-b: color-mix(in oklab, var(--color-accent) 28%, transparent);
-}
-
-.tint-cyan {
-    --bed-a: color-mix(in oklab, var(--color-cyan) 36%, transparent);
-    --bed-b: color-mix(in oklab, var(--color-accent) 32%, transparent);
+[data-dropdown].is-open .dropdown-caret {
+    rotate: 180deg;
 }
 
 /* ---------------------------------------------------------------------------
@@ -317,7 +254,7 @@ body {
 /* ---------------------------------------------------------------------------
     The Brief Transformer — Pilot's signature.
 
-    A two-pane window: the client's messy brief on the left, the proposal
+    A three-pane window: the run queue, the live trace of the active run,
     Pilot returns on the right. The rows on the right resolve in sequence as
     the window scrolls in, so the product explains itself in one glance.
 --------------------------------------------------------------------------- */
@@ -327,7 +264,7 @@ body {
     isolation: isolate;
 }
 
-/* The seam between the panes, with a pulse travelling brief → proposal. */
+/* The seam between the panes, with a pulse travelling along it. */
 .transformer-seam {
     position: relative;
     overflow: hidden;
@@ -352,7 +289,7 @@ body {
     Proposal rows start dimmed and settle as they resolve. main.js adds
     .is-resolved in sequence; without JavaScript they are simply all resolved.
 */
-.js .proposal-row {
+.js .trace-row {
     opacity: 0.25;
     translate: 0 6px;
     transition:
@@ -360,13 +297,13 @@ body {
         translate 0.5s var(--ease-out-quart);
 }
 
-.js .proposal-row.is-resolved {
+.js .trace-row.is-resolved {
     opacity: 1;
     translate: 0 0;
 }
 
-/* The generating shimmer that sweeps the proposal pane once as it resolves. */
-.proposal-sweep {
+/* The shimmer that sweeps the trace pane once as its rows resolve. */
+.trace-sweep {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -379,11 +316,11 @@ body {
     );
 }
 
-.js .transformer.is-generating .proposal-sweep {
-    animation: proposal-sweep 1.5s var(--ease-out-quart) 1;
+.js .transformer.is-generating .trace-sweep {
+    animation: trace-sweep 1.5s var(--ease-out-quart) 1;
 }
 
-@keyframes proposal-sweep {
+@keyframes trace-sweep {
     0% { opacity: 0; translate: -60% 0; }
     30% { opacity: 1; }
     100% { opacity: 0; translate: 60% 0; }
@@ -685,7 +622,7 @@ details.faq-item summary::-webkit-details-marker {
 
 @media (prefers-reduced-motion: reduce) {
     .js [data-reveal],
-    .js .proposal-row {
+    .js .trace-row {
         opacity: 1;
         translate: 0 0;
         filter: none;
@@ -696,7 +633,7 @@ details.faq-item summary::-webkit-details-marker {
     .marquee,
     .brief-caret,
     .transformer-seam::after,
-    .js .transformer.is-generating .proposal-sweep {
+    .js .transformer.is-generating .trace-sweep {
         animation: none;
     }
 

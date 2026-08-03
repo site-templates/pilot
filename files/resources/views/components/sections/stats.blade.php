@@ -1,5 +1,5 @@
 @props([
-    'label' => 'Measured across 40,000 proposals sent through Pilot in 2025',
+    'label' => 'Measured across 1.4M agent runs on Pilot in 2025',
     'items',
 ])
 <!--

@@ -4,7 +4,7 @@ fields:
     label:
         type: text
         label: Footnote
-        default: "Measured across 40,000 proposals sent through Pilot in 2025"
+        default: "Measured across 1.4M agent runs on Pilot in 2025"
     items:
         type: repeater
         label: Numbers

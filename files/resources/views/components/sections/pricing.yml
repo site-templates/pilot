@@ -8,12 +8,12 @@ fields:
     heading:
         type: text
         label: Heading
-        default: "Priced like a tool, not a percentage"
+        default: "Free to run. Pay for what you keep."
     body:
         type: textarea
         label: Supporting copy
         rows: 3
-        default: "No cut of your invoices, no per-proposal fee, no seat you forgot you were paying for. Pick a plan, send as many as you like."
+        default: "The runtime is open source and always will be. Cloud is where your traces, evals, and approvals live if you would rather not run them yourself."
     items:
         type: repeater
         label: Plans
@@ -40,7 +40,7 @@ fields:
             ctaText:
                 type: text
                 label: Button text
-                default: "Start free"
+                default: "Get started"
             ctaLink:
                 type: url
                 label: Button link

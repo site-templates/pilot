@@ -9,9 +9,9 @@
     'authorImage' => '',
     'backText' => 'Guides',
     'backLink' => '/guides',
-    'ctaHeading' => 'Stop writing these by hand',
-    'ctaBody' => 'Pilot turns a brief this size into the whole document — scope, packages, schedule, terms.',
-    'ctaText' => 'Start free',
+    'ctaHeading' => 'Stop writing the loop by hand',
+    'ctaBody' => 'Pilot gives you the durable loop, typed tools, and the trace — so you write the agent, not the plumbing.',
+    'ctaText' => 'Get started',
     'ctaLink' => '/pricing',
     'fieldImage' => '/images/hero-field.jpg',
 ])

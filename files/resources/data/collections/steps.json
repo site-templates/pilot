@@ -1,20 +1,20 @@
 [
     {
         "number": "01",
-        "title": "Paste the brief",
-        "body": "Forward the email, drop in the Slack thread, or type three lines from the discovery call. Pilot reads messy — half sentences, a budget that moves, and \"we'll figure that bit out later\" all parse fine.",
-        "meta": "About ten seconds"
+        "title": "Describe the agent",
+        "body": "A name, a goal, and the tools it may call. Pilot infers the schema from your function signatures, so the model only ever sees arguments that type-check.",
+        "meta": "About fifteen lines"
     },
     {
         "number": "02",
-        "title": "Check the numbers",
-        "body": "Pilot comes back with scope, three packages, and a schedule. You correct what it got wrong — usually one line item and a rate — and everything downstream re-prices itself.",
-        "meta": "Two minutes, most of it reading"
+        "title": "Let the loop run",
+        "body": "Pilot plans, calls tools, checkpoints after every step, and retries the ones that fail. Long runs park themselves waiting on a human instead of dying at the timeout.",
+        "meta": "Minutes, hours, or days"
     },
     {
         "number": "03",
-        "title": "Send it while they're warm",
-        "body": "Export a branded PDF, share a link that tells you the moment it's opened, or push it straight into your contract tool. The follow-ups queue themselves for day three and day eight.",
-        "meta": "One click, then it's gone"
+        "title": "Read the trace, then ship",
+        "body": "Every decision, every argument, every token is recorded. Replay a run against a new prompt or a cheaper model and diff the two before you change anything.",
+        "meta": "Before it reaches production"
     }
 ]

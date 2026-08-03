@@ -2,8 +2,8 @@
     'eyebrow' => 'Questions',
     'heading' => 'The ones people actually ask',
     'body' => 'Still unsure? Write to us and a person answers.',
-    'linkText' => 'hello@pilot.co',
-    'linkHref' => 'mailto:hello@pilot.co',
+    'linkText' => 'hello@pilot.dev',
+    'linkHref' => 'mailto:hello@pilot.dev',
     'items',
 ])
 <!--
