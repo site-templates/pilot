@@ -24,9 +24,10 @@
 
     <article class="relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32">
 
-        <div class="aurora aurora--calm" aria-hidden="true">
-            <span class="aurora-lobe aurora-lobe--core"></span>
-            <span class="aurora-veil"></span>
+        <div class="spectrum spectrum--calm" aria-hidden="true">
+            <span class="spectrum-bloom"></span>
+            <span class="spectrum-field"><span class="spectrum-bars"></span></span>
+            <span class="spectrum-veil"></span>
         </div>
 
         <div class="relative z-10 mx-auto w-full max-w-6xl px-6">

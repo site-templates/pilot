@@ -75,7 +75,7 @@
     --color-ring: var(--ring);
 
     --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-    --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
 
     --radius-small: var(--radius-small);
     --radius-medium: var(--radius-medium);

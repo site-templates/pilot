@@ -8,26 +8,32 @@
     'note' => 'No card required · Cancel any time · Your templates stay yours',
 ])
 <!--
-    The closing ask, over a calmer version of the hero's mesh — one lobe, no
-    beams, blurred further out (the .aurora--calm rules in site.css).
+    The closing ask, over a quieter version of the hero's spectrum. Laid out
+    asymmetrically — the line on the left, everything you act on to the right
+    — so the page does not end on the same centred stack every landing page
+    ends on.
 -->
 <section class="relative overflow-hidden border-t border-line py-24 sm:py-32">
 
-    <div class="aurora aurora--calm" aria-hidden="true">
-        <span class="aurora-lobe aurora-lobe--core"></span>
-        <span class="aurora-lobe aurora-lobe--warm"></span>
-        <span class="aurora-veil"></span>
+    <div class="spectrum spectrum--calm" aria-hidden="true">
+        <span class="spectrum-bloom"></span>
+        <span class="spectrum-field"><span class="spectrum-bars"></span></span>
+        <span class="spectrum-veil"></span>
     </div>
 
-    <div class="relative z-10 mx-auto w-full max-w-6xl px-6 text-center">
-        <h2 class="mx-auto max-w-[20ch] font-display text-4xl leading-[1.1] font-semibold tracking-[-0.03em] text-balance text-ink sm:text-5xl" data-reveal>{{ $heading }}</h2>
-        <p class="reveal-1 mx-auto mt-6 max-w-[52ch] text-base/7 text-pretty text-muted" data-reveal>{{ $body }}</p>
+    <div class="relative z-10 mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-20">
 
-        <div class="reveal-2 mt-10 flex flex-wrap items-center justify-center gap-3" data-reveal>
-            <a href="{{ $ctaLink }}" class="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-ink transition-opacity duration-200 hover:opacity-90">{{ $ctaText }}</a>
-            <a href="{{ $secondaryLink }}" class="rounded-full border border-line bg-panel/50 px-5 py-3 text-sm font-medium text-ink backdrop-blur-sm transition-colors duration-200 hover:border-accent-line hover:bg-panel">{{ $secondaryText }}</a>
+        <h2 class="max-w-[16ch] font-display text-4xl leading-[1.04] font-semibold tracking-[-0.04em] text-balance text-ink sm:text-5xl lg:text-[3.5rem]" data-reveal>{{ $heading }}</h2>
+
+        <div class="reveal-1" data-reveal>
+            <p class="max-w-[46ch] text-base/7 text-pretty text-muted">{{ $body }}</p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+                <a href="{{ $ctaLink }}" class="rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity duration-200 hover:opacity-90">{{ $ctaText }}</a>
+                <a href="{{ $secondaryLink }}" class="rounded-full border border-line px-5 py-3 text-sm font-medium text-ink transition-colors duration-200 hover:border-accent-line hover:bg-panel/60">{{ $secondaryText }}</a>
+            </div>
+
+            <p class="mt-7 font-mono text-[11px] tracking-widest text-faint uppercase">{{ $note }}</p>
         </div>
-
-        <p class="reveal-3 mt-8 font-mono text-[11px] tracking-widest text-faint uppercase" data-reveal>{{ $note }}</p>
     </div>
 </section>

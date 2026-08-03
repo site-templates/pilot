@@ -10,7 +10,7 @@
     "accent": "#4a64f2",
     "themeable": true,
     "palette": "cobalt",
-    "fonts": "sora",
+    "fonts": "inter",
     "appearance": "dark",
     "pages": [
         "Home",

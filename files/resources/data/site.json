@@ -2,8 +2,8 @@
     "name": "Pilot",
     "theme": {
         "palette": "cobalt",
-        "fonts": "sora",
-        "fonts_url": "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap",
+        "fonts": "inter",
+        "fonts_url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap",
         "appearance": "dark",
         "appearance_class": "dark"
     },

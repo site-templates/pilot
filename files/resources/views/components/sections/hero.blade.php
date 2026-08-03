@@ -1,6 +1,8 @@
 @props([
+    'eyebrow' => 'Proposal software for independent studios',
     'showBadge' => '1',
-    'badgeText' => 'Contract-ready terms just shipped',
+    'badgeLabel' => 'New',
+    'badgeText' => 'Contract-ready terms',
     'badgeLink' => '/guides/writing-scope-that-holds',
     'heading' => 'From a two-line brief to a proposal worth signing.',
     'body' => 'Paste what the client actually sent you. Pilot returns the scope, the milestones, three priced packages, and terms you can put your name on.',
@@ -40,48 +42,53 @@
 -->
 <section id="hero" class="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24">
 
-    <!-- The aurora mesh. main.js parallaxes the whole layer on scroll. -->
-    <div class="aurora" data-mesh-parallax aria-hidden="true">
-        <span class="aurora-lobe aurora-lobe--warm"></span>
-        <span class="aurora-lobe aurora-lobe--core"></span>
-        <span class="aurora-lobe aurora-lobe--cool"></span>
-        <span class="aurora-beam"></span>
-        <span class="aurora-grid"></span>
-        <span class="aurora-veil"></span>
+    <!-- The spectrum. main.js parallaxes the whole layer on scroll. -->
+    <div class="spectrum" data-mesh-parallax aria-hidden="true">
+        <span class="spectrum-bloom"></span>
+        <span class="spectrum-field"><span class="spectrum-bars"></span></span>
+        <span class="spectrum-veil"></span>
     </div>
 
-    <div class="relative z-10 mx-auto w-full max-w-6xl px-6 text-center">
+    <div class="relative z-10 mx-auto w-full max-w-6xl px-6">
 
-        @if ($showBadge)
-        <a href="{{ $badgeLink }}" class="group inline-flex items-center gap-2.5 rounded-full border border-line bg-panel/60 py-1.5 pr-3 pl-2 text-[13px] backdrop-blur-sm transition-colors duration-200 hover:border-accent-line" data-reveal>
-            <span class="flex items-center gap-1.5 rounded-full bg-accent-soft px-2 py-0.5 font-medium text-accent">
-                <span class="size-1.5 rounded-full bg-accent"></span>
-                New
-            </span>
-            <span class="text-muted transition-colors duration-200 group-hover:text-ink">{{ $badgeText }}</span>
-            <svg viewBox="0 0 16 16" class="size-3.5 fill-faint transition-all duration-200 group-hover:translate-x-0.5 group-hover:fill-ink" aria-hidden="true">
-                <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd"/>
+        <!-- The category line: the mark, then what this is, in six words -->
+        <p class="flex items-center gap-2.5 font-mono text-[11px] tracking-widest text-muted uppercase" data-reveal>
+            <svg viewBox="0 0 24 24" class="size-3.5 shrink-0 fill-accent" aria-hidden="true">
+                <path d="M12 1.9 21.4 21.4 12 16.9 2.6 21.4Z"/>
             </svg>
-        </a>
-        @endif
+            {{ $eyebrow }}
+        </p>
 
-        <h1 class="reveal-1 text-gradient mx-auto mt-8 max-w-[19ch] font-display text-[2.75rem] leading-[1.04] font-semibold tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.5rem]" data-reveal>
+        <h1 class="reveal-1 mt-7 max-w-[26ch] font-display text-[3rem] leading-[0.98] font-semibold tracking-[-0.045em] text-balance text-ink sm:text-[4.25rem] lg:text-[5rem]" data-reveal>
             {{ $heading }}
         </h1>
 
-        <p class="reveal-2 mx-auto mt-7 max-w-[54ch] text-lg/8 text-pretty text-lede" data-reveal>{{ $body }}</p>
+        <!-- Sub-copy on the left, the announcement sharing its baseline on the right -->
+        <div class="reveal-2 mt-10 flex flex-wrap items-end justify-between gap-x-12 gap-y-5 sm:mt-12" data-reveal>
+            <p class="max-w-[46ch] text-lg/8 text-pretty text-lede">{{ $body }}</p>
 
-        <div class="reveal-3 mt-10 flex flex-wrap items-center justify-center gap-3" data-reveal>
-            <a href="{{ $ctaLink }}" class="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-ink transition-opacity duration-200 hover:opacity-90">{{ $ctaText }}</a>
-            <a href="{{ $secondaryLink }}" class="group flex items-center gap-2 rounded-full border border-line bg-panel/50 px-5 py-3 text-sm font-medium text-ink backdrop-blur-sm transition-colors duration-200 hover:border-accent-line hover:bg-panel">
-                {{ $secondaryText }}
+            @if ($showBadge)
+            <a href="{{ $badgeLink }}" class="group flex shrink-0 items-center gap-2.5 text-[15px]">
+                <span class="font-medium text-ink">{{ $badgeLabel }}</span>
+                <span class="text-muted transition-colors duration-200 group-hover:text-ink">{{ $badgeText }}</span>
                 <svg viewBox="0 0 16 16" class="size-3.5 fill-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:fill-ink" aria-hidden="true">
                     <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd"/>
                 </svg>
             </a>
+            @endif
         </div>
 
-        <p class="reveal-4 mx-auto mt-6 max-w-[42ch] font-mono text-[11px] tracking-widest text-balance text-faint uppercase" data-reveal>{{ $trustNote }}</p>
+        <div class="reveal-3 mt-11 flex flex-wrap items-center gap-3" data-reveal>
+            <a href="{{ $ctaLink }}" class="rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity duration-200 hover:opacity-90">{{ $ctaText }}</a>
+            <a href="{{ $secondaryLink }}" class="group flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-medium text-ink transition-colors duration-200 hover:border-accent-line hover:bg-panel/60">
+                {{ $secondaryText }}
+                <svg viewBox="0 0 16 16" class="size-3.5 fill-muted transition-all duration-200 group-hover:translate-x-0.5 group-hover:fill-ink" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd"/>
+            </svg>
+            </a>
+        </div>
+
+        <p class="reveal-4 mt-7 font-mono text-[11px] tracking-widest text-balance text-faint uppercase" data-reveal>{{ $trustNote }}</p>
     </div>
 
     <!--

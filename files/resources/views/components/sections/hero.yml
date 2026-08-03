@@ -4,15 +4,25 @@
 title: Hero
 description: The opening statement and the Brief Transformer — the client's email beside the proposal Pilot returns
 fields:
+    eyebrow:
+        type: text
+        label: Category line
+        description: The small line above the headline, beside the mark.
+        default: "Proposal software for independent studios"
     showBadge:
         type: toggle
-        label: Show announcement badge
-        description: Turn off to hide the pill above the headline.
+        label: Show announcement
+        description: Turn off to hide the announcement beside the sub-copy.
         default: "1"
+    badgeLabel:
+        type: text
+        label: Announcement label
+        description: The bold word before the announcement.
+        default: "New"
     badgeText:
         type: text
         label: Announcement text
-        default: "Contract-ready terms just shipped"
+        default: "Contract-ready terms"
     badgeLink:
         type: url
         label: Announcement link

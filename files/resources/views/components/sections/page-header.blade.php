@@ -13,11 +13,10 @@
 -->
 <section class="relative overflow-hidden border-b border-line pt-36 pb-16 sm:pt-44 sm:pb-20">
 
-    <div class="aurora aurora--calm" aria-hidden="true">
-        <span class="aurora-lobe aurora-lobe--core"></span>
-        <span class="aurora-lobe aurora-lobe--cool"></span>
-        <span class="aurora-grid"></span>
-        <span class="aurora-veil"></span>
+    <div class="spectrum spectrum--calm" aria-hidden="true">
+        <span class="spectrum-bloom"></span>
+        <span class="spectrum-field"><span class="spectrum-bars"></span></span>
+        <span class="spectrum-veil"></span>
     </div>
 
     <div class="relative z-10 mx-auto w-full max-w-6xl px-6">

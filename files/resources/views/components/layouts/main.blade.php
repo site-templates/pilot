@@ -10,10 +10,10 @@
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
-    <!-- Sora carries the headlines, Inter the body copy. -->
+    <!-- Inter carries the whole site — one neutral grotesk, tightened hard at display sizes. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="{{ $site->theme->fonts_url ?? 'https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap' }}" rel="stylesheet">
+    <link href="{{ $site->theme->fonts_url ?? 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap' }}" rel="stylesheet">
 
     <!-- Loads Tailwind and inlines the theme tokens plus resources/css/site.css (mesh + motion) -->
     @vite(['resources/css/theme.css', 'resources/css/site.css'])
