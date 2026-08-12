@@ -6,22 +6,16 @@
     'secondaryText' => 'Talk to us',
     'secondaryLink' => 'mailto:hello@pilot.dev',
     'note' => 'Apache 2.0 · No account needed to start · Bring your own models',
-    'fieldImage' => '/images/hero-field.jpg',
 ])
 <!--
-    The closing ask, over a quieter version of the hero's spectrum. Laid out
+    The closing ask, on a hairline-topped band of bare canvas. Laid out
     asymmetrically — the line on the left, everything you act on to the right
     — so the page does not end on the same centred stack every landing page
     ends on.
 -->
-<section class="relative overflow-hidden border-t border-line py-24 sm:py-32">
+<section class="border-t border-line py-24 sm:py-32">
 
-    <div class="spectrum spectrum--calm" aria-hidden="true">
-        <img src="{{ $fieldImage }}" alt="" class="spectrum-image" width="1920" height="1086" loading="lazy">
-        <span class="spectrum-veil"></span>
-    </div>
-
-    <div class="relative z-10 mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-20">
+    <div class="mx-auto grid w-full max-w-6xl gap-10 px-6 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-20">
 
         <h2 class="max-w-[16ch] font-display text-4xl leading-[1.04] font-semibold tracking-[-0.04em] text-balance text-ink sm:text-5xl lg:text-[3.5rem]" data-reveal>{{ $heading }}</h2>
 

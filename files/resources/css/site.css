@@ -629,7 +629,6 @@ details.faq-item summary::-webkit-details-marker {
         transition: none;
     }
 
-    .spectrum-bars,
     .marquee,
     .brief-caret,
     .transformer-seam::after,

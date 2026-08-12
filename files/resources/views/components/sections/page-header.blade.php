@@ -5,21 +5,15 @@
     'showMeta' => '0',
     'metaOne' => '',
     'metaTwo' => '',
-    'fieldImage' => '/images/hero-field.jpg',
 ])
 <!--
-    The opening block for inner pages. Left-aligned over a calm mesh, so it
+    The opening block for inner pages. Left-aligned on the bare canvas, so it
     reads as a sibling of the homepage hero rather than a repeat of it. Turn
     on showMeta for the two small stats beside the heading.
 -->
-<section class="relative overflow-hidden border-b border-line pt-36 pb-16 sm:pt-44 sm:pb-20">
+<section class="border-b border-line pt-36 pb-16 sm:pt-44 sm:pb-20">
 
-    <div class="spectrum spectrum--calm" aria-hidden="true">
-        <img src="{{ $fieldImage }}" alt="" class="spectrum-image" width="1920" height="1086" loading="lazy">
-        <span class="spectrum-veil"></span>
-    </div>
-
-    <div class="relative z-10 mx-auto w-full max-w-6xl px-6">
+    <div class="mx-auto w-full max-w-6xl px-6">
         <p class="font-mono text-[11px] tracking-widest text-accent uppercase" data-reveal>{{ $eyebrow }}</p>
 
         <div class="reveal-1 mt-5 flex flex-wrap items-end justify-between gap-x-16 gap-y-8" data-reveal>

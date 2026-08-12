@@ -13,7 +13,6 @@
     'ctaBody' => 'Pilot gives you the durable loop, typed tools, and the trace — so you write the agent, not the plumbing.',
     'ctaText' => 'Get started',
     'ctaLink' => '/pricing',
-    'fieldImage' => '/images/hero-field.jpg',
 ])
 <!--
     The chrome around a single guide: the title block runs full width, then the
@@ -23,14 +22,9 @@
 -->
 <x-layouts.main :title="$title" :description="$description">
 
-    <article class="relative overflow-hidden pt-32 pb-24 sm:pt-40 sm:pb-32">
+    <article class="pt-32 pb-24 sm:pt-40 sm:pb-32">
 
-        <div class="spectrum spectrum--calm" aria-hidden="true">
-            <img src="{{ $fieldImage }}" alt="" class="spectrum-image" width="1920" height="1086" loading="lazy">
-            <span class="spectrum-veil"></span>
-        </div>
-
-        <div class="relative z-10 mx-auto w-full max-w-6xl px-6">
+        <div class="mx-auto w-full max-w-6xl px-6">
 
             <!-- Title block -->
             <div class="max-w-[46rem]">

@@ -30,8 +30,3 @@ fields:
         type: text
         label: Footnote
         default: "Apache 2.0 · No account needed to start · Bring your own models"
-    fieldImage:
-        type: image
-        label: Backdrop
-        description: "The quiet light field behind this block."
-        default: "/images/hero-field.jpg"
