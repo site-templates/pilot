@@ -12,6 +12,12 @@
 
     Reduced motion short-circuits all of it: everything is revealed at once
     and no timeline is ever built.
+
+    setUp(root) owns everything inside <main> — reveals, the transformer,
+    the mesh parallax, the spotlight cards. It runs once on load and again
+    after every instant navigation for the swapped-in <main>, tearing down
+    the old page's ScrollTriggers, observers and timers first. The header
+    (glass, dropdowns, mobile menu) binds once — it persists across pages.
 */
 
 // Flag the document early so CSS only hides reveal targets when JS will
@@ -19,27 +25,94 @@
 document.documentElement.classList.add('js');
 
 var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var hasGsap = false;
 
-document.addEventListener('DOMContentLoaded', function () {
-    hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+// GSAP loads with defer ahead of this file, so it is here by now if it is
+// coming at all.
+var hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
 
-    if (hasGsap) {
-        window.gsap.registerPlugin(window.ScrollTrigger);
-    }
+if (hasGsap) {
+    window.gsap.registerPlugin(window.ScrollTrigger);
+}
 
-    headerState();
-    dropdowns();
-    mobileMenu();
+// The handles the current <main> owns — see tearDown.
+var triggers = [];
+var tweens = [];
+var revealObserver = null;
+var revealWatched = [];
+var transformerObserver = null;
+var transformerTimers = [];
+
+headerState();
+dropdowns();
+mobileMenu();
+markCurrentMenuItem();
+setUp(document);
+
+// A new page arrived in place: land on it with the header at rest, then
+// build the page's motion for the new <main>.
+document.addEventListener('instant:navigated', function (event) {
+    closeMobileMenu();
+    closeDropdowns();
     markCurrentMenuItem();
-    spotlightCards();
-    reveals();
-    transformer();
+    setUp(event.detail.main);
+});
+
+function setUp(root) {
+    tearDown();
+
+    spotlightCards(root);
+    reveals(root);
+    transformer(root);
 
     if (hasGsap && !reduceMotion) {
-        meshParallax();
+        meshParallax(root);
     }
-});
+
+    if (hasGsap) {
+        window.ScrollTrigger.refresh();
+    }
+}
+
+/*
+    Every handle the last <main> owned: the ScrollTriggers (and tweens) built
+    for its content, the fallback observers, and the transformer's timers.
+    Header-level triggers, if any are ever added, should be kept out of
+    `triggers` so they survive tearDown.
+*/
+function tearDown() {
+    triggers.forEach(function (trigger) {
+        trigger.kill();
+    });
+    triggers = [];
+
+    tweens.forEach(function (tween) {
+        if (tween.scrollTrigger) {
+            tween.scrollTrigger.kill();
+        }
+        tween.kill();
+    });
+    tweens = [];
+
+    if (revealObserver) {
+        revealWatched = revealWatched.filter(function (el) {
+            if (el.isConnected && !el.classList.contains('is-visible')) {
+                return true;
+            }
+            revealObserver.unobserve(el);
+            return false;
+        });
+    }
+
+    if (transformerObserver) {
+        transformerObserver.disconnect();
+        transformerObserver = null;
+    }
+
+    transformerTimers.forEach(function (timer) {
+        clearTimeout(timer);
+    });
+    transformerTimers = [];
+}
 
 /*
     The header rests transparent at the very top of the page; the moment
@@ -143,9 +216,17 @@ function dropdowns() {
 
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
-            roots.forEach(function (root) {
-                root.classList.remove('is-open');
-            });
+            closeDropdowns();
+        }
+    });
+}
+
+function closeDropdowns() {
+    document.querySelectorAll('[data-dropdown]').forEach(function (root) {
+        root.classList.remove('is-open');
+        var t = root.querySelector('[data-dropdown-trigger]');
+        if (t) {
+            t.setAttribute('aria-expanded', 'false');
         }
     });
 }
@@ -169,19 +250,25 @@ function mobileMenu() {
     });
 
     panel.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-            document.documentElement.classList.remove('menu-open');
-            button.setAttribute('aria-expanded', 'false');
-        });
+        link.addEventListener('click', closeMobileMenu);
     });
 
     // Escape closes the sheet from anywhere.
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
-            document.documentElement.classList.remove('menu-open');
-            button.setAttribute('aria-expanded', 'false');
+            closeMobileMenu();
         }
     });
+}
+
+function closeMobileMenu() {
+    var button = document.querySelector('[data-mobile-toggle]');
+
+    document.documentElement.classList.remove('menu-open');
+
+    if (button) {
+        button.setAttribute('aria-expanded', 'false');
+    }
 }
 
 /*
@@ -190,8 +277,8 @@ function mobileMenu() {
     available, an IntersectionObserver when it is not. Either way each element
     animates once, and --reveal-delay staggers siblings.
 */
-function reveals() {
-    var targets = document.querySelectorAll('[data-reveal]');
+function reveals(root) {
+    var targets = root.querySelectorAll('[data-reveal]');
 
     // Reduced motion, or no observer support at all: show everything now.
     if (reduceMotion || !('IntersectionObserver' in window)) {
@@ -201,14 +288,14 @@ function reveals() {
 
     if (hasGsap) {
         targets.forEach(function (el) {
-            window.ScrollTrigger.create({
+            triggers.push(window.ScrollTrigger.create({
                 trigger: el,
                 start: 'top 92%',
                 once: true,
                 onEnter: function () {
                     el.classList.add('is-visible');
                 },
-            });
+            }));
 
             // Anything already above the fold reveals immediately.
             if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
@@ -219,20 +306,23 @@ function reveals() {
         return;
     }
 
-    var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    if (!revealObserver) {
+        revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    }
 
     targets.forEach(function (el) {
         if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
             el.classList.add('is-visible');
         } else {
-            observer.observe(el);
+            revealObserver.observe(el);
+            revealWatched.push(el);
         }
     });
 }
@@ -251,8 +341,8 @@ function showAll(nodes) {
     Without GSAP the same sequence runs on a plain timer; with reduced motion
     every row is simply resolved from the start.
 */
-function transformer() {
-    var root = document.querySelector('[data-transformer]');
+function transformer(scope) {
+    var root = scope.querySelector('[data-transformer]');
 
     if (!root) {
         return;
@@ -278,30 +368,30 @@ function transformer() {
         root.classList.add('is-generating');
 
         rows.forEach(function (row, index) {
-            setTimeout(function () {
+            transformerTimers.push(setTimeout(function () {
                 row.classList.add('is-resolved');
-            }, 260 + index * 130);
+            }, 260 + index * 130));
         });
     }
 
     if (hasGsap) {
-        window.ScrollTrigger.create({ trigger: root, start: 'top 85%', once: true, onEnter: run });
+        triggers.push(window.ScrollTrigger.create({ trigger: root, start: 'top 85%', once: true, onEnter: run }));
     }
 
     // The window sits above the fold on most screens, so start it either way.
     if (root.getBoundingClientRect().top < window.innerHeight * 0.85) {
         run();
     } else if (!hasGsap) {
-        var observer = new IntersectionObserver(function (entries) {
+        transformerObserver = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     run();
-                    observer.disconnect();
+                    transformerObserver.disconnect();
                 }
             });
         }, { threshold: 0.15 });
 
-        observer.observe(root);
+        transformerObserver.observe(root);
     }
 }
 
@@ -310,9 +400,9 @@ function transformer() {
     scroll parallax on top, sliding the whole mesh slower than the page so
     the hero feels like it has depth. Skipped entirely on reduced motion.
 */
-function meshParallax() {
-    document.querySelectorAll('[data-mesh-parallax]').forEach(function (mesh) {
-        window.gsap.to(mesh, {
+function meshParallax(root) {
+    root.querySelectorAll('[data-mesh-parallax]').forEach(function (mesh) {
+        tweens.push(window.gsap.to(mesh, {
             yPercent: 14,
             ease: 'none',
             scrollTrigger: {
@@ -321,18 +411,21 @@ function meshParallax() {
                 end: 'bottom top',
                 scrub: 0.6,
             },
-        });
+        }));
     });
 }
 
 /*
     aria-current tells screen readers which page you're on and lights up the
     active nav link. Section pages count for their parents, so /guides/some
-    guide keeps Guides lit.
+    guide keeps Guides lit. Recomputed after every instant navigation, so the
+    mark is cleared first.
 */
 function markCurrentMenuItem() {
     document.querySelectorAll('#header a[href], [data-mobile-panel] a[href]').forEach(function (link) {
         var path = window.location.pathname;
+
+        link.removeAttribute('aria-current');
 
         if (link.pathname !== '/' && (path === link.pathname || path.startsWith(link.pathname + '/'))) {
             link.setAttribute('aria-current', 'page');
@@ -346,8 +439,8 @@ function markCurrentMenuItem() {
     Spotlight cards: track the pointer per card and let the CSS ::after layer
     paint a soft accent bloom underneath it.
 */
-function spotlightCards() {
-    document.querySelectorAll('.spotlight-card').forEach(function (card) {
+function spotlightCards(root) {
+    root.querySelectorAll('.spotlight-card').forEach(function (card) {
         card.addEventListener('pointermove', function (event) {
             var rect = card.getBoundingClientRect();
             card.style.setProperty('--mx', (event.clientX - rect.left) + 'px');
