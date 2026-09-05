@@ -19,7 +19,7 @@
     closes on Escape or an outside click. All of that lives in public/js/main.js.
 -->
 <header id="header" class="fixed inset-x-0 top-0 z-50 backdrop-blur-lg">
-    <div class="mx-auto flex h-16 w-full max-w-7xl items-center gap-8 px-6">
+    <div class="mx-auto flex h-16 w-full max-w-6xl items-center gap-8 px-6">
 
         <!-- href="/" always points to your site's root, in preview and when published -->
         <a href="/" aria-label="Homepage" class="flex shrink-0 items-center gap-2.5 text-ink">
@@ -89,7 +89,7 @@
 
     <!-- The mobile sheet. Dropdown parents flatten into their children here. -->
     <div data-mobile-panel class="border-b border-line bg-canvas/95 backdrop-blur-xl lg:hidden">
-        <nav class="mx-auto w-full max-w-7xl px-6 py-4" aria-label="Mobile">
+        <nav class="mx-auto w-full max-w-6xl px-6 py-4" aria-label="Mobile">
             <ul role="list" class="flex flex-col text-base">
                 @foreach ($links as $link)
                 @if ($link->children ?? false)

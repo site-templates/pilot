@@ -36,7 +36,7 @@
 -->
 <section id="hero" class="relative pt-36 sm:pt-44">
 
-    <div class="mx-auto w-full max-w-7xl px-6">
+    <div class="mx-auto w-full max-w-6xl px-6">
         <h1 class="max-w-[19ch] font-display text-[2.75rem] leading-[1.04] font-medium tracking-[-0.035em] text-balance text-ink sm:text-[3.5rem] lg:text-[4rem]" data-reveal>
             {{ $heading }}
         </h1>
@@ -65,7 +65,7 @@
             <span class="stage-veil"></span>
         </div>
 
-        <div class="reveal-3 relative z-10 mx-auto w-full max-w-7xl px-6 py-16 sm:py-24" data-reveal>
+        <div class="reveal-3 relative z-10 mx-auto w-full max-w-6xl px-6 py-16 sm:py-24" data-reveal>
             <div class="transformer relative rounded-xl border border-line-strong bg-canvas shadow-2xl shadow-black/15" data-transformer>
 
                 <!-- Title bar -->

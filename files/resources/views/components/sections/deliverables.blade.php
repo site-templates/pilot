@@ -13,7 +13,7 @@
     resources/data/collections/deliverables.json.
 -->
 <section id="capabilities" class="relative py-20 sm:py-32">
-    <div class="mx-auto w-full max-w-7xl px-6">
+    <div class="mx-auto w-full max-w-6xl px-6">
 
         <div class="flex flex-wrap items-end justify-between gap-x-12 gap-y-6" data-reveal>
             <div>
