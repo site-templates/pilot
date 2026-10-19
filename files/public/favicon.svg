@@ -1,12 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <style>
-        .chip { fill: #08090f }
-        .mark { fill: #eaefff }
-        @media (prefers-color-scheme: light) {
-            .chip { fill: #f9faff }
-            .mark { fill: #3b57e0 }
-        }
-    </style>
-    <rect class="chip" width="32" height="32" rx="7"/>
-    <path class="mark" d="M16 5.6 25.4 26.4 16 21.6 6.6 26.4Z"/>
+    <!-- The near-black mark on the site's off-white canvas, in every chrome. -->
+    <rect width="32" height="32" rx="7" fill="#f6f5f2"/>
+    <path d="M16 5.6 25.4 26.4 16 21.6 6.6 26.4Z" fill="#0f0f0e"/>
 </svg>
