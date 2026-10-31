@@ -233,7 +233,7 @@ function closeDropdowns() {
 
 /*
     The mobile menu: the hamburger toggles .menu-open on <html>, which slides
-    the glass sheet down and locks scrolling. Closing on navigation keeps
+    the sheet down and locks scrolling. Closing on navigation keeps
     same-page anchors from leaving the sheet hanging open.
 */
 function mobileMenu() {
