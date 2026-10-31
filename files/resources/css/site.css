@@ -226,7 +226,7 @@ body {
     -webkit-backdrop-filter: blur(14px) saturate(140%);
 }
 
-/* The mobile menu panel — slides down under the header as a glass sheet. */
+/* The mobile menu panel — slides down under the header as a solid sheet. */
 [data-mobile-panel] {
     opacity: 0;
     translate: 0 -8px;

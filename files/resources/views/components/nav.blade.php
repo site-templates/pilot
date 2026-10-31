@@ -87,8 +87,10 @@
 
     </div>
 
-    <!-- The mobile sheet. Dropdown parents flatten into their children here. -->
-    <div data-mobile-panel class="border-b border-line bg-canvas/95 backdrop-blur-xl lg:hidden">
+    <!-- The mobile sheet hangs below the bar, out of flow: in flow, the closed sheet
+         would stretch the fixed header down over the page, blurring and blocking it.
+         Dropdown parents flatten into their children here. -->
+    <div data-mobile-panel class="absolute inset-x-0 top-full border-b border-line bg-canvas lg:hidden">
         <nav class="mx-auto w-full max-w-6xl px-6 py-4" aria-label="Mobile">
             <ul role="list" class="flex flex-col text-base">
                 @foreach ($links as $link)
